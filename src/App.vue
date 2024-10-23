@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <!-- <NavBar /> -->
-    <!-- Include the NavBar component here -->
+    <NavBar />
+
     <router-view />
     <!-- This is where the routed components will be rendered -->
   </div>
 </template>
 
 <script>
+import NavBar from "./components/Navigation/NavBar.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    NavBar,
+  },
 };
 </script>
 
