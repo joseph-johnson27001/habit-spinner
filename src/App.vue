@@ -1,14 +1,25 @@
 <template>
   <div id="app">
+    <TopNav />
     <div class="content-container">
       <router-view />
+      <div class="footer-container">
+        <FooterNav />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import FooterNav from "./components/Navigation/FooterNav.vue";
+import TopNav from "./components/Navigation/TopNav.vue";
+
 export default {
   name: "App",
+  components: {
+    FooterNav,
+    TopNav,
+  },
 };
 </script>
 
@@ -17,30 +28,25 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #e6f0ff;
   min-height: 100vh;
+  text-align: center;
 }
 
 .content-container {
-  max-width: 1000px;
   width: 100%;
-  background-color: white;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  min-height: 100vh;
+  background-color: white;
+  /* border: 1px solid #ccc; */
+  border-top: none;
+  border-bottom: none;
 }
 </style>
