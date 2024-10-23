@@ -3,8 +3,8 @@
     <TopNav />
     <div class="content-container">
       <router-view />
-      <FooterNav />
     </div>
+    <FooterNav />
   </div>
 </template>
 
@@ -36,7 +36,6 @@ body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   text-align: center;
-  padding-bottom: 30px;
 }
 
 .content-container {

@@ -51,7 +51,7 @@ export default {
 }
 .habits-list {
   max-height: 80vh;
-  overflow-y: scroll;
+
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
