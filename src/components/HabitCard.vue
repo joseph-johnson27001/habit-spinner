@@ -24,12 +24,19 @@ export default {
   data() {
     return {
       isCompleted: this.completed,
+      chimeSound: new Audio(require("@/assets/chime.mp3")), // Adjust the path as necessary
     };
   },
   methods: {
     toggleCompletion() {
       this.isCompleted = !this.isCompleted;
       this.$emit("update", this.isCompleted);
+      if (this.isCompleted) {
+        this.playChime();
+      }
+    },
+    playChime() {
+      this.chimeSound.play();
     },
   },
 };
