@@ -22,13 +22,6 @@ export default {
 </script>
 
 <style>
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 #app {
   background-color: #fefefe;
   display: flex;
@@ -40,9 +33,7 @@ body {
 
 .content-container {
   width: 100%;
-  flex: 1;
   max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
