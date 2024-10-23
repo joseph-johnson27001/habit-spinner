@@ -1,23 +1,14 @@
 <template>
   <div id="app">
     <div class="content-container">
-      <TopBar />
       <router-view />
-      <NavBar />
     </div>
   </div>
 </template>
 
 <script>
-import TopBar from "./components/Navigation/TopBar.vue";
-import NavBar from "./components/Navigation/NavBar.vue";
-
 export default {
   name: "App",
-  components: {
-    TopBar,
-    NavBar,
-  },
 };
 </script>
 
@@ -46,8 +37,8 @@ body {
   width: 100%;
   background-color: white;
   margin: 0 auto;
+  padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
