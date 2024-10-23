@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <TopBar />
     <div class="content-container">
+      <TopBar />
       <router-view />
       <NavBar />
     </div>
@@ -22,8 +22,12 @@ export default {
 </script>
 
 <style>
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #app {
@@ -42,9 +46,10 @@ body {
   width: 100%;
   background-color: white;
   margin: 0 auto;
-  padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
 }
 </style>

@@ -1,30 +1,48 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/habits">Habits</router-link>
-    <router-link to="/rewards">Rewards</router-link>
-  </nav>
+  <div class="nav-bar">
+    <router-link to="/" class="nav-button">Home</router-link>
+    <router-link to="/habits" class="nav-button">Habits</router-link>
+    <router-link to="/rewards" class="nav-button">Rewards</router-link>
+  </div>
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
+
 export default {
   name: "NavBar",
+  components: {
+    RouterLink,
+  },
 };
 </script>
 
 <style>
-nav {
-  margin-top: 20px;
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #003366;
+  color: white;
+  padding: 10px 0;
+  width: 100%;
+  position: relative;
+  margin-top: auto;
 }
 
-nav a {
-  margin: 0 15px;
+.nav-button {
+  color: white;
   text-decoration: none;
-  color: #42b983; /* Change to your preferred color */
+  padding: 10px 15px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-nav a.router-link-exact-active {
-  font-weight: bold;
-  text-decoration: underline;
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 </style>

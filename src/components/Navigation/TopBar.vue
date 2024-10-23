@@ -13,16 +13,16 @@ export default {
 <style>
 .top-bar {
   display: flex;
-  justify-content: center; /* Center the logo */
-  align-items: center; /* Center vertically */
-  background-color: #003366; /* Dark blue background */
-  color: white; /* Text color */
-  padding: 10px 0; /* Padding around the bar */
-  width: 100%; /* Full width */
+  justify-content: center;
+  align-items: center;
+  background-color: #003366;
+  color: white;
+  padding: 10px 0;
+  width: 100%;
 }
 
 .logo {
-  font-size: 1.5em; /* Adjust logo font size */
-  font-weight: bold; /* Make logo text bold */
+  font-size: 1.5em;
+  font-weight: bold;
 }
 </style>
