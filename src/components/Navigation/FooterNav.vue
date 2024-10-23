@@ -52,6 +52,7 @@ export default {
 .nav-content {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .nav-button {
