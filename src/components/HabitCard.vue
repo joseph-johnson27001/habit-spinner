@@ -1,11 +1,11 @@
-<!-- HabitCard.vue -->
 <template>
-  <div :class="['habit-card', { completed: isCompleted }]">
-    <label class="habit-label">
-      <span>{{ habitName }}</span>
-      <input type="checkbox" v-model="isCompleted" @change="toggleCompletion" />
-    </label>
-  </div>
+  <label
+    :class="['habit-card', { completed: isCompleted }]"
+    @click="toggleCompletion"
+  >
+    <span>{{ habitName }}</span>
+    <input type="checkbox" v-model="isCompleted" @change="toggleCompletion" />
+  </label>
 </template>
 
 <script>
@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     toggleCompletion() {
+      this.isCompleted = !this.isCompleted; // Toggle the completion state
       this.$emit("update", this.isCompleted); // Emit the change to the parent
     },
   },
@@ -39,26 +40,32 @@ export default {
   background-color: #007bff; /* Initial blue */
   padding: 30px 15px;
   margin: 10px 0;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
-  border: 1px solid white;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  justify-content: space-between;
 }
 
 .habit-card.completed {
-  background-color: #28a745; /* Green when completed */
+  background-color: #28a745;
 }
 
 .habit-label {
   display: flex;
   align-items: center;
   cursor: pointer;
-  justify-content: space-between;
+
   width: 100%;
 }
 
 input[type="checkbox"] {
   margin-right: 10px;
+  cursor: pointer;
 }
 </style>

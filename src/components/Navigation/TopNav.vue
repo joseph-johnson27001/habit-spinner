@@ -37,6 +37,7 @@ export default {
   z-index: 100;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid #ccc;
 }
 
 .top-nav-content {
@@ -45,8 +46,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
-  padding: 10px 20px;
+  color: black;
+  padding: 5px 20px;
 }
 
 .habits-completed,

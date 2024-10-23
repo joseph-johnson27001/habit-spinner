@@ -47,9 +47,8 @@ export default {
 
 <style scoped>
 .habits-page {
-  padding: 0 20px;
+  padding: 0px 20px;
 }
-
 .habits-list {
   max-height: 80vh;
   overflow-y: scroll;

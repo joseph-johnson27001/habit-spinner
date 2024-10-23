@@ -30,10 +30,10 @@ body {
 }
 
 #app {
-  color: white;
+  background-color: #fefefe;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #001f3f, #2ecc71);
+  font-family: "Poppins", sans-serif;
   min-height: 100vh;
   text-align: center;
 }
