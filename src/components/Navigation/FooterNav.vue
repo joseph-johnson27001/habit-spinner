@@ -50,6 +50,7 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 1000;
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
 }
 
 .nav-content {
