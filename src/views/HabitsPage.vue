@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 .habits-page {
-  padding: 0px 20px 50px 20px;
+  padding: 0px 10px 50px 10px;
 }
 .habits-list {
   -ms-overflow-style: none;
