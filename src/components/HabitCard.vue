@@ -4,12 +4,7 @@
     @click="toggleCompletion"
   >
     <span>{{ habitName }}</span>
-    <input
-      type="checkbox"
-      v-model="isCompleted"
-      @change="toggleCompletion"
-      class="custom-checkbox"
-    />
+    <span v-if="isCompleted" class="checkmark">✓</span>
   </label>
 </template>
 
@@ -76,32 +71,9 @@ export default {
   z-index: 1;
 }
 
-input[type="checkbox"] {
-  margin-left: 10px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #4a90e2;
-  border-radius: 4px;
-  background-color: white;
-  transition: background-color 0.1s 0.2s ease, border-color 0.1s 0.2s ease;
-}
-
-input[type="checkbox"]:checked {
-  background-color: #4caf50;
-  border-color: #4caf50;
-}
-
-input[type="checkbox"]:checked::after {
-  content: "✓";
+.checkmark {
   color: white;
-  position: absolute;
-  top: 0;
-  left: 2px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .habit-card.completed::before {
