@@ -1,13 +1,9 @@
 <template>
   <div id="app">
-    <div class="navigation-container">
-      <TopNav />
-    </div>
+    <TopNav />
     <div class="content-container">
       <router-view />
-      <div class="footer-container">
-        <FooterNav />
-      </div>
+      <FooterNav />
     </div>
   </div>
 </template>
@@ -30,10 +26,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 #app {
-  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #e6f0ff;
@@ -42,15 +38,14 @@ body {
 }
 
 .content-container {
+  flex: 1;
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 100vh;
-  background-color: white;
+  background-color: #f3f2f2;
   border: 1px solid #ccc;
   border-top: none;
-  border-bottom: none;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 </style>
