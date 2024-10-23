@@ -38,14 +38,20 @@ body {
 }
 
 .content-container {
+  width: 100%;
   flex: 1;
-  width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #f3f2f2;
-  border: 1px solid #ccc;
-  border-top: none;
+  background-color: white;
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (min-width: 1200px) {
+  .content-container {
+    width: 95%;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
 }
 </style>
