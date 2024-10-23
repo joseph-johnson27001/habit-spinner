@@ -45,6 +45,7 @@ export default {
   background-color: #f3f2f2;
   padding: 10px 0;
   width: 100%;
+  margin-top: auto;
   border-top: 1px solid #ccc;
 }
 
