@@ -52,6 +52,12 @@ export default {
 
 .habits-list {
   max-height: 80vh;
-  overflow-y: auto;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.habits-list::-webkit-scrollbar {
+  display: none;
 }
 </style>
