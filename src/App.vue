@@ -30,9 +30,10 @@ body {
 }
 
 #app {
+  color: white;
   display: flex;
   flex-direction: column;
-  background-color: #e6f0ff;
+  background: linear-gradient(135deg, #001f3f, #2ecc71);
   min-height: 100vh;
   text-align: center;
 }
@@ -42,7 +43,6 @@ body {
   flex: 1;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: white;
   display: flex;
   flex-direction: column;
 }
@@ -50,7 +50,6 @@ body {
 @media only screen and (min-width: 1200px) {
   .content-container {
     width: 95%;
-    border: 1px solid #ccc;
     border-top: none;
   }
 }

@@ -15,7 +15,7 @@ export default {
 <style scoped>
 .top-nav {
   width: 100%;
-  background-color: #003366;
+  background: transparent;
   position: relative;
   z-index: 100;
   display: flex;
