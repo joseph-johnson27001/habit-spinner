@@ -18,14 +18,15 @@ export default {
   background-color: #003366;
   position: relative;
   z-index: 100;
-  position: fixed;
-  top: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .top-nav-content {
   max-width: 1200px;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   color: white;
 }

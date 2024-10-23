@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <TopNav />
+    <div class="navigation-container">
+      <TopNav />
+    </div>
     <div class="content-container">
       <router-view />
       <div class="footer-container">
@@ -45,7 +47,6 @@ body {
   margin: 0 auto;
   min-height: 100vh;
   background-color: white;
-  /* border: 1px solid #ccc; */
   border-top: none;
   border-bottom: none;
 }
