@@ -36,6 +36,7 @@ body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   text-align: center;
+  padding-bottom: 30px;
 }
 
 .content-container {

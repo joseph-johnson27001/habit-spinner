@@ -45,8 +45,11 @@ export default {
   background-color: #f3f2f2;
   padding: 10px 0;
   width: 100%;
-  margin-top: auto;
   border-top: 1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .nav-content {
