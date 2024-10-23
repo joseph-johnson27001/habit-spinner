@@ -42,12 +42,15 @@ body {
 }
 
 .content-container {
-  width: 100%;
+  width: 95%;
   max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   background-color: white;
+  border: 1px solid #ccc;
   border-top: none;
   border-bottom: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 </style>
