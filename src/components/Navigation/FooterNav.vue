@@ -1,15 +1,17 @@
 <template>
   <div class="nav-bar">
     <div class="nav-content">
+      <!-- Profile Button -->
       <router-link
         to="/profile"
         class="nav-button"
         :class="{ active: $route.path === '/profile' }"
       >
         <i class="fas fa-user"></i>
-        <!-- Updated Profile Icon -->
         <span>PROFILE</span>
       </router-link>
+
+      <!-- Habits Button -->
       <router-link
         to="/"
         class="nav-button"
@@ -18,14 +20,20 @@
         <i class="fas fa-list-alt"></i>
         <span>HABITS</span>
       </router-link>
+
+      <!-- Centerpiece Tracker Button (Circular) -->
       <router-link
         to="/tracker"
-        class="nav-button"
-        :class="{ active: $route.path === '/tracker' }"
+        class="nav-button tracker-button"
+        :class="{
+          active: $route.path === '/tracker',
+          'ready-to-play': tasksCompleted,
+        }"
       >
-        <i class="fas fa-spinner"></i>
-        <span>TRACKER</span>
+        <i class="fas fa-fire"></i>
       </router-link>
+
+      <!-- Rewards Button -->
       <router-link
         to="/rewards"
         class="nav-button"
@@ -34,13 +42,15 @@
         <i class="fas fa-gift"></i>
         <span>REWARDS</span>
       </router-link>
+
+      <!-- Settings Button -->
       <router-link
+        @click="this.tasksCompleted = !this.tasksCompleted"
         to="/settings"
         class="nav-button"
         :class="{ active: $route.path === '/settings' }"
       >
         <i class="fas fa-cog"></i>
-        <!-- Updated Settings Icon -->
         <span>SETTINGS</span>
       </router-link>
     </div>
@@ -55,10 +65,15 @@ export default {
   components: {
     RouterLink,
   },
+  data() {
+    return {
+      tasksCompleted: true, // This would be dynamically updated based on task completion status
+    };
+  },
 };
 </script>
 
-<style>
+<style scoped>
 .nav-bar {
   width: 100%;
   border-top: 1px solid #ccc;
@@ -80,6 +95,7 @@ export default {
   height: 60px;
   max-width: 1200px;
   width: 100%;
+  position: relative;
 }
 
 /* Styling for each button */
@@ -126,5 +142,50 @@ export default {
 .nav-button span {
   font-size: 10px;
   margin-top: 4px;
+}
+
+/* Centerpiece Tracker Button Styling */
+.tracker-button {
+  position: absolute;
+  bottom: 35px; /* Makes it rise above the navbar */
+  width: 45px;
+  height: 45px;
+  background-color: #24b2da;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Icon inside the tracker button */
+.tracker-button i {
+  font-size: 28px;
+}
+
+/* Glow effect when the user has completed their tasks */
+.tracker-button.ready-to-play {
+  background-color: #f76809;
+  box-shadow: 0 0 20px rgba(247, 104, 9, 0.8);
+  transform: scale(1.1);
+  animation: pulse 2s infinite ease-in-out; /* Adding the pulse animation */
+}
+
+/* Define the pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1.1); /* Initial scale */
+    box-shadow: 0 0 20px rgba(247, 104, 9, 0.8); /* Initial shadow */
+  }
+  50% {
+    transform: scale(1.2); /* Grow the scale slightly */
+    box-shadow: 0 0 25px rgba(247, 104, 9, 1); /* Increase shadow */
+  }
+  100% {
+    transform: scale(1.1); /* Back to original scale */
+    box-shadow: 0 0 20px rgba(247, 104, 9, 0.8); /* Return to original shadow */
+  }
 }
 </style>
