@@ -7,7 +7,7 @@
       </div>
 
       <!-- Center: Heading -->
-      <h1>HABIT SPINNER</h1>
+      <h2>habito</h2>
 
       <div class="streak-info">
         <span>{{ streak }} </span>
@@ -39,33 +39,35 @@ export default {
   z-index: 100;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #ccc;
+  background: linear-gradient(135deg, #3a66d0, #6aafe6);
+  border-bottom: 1px solid #2f4a92;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  height: 60px;
 }
 
 .top-nav-content {
   max-width: 1200px;
-  width: 85%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: black;
+  color: white;
   padding: 5px 20px;
 }
 
 .habits-completed,
 .streak-info {
-  font-size: 1rem;
   display: flex;
   align-items: center;
 }
 
-h1 {
+h2 {
   font-weight: 100;
-  color: #333333;
 }
 
 i {
-  margin-left: 5px;
+  font-size: 1.1rem;
+  margin-left: 8px;
   color: #f76809;
 }
 </style>
