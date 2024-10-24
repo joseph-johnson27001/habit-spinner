@@ -56,6 +56,6 @@ export default {
 
 <style scoped>
 .profile-page {
-  padding: 20px 10px 80px 10px;
+  padding: 10px 10px 80px 10px;
 }
 </style>

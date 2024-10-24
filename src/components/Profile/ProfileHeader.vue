@@ -7,7 +7,7 @@
         <div class="tagline-container">
           <p class="tagline">
             {{ user.bio }}
-            <i class="fa fa-pencil-alt edit-icon" @click="editProfile"></i>
+            <!-- <i class="fa fa-pencil-alt edit-icon" @click="editProfile"></i> -->
           </p>
         </div>
       </div>

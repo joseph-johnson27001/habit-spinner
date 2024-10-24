@@ -71,10 +71,6 @@ export default {
 </script>
 
 <style scoped>
-.habit-stats {
-  padding-top: 10px;
-}
-
 .stats-grid {
   display: flex;
   flex-direction: column;
