@@ -108,6 +108,10 @@ export default {
   border-radius: 5px;
 }
 
+.nav-button:focus {
+  outline: none;
+}
+
 /* Active button text and icon colors */
 .nav-button.active {
   color: #333333;
