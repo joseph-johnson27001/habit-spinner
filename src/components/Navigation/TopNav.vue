@@ -11,7 +11,7 @@
 
       <div class="streak-info">
         <span>{{ streak }} </span>
-        <i class="fas fa-fire"></i>
+        <i class="fa fa-fire" aria-hidden="true"></i>
         <!-- Color can be adjusted -->
       </div>
     </div>
@@ -66,7 +66,7 @@ h2 {
 }
 
 i {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   margin-left: 8px;
   color: #f76809;
 }
