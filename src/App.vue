@@ -22,8 +22,13 @@ export default {
 </script>
 
 <style>
+body {
+  padding: 0;
+  margin: 0;
+}
+
 #app {
-  background-color: #fefefe;
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   font-family: "Poppins", sans-serif;

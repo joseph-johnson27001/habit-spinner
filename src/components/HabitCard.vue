@@ -46,21 +46,21 @@ export default {
 .habit-card {
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
-
   padding: 40px 15px;
   margin: 10px 0;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 100;
+  text-transform: capitalize;
   color: #fff;
   cursor: pointer;
   justify-content: space-between;
   transition: color 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
 }
 
 .habit-card::before {
@@ -70,8 +70,8 @@ export default {
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: #4caf50;
-  transition: left 0.3s ease;
+  background: #4caf50;
+  transition: left 0.2s linear;
   z-index: 0;
 }
 
