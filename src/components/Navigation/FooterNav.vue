@@ -11,17 +11,17 @@
         <span>PROFILE</span>
       </router-link>
       <router-link
-        to="/habits"
+        to="/"
         class="nav-button"
-        :class="{ active: $route.path === '/habits' }"
+        :class="{ active: $route.path === '/' }"
       >
         <i class="fas fa-list-alt"></i>
         <span>HABITS</span>
       </router-link>
       <router-link
-        to="/"
+        to="/tracker"
         class="nav-button"
-        :class="{ active: $route.path === '/' }"
+        :class="{ active: $route.path === '/tracker' }"
       >
         <i class="fas fa-spinner"></i>
         <span>TRACKER</span>

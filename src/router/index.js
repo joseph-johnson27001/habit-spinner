@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import TrackerPage from "../views/HabitsPage.vue";
+import TrackerPage from "../views/TrackerPage.vue";
 import HabitsPage from "../views/HabitsPage.vue";
 import RewardsPage from "../views/RewardsPage.vue";
 import SpinnerPage from "../views/SpinnerPage.vue";
