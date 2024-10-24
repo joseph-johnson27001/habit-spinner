@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      tasksCompleted: true, // This would be dynamically updated based on task completion status
+      tasksCompleted: false, // This would be dynamically updated based on task completion status
     };
   },
 };
@@ -158,6 +158,7 @@ export default {
   justify-content: center;
   align-items: center;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1001;
 }
 
 /* Icon inside the tracker button */
@@ -170,7 +171,7 @@ export default {
   background-color: #f76809;
   box-shadow: 0 0 20px rgba(247, 104, 9, 0.8);
   transform: scale(1.1);
-  animation: pulse 2s infinite ease-in-out; /* Adding the pulse animation */
+  animation: pulse 2s infinite ease-in-out;
 }
 
 /* Define the pulse animation */
