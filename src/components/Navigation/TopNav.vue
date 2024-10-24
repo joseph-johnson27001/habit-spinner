@@ -64,7 +64,7 @@ export default {
 }
 
 .side-section {
-  flex: 1; /* Make side sections take equal space */
+  flex: 1;
   display: flex;
   justify-content: start;
 }
@@ -74,7 +74,7 @@ export default {
 }
 
 .center-section {
-  flex-shrink: 0; /* Prevent the heading from shrinking */
+  flex-shrink: 0;
 }
 
 h2 {

@@ -174,6 +174,15 @@ export default {
   animation: pulse 2s infinite ease-in-out;
 }
 
+.tracker-button.active::before {
+  background: none;
+  outline: none;
+}
+
+.fa-fire:before {
+  color: white;
+}
+
 /* Define the pulse animation */
 @keyframes pulse {
   0% {
