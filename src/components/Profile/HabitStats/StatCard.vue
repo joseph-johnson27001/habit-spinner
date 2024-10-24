@@ -41,6 +41,7 @@ export default {
 
 .stat-title {
   font-size: 1.2rem;
+  text-align: left;
 }
 
 .stat-value {
