@@ -62,6 +62,8 @@ export default {
 }
 
 h2 {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 100;
 }
 
