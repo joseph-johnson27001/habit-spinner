@@ -37,32 +37,32 @@ export default {
         {
           title: "Current Streak",
           value: this.stats.streak,
-          bg: "#f39c12", // Warm orange
+          bg: "#FF6F61", // Vibrant coral for motivation
         },
         {
           title: "Best Streak",
           value: this.stats.bestStreak,
-          bg: "#27ae60", // Rich green
+          bg: "linear-gradient(135deg, #2ECC71, #27AE60)", // Gradient from bright green to rich green
         },
         {
           title: "Total Habits",
           value: this.stats.totalHabits,
-          bg: "#f1c40f", // Bright yellow
+          bg: "#F39C12", // Golden yellow for importance
         },
         {
           title: "Habits Completed This Week",
           value: this.stats.weeklyCompleted,
-          bg: "#2980b9", // Deeper blue
+          bg: "#3498DB", // Calm blue for consistency
         },
         {
           title: "Habits Completed This Month",
           value: this.stats.monthlyCompleted,
-          bg: "#16a085", // Teal
+          bg: "linear-gradient(135deg, #1ABC9C, #16A085)", // Gradient teal for progress
         },
         {
           title: "Habits Completed This Year",
           value: this.stats.yearlyCompleted,
-          bg: "#e74c3c", // Soft red
+          bg: "#E74C3C", // Strong red for major achievements
         },
       ];
     },

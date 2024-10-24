@@ -29,7 +29,7 @@ export default {
 .stat-card {
   border-radius: 10px;
   padding: 20px 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
   align-items: center;
