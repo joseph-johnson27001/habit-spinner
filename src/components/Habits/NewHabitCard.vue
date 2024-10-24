@@ -34,7 +34,6 @@ export default {
   justify-content: center;
   transition: color 0.3s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-  margin-bottom: 20px;
 }
 
 .new-habit-card i {

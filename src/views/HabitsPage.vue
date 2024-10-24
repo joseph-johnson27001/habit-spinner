@@ -1,7 +1,6 @@
 <!-- HabitsPage.vue -->
 <template>
   <div class="habits-page">
-    <NewHabitCard @add="showAddHabitDialog" />
     <div class="habits-list">
       <HabitCard
         v-for="(habit, index) in habits"
@@ -11,6 +10,7 @@
         @update="updateHabit(index, $event)"
       />
     </div>
+    <NewHabitCard @add="showAddHabitDialog" />
   </div>
 </template>
 
