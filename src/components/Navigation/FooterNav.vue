@@ -78,11 +78,6 @@ export default {
   transition: background-color 0.3s ease;
 }
 
-/* Hover effect */
-.nav-button:hover {
-  background-color: #e3e2e2;
-}
-
 /* Active page indicator (colored line at the top of the square) */
 .nav-button.active::before {
   content: "";
