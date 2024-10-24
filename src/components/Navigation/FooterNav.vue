@@ -7,7 +7,7 @@
         :class="{ active: $route.path === '/habits' }"
       >
         <i class="fas fa-list-alt"></i>
-        <span>Habits</span>
+        <span>HABITS</span>
       </router-link>
       <router-link
         to="/"
@@ -15,7 +15,7 @@
         :class="{ active: $route.path === '/' }"
       >
         <i class="fas fa-spinner"></i>
-        <span>Tracker</span>
+        <span>TRACKER</span>
       </router-link>
       <router-link
         to="/rewards"
@@ -23,7 +23,7 @@
         :class="{ active: $route.path === '/rewards' }"
       >
         <i class="fas fa-gift"></i>
-        <span>Rewards</span>
+        <span>REWARDS</span>
       </router-link>
     </div>
   </div>
@@ -75,7 +75,6 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-
   transition: background-color 0.3s ease;
 }
 
@@ -102,12 +101,12 @@ export default {
 
 /* Icons */
 .nav-button i {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 /* Text */
 .nav-button span {
-  font-size: 12px;
+  font-size: 10px;
   margin-top: 4px;
 }
 </style>
