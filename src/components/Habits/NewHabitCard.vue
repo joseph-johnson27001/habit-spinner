@@ -19,7 +19,8 @@ export default {
 <style scoped>
 .new-habit-card {
   position: relative;
-  background-color: #24b2da;
+  background: linear-gradient(to right, #3dc2e7, #1d9ec2);
+
   border: 1px solid white;
   padding: 40px 15px;
   margin: 10px 0;
