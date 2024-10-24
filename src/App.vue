@@ -28,7 +28,7 @@ body {
 }
 
 #app {
-  background-color: #f5f5f5;
+  background-color: #f5f4f0;
   display: flex;
   flex-direction: column;
   font-family: "Poppins", sans-serif;
