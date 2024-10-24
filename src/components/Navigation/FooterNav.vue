@@ -48,7 +48,10 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  background-color: #f3f2f2;
 }
 
 /* Flex layout for buttons */
@@ -57,6 +60,8 @@ export default {
   justify-content: space-around;
   align-items: center;
   height: 60px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 /* Styling for each button */
@@ -70,7 +75,6 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: #f3f2f2;
 
   transition: background-color 0.3s ease;
 }
@@ -84,7 +88,7 @@ export default {
 .nav-button.active::before {
   content: "";
   position: absolute;
-  top: -1px;
+  top: -2px;
   left: 0;
   right: 0;
   height: 2px;
