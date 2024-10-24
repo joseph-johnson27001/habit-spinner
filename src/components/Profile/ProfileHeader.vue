@@ -62,7 +62,7 @@ export default {
 
 .profile-info {
   text-align: left;
-  flex-grow: 1; /* Allow the text to grow and fill the space */
+  flex-grow: 1;
 }
 
 h2 {
