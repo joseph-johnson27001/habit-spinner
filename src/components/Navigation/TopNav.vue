@@ -8,7 +8,7 @@
 
       <!-- Center: Heading -->
       <div class="center-section">
-        <h2>habito</h2>
+        <h2>Ignis</h2>
       </div>
 
       <!-- Right side: Streak info -->
