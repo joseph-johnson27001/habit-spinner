@@ -9,8 +9,10 @@
       <!-- Center: Heading -->
       <h1>HABIT SPINNER</h1>
 
-      <div class="win-percentage">
-        <span>{{ winPercentage }} %</span>
+      <div class="streak-info">
+        <span>{{ streak }} </span>
+        <i class="fas fa-fire"></i>
+        <!-- Color can be adjusted -->
       </div>
     </div>
   </nav>
@@ -23,7 +25,7 @@ export default {
     return {
       totalHabits: 10,
       habitsCompleted: 0,
-      winPercentage: 5,
+      streak: 5,
     };
   },
 };
@@ -51,12 +53,19 @@ export default {
 }
 
 .habits-completed,
-.win-percentage {
+.streak-info {
   font-size: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 h1 {
   font-weight: 100;
   color: #333333;
+}
+
+i {
+  margin-left: 5px;
+  color: #f76809;
 }
 </style>
