@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       isCompleted: this.completed,
-      chimeSound: new Audio(require("@/assets/chime.mp3")),
+      chimeSound: new Audio(require("@/assets/chime.mp3")), // Adjust the path as necessary
     };
   },
   methods: {
@@ -45,7 +45,8 @@ export default {
 <style scoped>
 .habit-card {
   position: relative;
-  background: linear-gradient(to right, #5f9be0, #9a74d6);
+  background: linear-gradient(to right, #4a90e2, #9a74d6);
+
   padding: 40px 15px;
   margin: 10px 0;
   border-radius: 10px;
