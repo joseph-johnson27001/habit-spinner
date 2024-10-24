@@ -1,5 +1,5 @@
 <template>
-  <div class="stat-card" :style="{ backgroundColor: bgColor }">
+  <div class="stat-card" :style="{ background: bg }">
     <div class="stat-title">{{ title }}</div>
     <div class="stat-value">{{ value }}</div>
   </div>
@@ -17,9 +17,9 @@ export default {
       type: [String, Number],
       required: true,
     },
-    bgColor: {
+    bg: {
       type: String,
-      default: "#ffffff", // Default to white if no color is provided
+      default: "#ffffff",
     },
   },
 };
@@ -34,18 +34,16 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: auto;
-  transition: background-color 0.3s ease;
   color: white;
   font-weight: 100;
 }
 
 .stat-title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: left;
 }
 
 .stat-value {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 100;
 }
 </style>

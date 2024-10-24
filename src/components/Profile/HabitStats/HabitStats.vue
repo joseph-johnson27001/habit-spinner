@@ -6,7 +6,7 @@
         :key="index"
         :title="stat.title"
         :value="stat.value"
-        :bgColor="stat.bgColor"
+        :bg="stat.bg"
       />
     </div>
   </div>
@@ -32,37 +32,37 @@ export default {
         {
           title: "Habits Completed Today",
           value: this.stats.completedHabits,
-          bgColor: "#24b2da",
+          bg: "#4a90e2", // Calm blue
         },
         {
           title: "Current Streak",
           value: this.stats.streak,
-          bgColor: "#f39c12",
+          bg: "#f39c12", // Warm orange
         },
         {
           title: "Best Streak",
           value: this.stats.bestStreak,
-          bgColor: "#e74c3c",
+          bg: "#27ae60", // Rich green
         },
         {
           title: "Total Habits",
           value: this.stats.totalHabits,
-          bgColor: "#8e44ad",
+          bg: "#f1c40f", // Bright yellow
         },
         {
           title: "Habits Completed This Week",
           value: this.stats.weeklyCompleted,
-          bgColor: "#3498db",
+          bg: "#2980b9", // Deeper blue
         },
         {
           title: "Habits Completed This Month",
           value: this.stats.monthlyCompleted,
-          bgColor: "#2ecc71",
+          bg: "#16a085", // Teal
         },
         {
           title: "Habits Completed This Year",
           value: this.stats.yearlyCompleted,
-          bgColor: "#e67e22",
+          bg: "#e74c3c", // Soft red
         },
       ];
     },
