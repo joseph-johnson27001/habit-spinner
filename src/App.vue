@@ -34,6 +34,18 @@ body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   text-align: center;
+  overflow-y: scroll;
+}
+
+/* Hide scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+body {
+  scrollbar-width: none; /* Hides the scrollbar */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 .content-container {

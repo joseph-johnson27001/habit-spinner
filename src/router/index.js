@@ -3,6 +3,8 @@ import HomePage from "../views/HomePage.vue";
 import HabitsPage from "../views/HabitsPage.vue";
 import RewardsPage from "../views/RewardsPage.vue";
 import SpinnerPage from "../views/SpinnerPage.vue";
+import ProfilePage from "@/views/ProfilePage.vue";
+import SettingsPage from "@/views/SettingsPage.vue";
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: "/spinner",
     name: "Spinner",
     component: SpinnerPage,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: ProfilePage,
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: SettingsPage,
   },
 ];
 

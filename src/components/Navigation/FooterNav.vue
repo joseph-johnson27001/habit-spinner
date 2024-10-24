@@ -2,6 +2,15 @@
   <div class="nav-bar">
     <div class="nav-content">
       <router-link
+        to="/profile"
+        class="nav-button"
+        :class="{ active: $route.path === '/profile' }"
+      >
+        <i class="fas fa-user"></i>
+        <!-- Updated Profile Icon -->
+        <span>PROFILE</span>
+      </router-link>
+      <router-link
         to="/habits"
         class="nav-button"
         :class="{ active: $route.path === '/habits' }"
@@ -24,6 +33,15 @@
       >
         <i class="fas fa-gift"></i>
         <span>REWARDS</span>
+      </router-link>
+      <router-link
+        to="/settings"
+        class="nav-button"
+        :class="{ active: $route.path === '/settings' }"
+      >
+        <i class="fas fa-cog"></i>
+        <!-- Updated Settings Icon -->
+        <span>SETTINGS</span>
       </router-link>
     </div>
   </div>
@@ -82,11 +100,12 @@ export default {
 .nav-button.active::before {
   content: "";
   position: absolute;
-  top: -2px;
+  top: -1px;
   left: 0;
   right: 0;
   height: 2px;
   background-color: #24b2da;
+  border-radius: 5px;
 }
 
 /* Active button text and icon colors */

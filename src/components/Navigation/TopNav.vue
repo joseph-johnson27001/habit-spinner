@@ -7,7 +7,7 @@
       </div>
 
       <!-- Center: Heading -->
-      <h1>Habit Spinner</h1>
+      <h1>HABIT SPINNER</h1>
 
       <div class="win-percentage">
         <span>{{ winPercentage }} %</span>
@@ -55,8 +55,8 @@ export default {
   font-size: 1rem;
 }
 
-h2 {
-  margin: 0;
-  font-size: 1.5rem;
+h1 {
+  font-weight: 100;
+  color: #333333;
 }
 </style>

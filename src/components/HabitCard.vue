@@ -60,7 +60,7 @@ export default {
   cursor: pointer;
   justify-content: space-between;
   transition: color 0.3s ease;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .habit-card::before {
