@@ -1,6 +1,7 @@
 <!-- HabitsPage.vue -->
 <template>
   <div class="habits-page">
+    <NewHabitCard @add="showAddHabitDialog" />
     <div class="habits-list">
       <HabitCard
         v-for="(habit, index) in habits"
@@ -14,12 +15,14 @@
 </template>
 
 <script>
-import HabitCard from "@/components/HabitCard.vue";
+import HabitCard from "@/components/Habits/HabitCard.vue";
+import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
 
 export default {
   name: "HabitsPage",
   components: {
     HabitCard,
+    NewHabitCard,
   },
   data() {
     return {
@@ -41,6 +44,9 @@ export default {
     updateHabit(index, isCompleted) {
       this.habits[index].completed = isCompleted;
     },
+    showAddHabitDialog() {
+      console.log("New Habit Card Clicked!");
+    },
   },
 };
 </script>
@@ -48,13 +54,5 @@ export default {
 <style scoped>
 .habits-page {
   padding: 0px 10px 60px 10px;
-}
-.habits-list {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.habits-list::-webkit-scrollbar {
-  display: none;
 }
 </style>

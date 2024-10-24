@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       isCompleted: this.completed,
-      chimeSound: new Audio(require("@/assets/chime.mp3")), // Adjust the path as necessary
+      chimeSound: new Audio(require("@/assets/chime.mp3")),
     };
   },
   methods: {
@@ -52,7 +52,6 @@ export default {
   overflow: hidden;
   display: flex;
   align-items: center;
-  /* border: 1px solid #ccc; */
   font-size: 16px;
   font-weight: 100;
   text-transform: capitalize;
