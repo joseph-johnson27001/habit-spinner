@@ -42,40 +42,68 @@ export default {
 
 <style>
 .nav-bar {
-  background-color: #f3f2f2;
-  padding: 10px 0;
   width: 100%;
   border-top: 1px solid #ccc;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Flex layout for buttons */
 .nav-content {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 60px;
 }
 
+/* Styling for each button */
 .nav-button {
   color: #666666;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #f3f2f2;
+
+  transition: background-color 0.3s ease;
 }
 
+/* Hover effect */
+.nav-button:hover {
+  background-color: #e3e2e2;
+}
+
+/* Active page indicator (colored line at the top of the square) */
+.nav-button.active::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #24b2da;
+}
+
+/* Active button text and icon colors */
 .nav-button.active {
   color: #333333;
 }
 
+/* Icons */
 .nav-button i {
-  font-size: 20px;
+  font-size: 22px;
 }
 
+/* Text */
 .nav-button span {
   font-size: 12px;
+  margin-top: 4px;
 }
 </style>
