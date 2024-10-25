@@ -7,9 +7,9 @@
       </div>
 
       <!-- Center: Heading -->
-      <div class="center-section heading">
+      <!-- <div class="center-section heading">
         <h2>Ember</h2>
-      </div>
+      </div> -->
 
       <!-- Right side: Currency Display -->
       <div class="side-section currency-info">
