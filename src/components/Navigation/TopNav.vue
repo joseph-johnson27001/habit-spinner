@@ -8,7 +8,7 @@
 
       <!-- Center: Heading -->
       <div class="center-section">
-        <h2>Ignis</h2>
+        <h2>Ember</h2>
       </div>
 
       <!-- Right side: Streak info -->
@@ -82,6 +82,7 @@ h2 {
   font-optical-sizing: auto;
   font-weight: 100;
   text-align: center;
+  font-size: 2rem;
   margin: 0;
 }
 
