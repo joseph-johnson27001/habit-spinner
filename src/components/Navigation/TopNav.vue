@@ -2,14 +2,14 @@
   <nav class="top-nav">
     <div class="top-nav-content">
       <!-- Left side: Daily habits completed -->
-      <div class="side-section habits-completed">
+      <!-- <div class="side-section habits-completed">
         <span>{{ habitsCompleted }} / {{ totalHabits }}</span>
-      </div>
+      </div> -->
 
       <!-- Center: Heading -->
-      <!-- <div class="center-section heading">
+      <div class="center-section heading">
         <h2>Ember</h2>
-      </div> -->
+      </div>
 
       <!-- Right side: Currency Display -->
       <div class="side-section currency-info">
