@@ -58,6 +58,7 @@ export default {
   border-radius: 50%;
   margin-right: 20px;
   border: 1px solid #ccc;
+  margin-left: 5px;
 }
 
 .profile-info {
