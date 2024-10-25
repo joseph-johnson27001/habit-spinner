@@ -85,6 +85,7 @@ export default {
   display: flex;
   justify-content: center;
   background-color: #f3f2f2;
+  border-top: 1px solid #ccc;
 }
 
 /* Flex layout for buttons */
@@ -119,9 +120,8 @@ export default {
   top: -1px;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background-color: #24b2da;
-  border-radius: 5px;
 }
 
 .nav-button:focus {
