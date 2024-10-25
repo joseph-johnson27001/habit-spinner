@@ -152,7 +152,7 @@ export default {
   height: 45px;
   background-color: #24b2da;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   color: white;
   display: flex;
   justify-content: center;
@@ -187,15 +187,15 @@ export default {
 @keyframes pulse {
   0% {
     transform: scale(1.1); /* Initial scale */
-    box-shadow: 0 0 20px rgba(247, 104, 9, 0.8); /* Initial shadow */
+    box-shadow: 0 0 10px rgba(247, 104, 9, 0.8); /* Initial shadow */
   }
   50% {
     transform: scale(1.2); /* Grow the scale slightly */
-    box-shadow: 0 0 25px rgba(247, 104, 9, 1); /* Increase shadow */
+    box-shadow: 0 0 15px rgba(247, 104, 9, 1); /* Increase shadow */
   }
   100% {
     transform: scale(1.1); /* Back to original scale */
-    box-shadow: 0 0 20px rgba(247, 104, 9, 0.8); /* Return to original shadow */
+    box-shadow: 0 0 10px rgba(247, 104, 9, 0.8); /* Return to original shadow */
   }
 }
 </style>
