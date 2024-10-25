@@ -3,31 +3,41 @@
     <div class="top-nav-content">
       <!-- Left side: Daily habits completed -->
       <div class="side-section habits-completed">
-        <span> {{ habitsCompleted }} / {{ totalHabits }}</span>
+        <span>{{ habitsCompleted }} / {{ totalHabits }}</span>
       </div>
 
       <!-- Center: Heading -->
-      <div class="center-section">
+      <div class="center-section heading">
         <h2>Ember</h2>
       </div>
 
-      <!-- Right side: Streak info -->
-      <div class="side-section streak-info">
-        <span>{{ streak }} </span>
-        <i class="fa fa-fire" aria-hidden="true"></i>
+      <!-- Right side: Currency Display -->
+      <div class="side-section currency-info">
+        <CurrencyDisplay
+          :coins="coins"
+          :streak="streak"
+          :rewardPasses="rewardPasses"
+        />
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import CurrencyDisplay from "@/components/Navigation/CurrencyDisplay.vue"; // Importing the CurrencyDisplay component
+
 export default {
   name: "TopNav",
+  components: {
+    CurrencyDisplay, // Registering the component
+  },
   data() {
     return {
       totalHabits: 10,
       habitsCompleted: 0,
       streak: 5,
+      coins: 120, // Example coins value
+      rewardPasses: 1, // Example reward passes value
     };
   },
 };
@@ -57,24 +67,11 @@ export default {
   color: white;
 }
 
-.habits-completed,
-.streak-info {
+.habits-completed {
   display: flex;
   align-items: center;
-}
-
-.side-section {
-  flex: 1;
-  display: flex;
-  justify-content: start;
-}
-
-.streak-info {
-  justify-content: end;
-}
-
-.center-section {
-  flex-shrink: 0;
+  justify-content: flex-start; /* Align left */
+  flex: 1; /* Allow to take available space */
 }
 
 h2 {
@@ -86,9 +83,9 @@ h2 {
   margin: 0;
 }
 
-i {
-  font-size: 1.4rem;
-  margin-left: 8px;
-  color: #f76809;
+.currency-info {
+  display: flex;
+  justify-content: flex-end; /* Align right */
+  flex: 1; /* Allow to take available space */
 }
 </style>

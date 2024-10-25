@@ -1,12 +1,5 @@
 <template>
   <div class="rewards-page">
-    <!-- Currency Display -->
-    <CurrencyDisplay
-      :coins="coins"
-      :streak="streak"
-      :rewardPasses="rewardPasses"
-    />
-
     <!-- Rewards List -->
     <div class="rewards-list">
       <RewardCard
@@ -27,20 +20,15 @@
 <script>
 import RewardCard from "@/components/Rewards/RewardCard.vue";
 import NewRewardCard from "@/components/Rewards/NewRewardCard.vue";
-import CurrencyDisplay from "@/components/Rewards/CurrencyDisplay.vue";
 
 export default {
   name: "RewardsPage",
   components: {
     RewardCard,
     NewRewardCard,
-    CurrencyDisplay,
   },
   data() {
     return {
-      coins: 120, // Example initial coins value
-      streak: 3, // Example initial streak value
-      rewardPasses: 1, // Example initial reward pass value
       rewards: [
         { name: "Spa Day", redeemed: false, cost: 50 },
         { name: "Movie Ticket", redeemed: false, cost: 20 },

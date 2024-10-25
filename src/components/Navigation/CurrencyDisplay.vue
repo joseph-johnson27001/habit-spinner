@@ -33,9 +33,9 @@ export default {
 <style scoped>
 .currency-display {
   display: flex;
-  gap: 20px;
-  padding-top: 10px;
-  color: #333;
+  gap: 10px; /* Reduced gap between items */
+  padding-top: 5px; /* Reduced padding */
+  color: white;
   border-radius: 10px;
   justify-content: space-around;
   font-weight: bold;
@@ -48,24 +48,20 @@ export default {
 }
 
 .currency-value {
-  font-size: 1.4rem;
-  margin-left: 8px;
-  color: #333;
+  font-size: 0.9rem; /* Reduced font size for values */
+  margin-left: 5px; /* Reduced margin */
 }
 
 /* Icon styling */
 .coin-icon {
-  font-size: 1.4rem;
   color: #ffd700; /* Gold color for coins */
 }
 
 .fire-icon {
-  font-size: 1.4rem;
   color: #f76809; /* Matches fire color */
 }
 
 .ticket-icon {
-  font-size: 1.4rem;
   color: #9e9e9e; /* Gray color for reward passes */
 }
 </style>
