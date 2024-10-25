@@ -105,6 +105,6 @@ export default {
 .coin-icon {
   font-size: 1.2rem;
   color: #ffd700;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 </style>
