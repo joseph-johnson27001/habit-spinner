@@ -69,11 +69,11 @@ export default {
 }
 
 .top-nav-content {
-  max-width: 1180px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 5px 10px;
+  padding: 5px 20px;
   color: white;
 }
 
@@ -102,5 +102,12 @@ h2 {
 .fire-icon {
   color: #f76809; /* Matches fire color */
   margin-right: 5px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .top-nav-content {
+    max-width: 1180px;
+    width: 100%;
+  }
 }
 </style>
