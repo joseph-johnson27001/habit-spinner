@@ -1,44 +1,46 @@
 <template>
   <nav class="top-nav">
     <div class="top-nav-content">
-      <!-- Left side: Daily habits completed -->
-      <!-- <div class="side-section habits-completed">
-        <span>{{ habitsCompleted }} / {{ totalHabits }}</span>
-      </div> -->
-
       <!-- Center: Heading -->
       <div class="center-section heading">
         <h2>Ember</h2>
       </div>
 
-      <!-- Right side: Currency Display -->
-      <div class="side-section currency-info">
+      <!-- Right side: Conditional Display -->
+      <div class="side-section">
         <CurrencyDisplay
+          v-if="isRewardsPage"
           :coins="coins"
           :streak="streak"
           :rewardPasses="rewardPasses"
         />
+        <span v-else>{{ habitsCompleted }} / {{ totalHabits }}</span>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import CurrencyDisplay from "@/components/Navigation/CurrencyDisplay.vue"; // Importing the CurrencyDisplay component
+import CurrencyDisplay from "@/components/Navigation/CurrencyDisplay.vue";
 
 export default {
   name: "TopNav",
   components: {
-    CurrencyDisplay, // Registering the component
+    CurrencyDisplay,
   },
   data() {
     return {
       totalHabits: 10,
       habitsCompleted: 0,
       streak: 5,
-      coins: 120, // Example coins value
-      rewardPasses: 1, // Example reward passes value
+      coins: 120,
+      rewardPasses: 1,
     };
+  },
+  computed: {
+    isRewardsPage() {
+      return this.$route.path === "/rewards";
+    },
   },
 };
 </script>
@@ -70,8 +72,8 @@ export default {
 .habits-completed {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align left */
-  flex: 1; /* Allow to take available space */
+  justify-content: flex-start;
+  flex: 1;
 }
 
 h2 {
@@ -83,9 +85,9 @@ h2 {
   margin: 0;
 }
 
-.currency-info {
+.side-section {
   display: flex;
-  justify-content: flex-end; /* Align right */
-  flex: 1; /* Allow to take available space */
+  justify-content: flex-end;
+  flex: 1;
 }
 </style>
