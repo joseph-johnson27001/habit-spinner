@@ -5,11 +5,6 @@
       <i class="fa fa-ticket ticket-icon"></i>
       <span class="currency-value">{{ rewardPasses }}</span>
     </div>
-    <!-- Streak Display -->
-    <div class="currency-item">
-      <i class="fa fa-fire fire-icon"></i>
-      <span class="currency-value">{{ streak }}</span>
-    </div>
 
     <!-- Coins Display -->
     <div class="currency-item">
@@ -49,7 +44,7 @@ export default {
 
 .currency-value {
   font-size: 0.9rem; /* Reduced font size for values */
-  margin-left: 5px; /* Reduced margin */
+  padding-left: 5px; /* Reduced margin */
 }
 
 /* Icon styling */
@@ -57,11 +52,7 @@ export default {
   color: #ffd700; /* Gold color for coins */
 }
 
-.fire-icon {
-  color: #f76809; /* Matches fire color */
-}
-
 .ticket-icon {
-  color: #9e9e9e; /* Gray color for reward passes */
+  color: orange; /* Gray color for reward passes */
 }
 </style>

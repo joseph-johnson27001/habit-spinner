@@ -14,6 +14,11 @@
           :streak="streak"
           :rewardPasses="rewardPasses"
         />
+        <!-- Streak Display -->
+        <div v-else-if="isProfilePage">
+          <i class="fa fa-fire fire-icon"></i>
+          <span class="currency-value">{{ streak }}</span>
+        </div>
         <span v-else>{{ habitsCompleted }} / {{ totalHabits }}</span>
       </div>
     </div>
@@ -41,6 +46,9 @@ export default {
     isRewardsPage() {
       return this.$route.path === "/rewards";
     },
+    isProfilePage() {
+      return this.$route.path === "/profile";
+    },
   },
 };
 </script>
@@ -61,11 +69,11 @@ export default {
 }
 
 .top-nav-content {
-  max-width: 1200px;
+  max-width: 1180px;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 5px 20px;
+  padding: 5px 10px;
   color: white;
 }
 
@@ -89,5 +97,10 @@ h2 {
   display: flex;
   justify-content: flex-end;
   flex: 1;
+}
+
+.fire-icon {
+  color: #f76809; /* Matches fire color */
+  margin-right: 5px;
 }
 </style>
