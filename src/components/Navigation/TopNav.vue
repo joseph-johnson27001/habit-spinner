@@ -17,7 +17,7 @@
         <!-- Streak Display -->
         <div v-else-if="isProfilePage" class="side-section">
           <i class="fa fa-fire fire-icon"></i>
-          <span class="currency-value">{{ streak }}</span>
+          <span>{{ streak }}</span>
         </div>
         <span v-else>{{ habitsCompleted }} / {{ totalHabits }}</span>
       </div>
@@ -89,7 +89,6 @@ h2 {
   font-optical-sizing: auto;
   font-weight: 100;
   text-align: center;
-  font-size: 2rem;
   margin: 0;
 }
 
@@ -101,7 +100,7 @@ h2 {
 }
 
 .fire-icon {
-  color: #f76809; /* Matches fire color */
+  color: #f76809;
   margin-right: 5px;
   font-size: 1.4rem;
 }

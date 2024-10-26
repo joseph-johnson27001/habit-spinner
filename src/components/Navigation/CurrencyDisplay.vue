@@ -42,7 +42,6 @@ export default {
 }
 
 .currency-value {
-  font-size: 0.9rem;
   padding-left: 5px; /* Reduced margin */
 }
 
@@ -53,6 +52,6 @@ export default {
 
 .ticket-icon {
   font-size: 1.2rem;
-  color: orange;
+  color: #ffaa33;
 }
 </style>
