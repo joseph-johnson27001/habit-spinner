@@ -53,8 +53,4 @@ export default {
 .rewards-page {
   padding: 0px 10px 60px 10px;
 }
-
-.rewards-list {
-  margin-top: 20px;
-}
 </style>
