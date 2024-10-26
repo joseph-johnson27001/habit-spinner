@@ -43,16 +43,17 @@ export default {
 }
 
 .currency-value {
-  font-size: 0.9rem; /* Reduced font size for values */
+  font-size: 0.9rem;
   padding-left: 5px; /* Reduced margin */
 }
 
 /* Icon styling */
 .coin-icon {
-  color: #ffd700; /* Gold color for coins */
+  color: #ffd700;
 }
 
 .ticket-icon {
-  color: orange; /* Gray color for reward passes */
+  font-size: 1.2rem;
+  color: orange;
 }
 </style>

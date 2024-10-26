@@ -15,7 +15,7 @@
           :rewardPasses="rewardPasses"
         />
         <!-- Streak Display -->
-        <div v-else-if="isProfilePage">
+        <div v-else-if="isProfilePage" class="side-section">
           <i class="fa fa-fire fire-icon"></i>
           <span class="currency-value">{{ streak }}</span>
         </div>
@@ -97,11 +97,13 @@ h2 {
   display: flex;
   justify-content: flex-end;
   flex: 1;
+  align-items: center;
 }
 
 .fire-icon {
   color: #f76809; /* Matches fire color */
   margin-right: 5px;
+  font-size: 1.4rem;
 }
 
 @media only screen and (min-width: 1200px) {
