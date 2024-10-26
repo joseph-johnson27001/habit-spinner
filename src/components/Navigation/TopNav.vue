@@ -64,7 +64,7 @@ export default {
   background: linear-gradient(135deg, #3a66d0, #6aafe6);
   border-bottom: 1px solid #2f4a92;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  height: 60px;
+  height: 65px;
   text-align: center;
 }
 
@@ -104,6 +104,11 @@ h2 {
   color: #f76809; /* Matches fire color */
   margin-right: 5px;
   font-size: 1.4rem;
+}
+
+.currency-value {
+  /* font-size: 0.9rem; */
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 1200px) {

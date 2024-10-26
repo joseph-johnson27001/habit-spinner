@@ -29,7 +29,6 @@ export default {
 .currency-display {
   display: flex;
   gap: 10px; /* Reduced gap between items */
-  padding-top: 5px; /* Reduced padding */
   color: white;
   border-radius: 10px;
   justify-content: space-around;
