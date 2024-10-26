@@ -32,7 +32,7 @@ export default {
   color: white;
   border-radius: 10px;
   justify-content: space-around;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 /* Styling for each currency item */

@@ -106,11 +106,6 @@ h2 {
   font-size: 1.4rem;
 }
 
-.currency-value {
-  /* font-size: 0.9rem; */
-  font-weight: bold;
-}
-
 @media only screen and (min-width: 1200px) {
   .top-nav-content {
     max-width: 1180px;
