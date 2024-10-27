@@ -7,7 +7,7 @@
 
     <!-- Fire icon with streak count -->
     <div class="streak-section">
-      <i :class="['fa', 'fa-fire', fireIconClass]"></i>
+      <i class="fa fa-fire fire-icon"></i>
       <span class="streak-count">{{ streak }}</span>
     </div>
 
@@ -37,11 +37,6 @@ export default {
       isCompleted: this.completed,
       chimeSound: new Audio(require("@/assets/chime.mp3")),
     };
-  },
-  computed: {
-    fireIconClass() {
-      return this.isCompleted ? "fire-icon-completed" : "fire-icon-incomplete";
-    },
   },
   methods: {
     toggleCompletion() {
@@ -110,13 +105,7 @@ export default {
   right: 10px;
 }
 
-.fire-icon-incomplete {
-  color: #f76809; /* Color for the fire icon when habit is incomplete */
-  font-size: 18px;
-  margin-right: 5px;
-}
-
-.fire-icon-completed {
+.fire-icon {
   color: #f76809; /* Ember orange color when the habit is completed */
   font-size: 18px;
   margin-right: 5px;
