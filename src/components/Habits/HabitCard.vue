@@ -111,7 +111,7 @@ export default {
 }
 
 .fire-icon-incomplete {
-  color: white; /* Color for the fire icon when habit is incomplete */
+  color: #f76809; /* Color for the fire icon when habit is incomplete */
   font-size: 18px;
   margin-right: 5px;
 }
@@ -124,7 +124,6 @@ export default {
 
 .streak-count {
   font-size: 15px;
-  font-weight: bold;
   color: white;
 }
 
