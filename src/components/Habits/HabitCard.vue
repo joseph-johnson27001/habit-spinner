@@ -4,6 +4,13 @@
     @click="toggleCompletion"
   >
     <span>{{ habitName }}</span>
+
+    <!-- Fire icon with streak count -->
+    <div class="streak-section">
+      <i :class="['fa', 'fa-fire', fireIconClass]"></i>
+      <span class="streak-count">{{ streak }}</span>
+    </div>
+
     <span v-if="isCompleted" class="checkmark">✓</span>
   </label>
 </template>
@@ -20,6 +27,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    streak: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
@@ -27,10 +38,18 @@ export default {
       chimeSound: new Audio(require("@/assets/chime.mp3")),
     };
   },
+  computed: {
+    fireIconClass() {
+      return this.isCompleted ? "fire-icon-completed" : "fire-icon-incomplete";
+    },
+  },
   methods: {
     toggleCompletion() {
+      const wasCompleted = this.isCompleted;
       this.isCompleted = !this.isCompleted;
-      this.$emit("update", this.isCompleted);
+      const streakChange = this.isCompleted ? 1 : wasCompleted ? -1 : 0;
+      this.$emit("update", { isCompleted: this.isCompleted, streakChange });
+
       if (this.isCompleted) {
         this.playChime();
       }
@@ -82,6 +101,31 @@ export default {
 .checkmark {
   color: white;
   font-size: 15px;
+}
+
+/* Streak section styling */
+.streak-section {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.fire-icon-incomplete {
+  color: white; /* Color for the fire icon when habit is incomplete */
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.fire-icon-completed {
+  color: #f76809; /* Ember orange color when the habit is completed */
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.streak-count {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
 }
 
 .habit-card.completed::before {
