@@ -1,4 +1,3 @@
-<!-- HabitsPage.vue -->
 <template>
   <div class="habits-page">
     <div class="habits-list">
@@ -24,6 +23,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"; // Import mapGetters
 import HabitCard from "@/components/Habits/HabitCard.vue";
 import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
 import AddHabitModal from "@/components/Habits/AddHabitModal.vue";
@@ -37,36 +37,22 @@ export default {
   },
   data() {
     return {
-      habits: [
-        { name: "Morning Exercise", completed: false, streak: 5 },
-        { name: "Read 30 Minutes", completed: false, streak: 6 },
-        { name: "Drink Water", completed: false, streak: 4 },
-        { name: "Meditate for 10 Minutes", completed: false, streak: 5 },
-        { name: "Write in Journal", completed: false, streak: 4 },
-        { name: "Eat a Healthy Breakfast", completed: false, streak: 5 },
-        { name: "Walk 10,000 Steps", completed: false, streak: 5 },
-        { name: "Plan Tomorrow’s Tasks", completed: false, streak: 4 },
-        { name: "Avoid Social Media for 1 Hour", completed: false, streak: 3 },
-        { name: "Sleep for 8 Hours", completed: false, streak: 2 },
-      ],
       showModal: false,
     };
   },
+  computed: {
+    ...mapGetters(["habits"]), // Map habits from the Vuex store
+  },
   methods: {
     updateHabit(index, { isCompleted, streakChange }) {
-      this.habits[index].completed = isCompleted;
-      this.habits[index].streak += streakChange;
+      this.$store.dispatch("updateHabit", { index, isCompleted, streakChange });
     },
     showAddHabitModal() {
       this.showModal = true;
     },
     addNewHabit(habitName) {
-      this.habits.push({
-        name: habitName,
-        completed: false,
-        streak: 0,
-      });
-      this.showModal = false;
+      this.$store.dispatch("addHabit", habitName);
+      this.showModal = false; // Close the modal after adding the habit
     },
   },
 };
