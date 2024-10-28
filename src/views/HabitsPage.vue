@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"; // Import mapGetters
+import { mapGetters } from "vuex";
 import HabitCard from "@/components/Habits/HabitCard.vue";
 import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
 import AddHabitModal from "@/components/Habits/AddHabitModal.vue";
@@ -41,11 +41,18 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["habits"]), // Map habits from the Vuex store
+    ...mapGetters(["habits"]),
   },
   methods: {
-    updateHabit(index, { isCompleted, streakChange }) {
-      this.$store.dispatch("updateHabit", { index, isCompleted, streakChange });
+    updateHabit(index, isCompleted) {
+      const currentHabit = this.habits[index];
+
+      const updatedHabit = {
+        ...currentHabit,
+        completed: isCompleted,
+        streak: isCompleted ? currentHabit.streak + 1 : currentHabit.streak,
+      };
+      this.$store.dispatch("updateHabit", { index, updatedHabit });
     },
     showAddHabitModal() {
       this.showModal = true;

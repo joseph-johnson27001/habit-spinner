@@ -20,6 +20,7 @@ export default createStore({
       commit("UPDATE_HABIT", { index, updatedHabit });
     },
   },
+
   getters: {
     habits: (state) => state.habits, // Returns the list of habits
   },
