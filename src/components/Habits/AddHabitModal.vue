@@ -87,11 +87,11 @@ h2 {
   padding: 15px 20px;
   border: 1px solid #4a90e2;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 18px;
   outline: none;
   margin-bottom: 20px;
   background: linear-gradient(to right, #ffffff, #f4f6f8);
-  color: #4a4a4a;
+  color: #4a90e2;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, border 0.3s ease;
   box-sizing: border-box;
