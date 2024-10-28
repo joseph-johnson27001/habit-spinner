@@ -74,21 +74,19 @@ export default {
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   color: white;
-  font-family: Arial, sans-serif;
 }
 
 h2 {
   margin: 0 0 20px;
   font-weight: 100;
+  font-family: "Baloo 2", sans-serif;
 }
-
-/* Add font family */
 
 .habit-input {
   width: 100%;
   padding: 15px 20px;
-  border: 1px solid #2f4a92;
-  border-radius: 12px;
+  border: 1px solid #4a90e2;
+  border-radius: 8px;
   font-size: 16px;
   outline: none;
   margin-bottom: 20px;
@@ -97,7 +95,7 @@ h2 {
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, border 0.3s ease;
   box-sizing: border-box;
-  font-family: "Nunito", sans-serif;
+  font-family: "Baloo 2", sans-serif;
   font-weight: 600;
 }
 
@@ -109,8 +107,6 @@ h2 {
 
 .habit-input:focus {
   border: 1px solid #4a90e2;
-  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3),
-    inset 0 0 8px rgba(74, 144, 226, 0.2);
   background: linear-gradient(to right, #ffffff, #f0f4ff);
   color: #2f4a92;
 }
