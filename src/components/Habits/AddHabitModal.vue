@@ -82,22 +82,43 @@ h2 {
   font-weight: 100;
 }
 
+/* Add font family */
+
 .habit-input {
   width: 100%;
-  padding: 15px;
+  padding: 15px 20px;
   border: 1px solid #2f4a92;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 16px;
   outline: none;
   margin-bottom: 20px;
-  background: white;
-  color: #333;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #ffffff, #f4f6f8);
+  color: #4a4a4a;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, border 0.3s ease;
   box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
 }
 
 .habit-input::placeholder {
-  color: #999;
+  color: #6a80a1;
+  opacity: 1;
+  font-weight: 400;
+}
+
+.habit-input:focus {
+  border: 1px solid #4a90e2;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3),
+    inset 0 0 8px rgba(74, 144, 226, 0.2);
+  background: linear-gradient(to right, #ffffff, #f0f4ff);
+  color: #2f4a92;
+}
+
+.habit-input:hover {
+  border: 1px solid #9a74d6;
+  box-shadow: 0 4px 15px rgba(154, 116, 214, 0.3),
+    inset 0 0 8px rgba(154, 116, 214, 0.15);
 }
 
 .modal-actions {

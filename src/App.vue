@@ -31,7 +31,7 @@ body {
   background-color: #f5f4f0;
   display: flex;
   flex-direction: column;
-  font-family: "Poppins", sans-serif;
+  font-family: "Nunito", sans-serif;
   min-height: 100vh;
   text-align: center;
   overflow-y: scroll;
