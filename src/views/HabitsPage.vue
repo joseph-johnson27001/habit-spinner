@@ -11,19 +11,29 @@
         :streak="habit.streak"
       />
     </div>
-    <NewHabitCard @add="showAddHabitDialog" />
+    <NewHabitCard @add="showAddHabitModal" />
+
+    <!-- AddHabitModal component -->
+    <AddHabitModal
+      v-if="showModal"
+      :show="showModal"
+      @add-habit="addNewHabit"
+      @close="showModal = false"
+    />
   </div>
 </template>
 
 <script>
 import HabitCard from "@/components/Habits/HabitCard.vue";
 import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
+import AddHabitModal from "@/components/Habits/AddHabitModal.vue";
 
 export default {
   name: "HabitsPage",
   components: {
     HabitCard,
     NewHabitCard,
+    AddHabitModal,
   },
   data() {
     return {
@@ -39,16 +49,24 @@ export default {
         { name: "Avoid Social Media for 1 Hour", completed: false, streak: 3 },
         { name: "Sleep for 8 Hours", completed: false, streak: 2 },
       ],
+      showModal: false,
     };
   },
   methods: {
     updateHabit(index, { isCompleted, streakChange }) {
       this.habits[index].completed = isCompleted;
-
       this.habits[index].streak += streakChange;
     },
-    showAddHabitDialog() {
-      console.log("New Habit Card Clicked!");
+    showAddHabitModal() {
+      this.showModal = true;
+    },
+    addNewHabit(habitName) {
+      this.habits.push({
+        name: habitName,
+        completed: false,
+        streak: 0,
+      });
+      this.showModal = false;
     },
   },
 };

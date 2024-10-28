@@ -28,11 +28,10 @@ export default {
 <style scoped>
 .currency-display {
   display: flex;
-  gap: 10px; /* Reduced gap between items */
+  gap: 10px;
   color: white;
   border-radius: 10px;
   justify-content: space-around;
-  /* font-weight: bold; */
 }
 
 /* Styling for each currency item */
