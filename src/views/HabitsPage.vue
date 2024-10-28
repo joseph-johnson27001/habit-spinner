@@ -59,7 +59,7 @@ export default {
     },
     addNewHabit(habitName) {
       this.$store.dispatch("addHabit", habitName);
-      this.showModal = false; // Close the modal after adding the habit
+      this.showModal = false;
     },
   },
 };

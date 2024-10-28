@@ -1,12 +1,11 @@
-<!-- AddHabitModal.vue -->
 <template>
   <div v-if="show" class="modal-overlay" @click.self="cancel">
     <div class="modal-content">
-      <!-- Close Button (X) -->
       <button class="close-button" @click="cancel">×</button>
 
       <h2>Add New Habit</h2>
       <input
+        ref="habitInput"
         v-model="newHabitName"
         type="text"
         placeholder="Enter Habit Name"
@@ -36,7 +35,22 @@ export default {
       newHabitName: "",
     };
   },
+  mounted() {
+    if (this.show) {
+      this.focusInput(); // Focus the input if the modal is already shown
+    }
+  },
+  watch: {
+    show(newValue) {
+      if (newValue) {
+        this.focusInput(); // Focus the input when the modal is shown
+      }
+    },
+  },
   methods: {
+    focusInput() {
+      this.$refs.habitInput.focus(); // Use the ref to focus the input
+    },
     addHabit() {
       if (this.newHabitName.trim()) {
         this.$emit("add-habit", this.newHabitName);
