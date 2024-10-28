@@ -44,22 +44,23 @@ export default {
     ...mapGetters(["habits"]),
   },
   methods: {
-    updateHabit(index, isCompleted) {
-      const currentHabit = this.habits[index];
-
+    updateHabit(index, { isCompleted, streakChange }) {
       const updatedHabit = {
-        ...currentHabit,
+        ...this.habits[index],
         completed: isCompleted,
-        streak: isCompleted ? currentHabit.streak + 1 : currentHabit.streak,
+        streak: this.habits[index].streak + streakChange,
       };
       this.$store.dispatch("updateHabit", { index, updatedHabit });
+    },
+    removeHabit(index) {
+      this.$store.dispatch("removeHabit", index); // Dispatch action to remove a habit
     },
     showAddHabitModal() {
       this.showModal = true;
     },
     addNewHabit(habitName) {
       this.$store.dispatch("addHabit", habitName);
-      this.showModal = false;
+      this.showModal = false; // Close the modal after adding the habit
     },
   },
 };
