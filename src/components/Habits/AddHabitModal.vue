@@ -37,19 +37,19 @@ export default {
   },
   mounted() {
     if (this.show) {
-      this.focusInput(); // Focus the input if the modal is already shown
+      this.focusInput();
     }
   },
   watch: {
     show(newValue) {
       if (newValue) {
-        this.focusInput(); // Focus the input when the modal is shown
+        this.focusInput();
       }
     },
   },
   methods: {
     focusInput() {
-      this.$refs.habitInput.focus(); // Use the ref to focus the input
+      this.$refs.habitInput.focus();
     },
     addHabit() {
       if (this.newHabitName.trim()) {

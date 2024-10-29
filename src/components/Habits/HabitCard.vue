@@ -32,7 +32,7 @@
         <p>Total Completions:</p>
         <p>{{ totalCompletions }}</p>
       </div>
-      <div class="detail-container">
+      <div class="detail-container" v-if="firstCompletionDate !== 'N/A'">
         <p>First Completed:</p>
         <p>{{ firstCompletionDate }}</p>
       </div>
