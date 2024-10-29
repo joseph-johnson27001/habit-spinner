@@ -12,7 +12,7 @@
       </div>
 
       <!-- Fire icon with streak count -->
-      <div v-if="!showDetails" class="streak-section">
+      <div class="streak-section">
         <i class="fa fa-fire fire-icon"></i>
         <span class="streak-count">{{ streak }}</span>
       </div>
@@ -32,10 +32,14 @@
         <p>Total Completions:</p>
         <p>{{ totalCompletions }}</p>
       </div>
-      <div class="detail-container" v-if="firstCompletionDate !== 'N/A'">
+      <div v-if="firstCompletionDate != 'N/A'" class="detail-container">
         <p>First Completed:</p>
         <p>{{ firstCompletionDate }}</p>
       </div>
+      <button class="delete-button">
+        <i class="fas fa-trash"></i>
+        <!-- Font Awesome trash can icon -->
+      </button>
     </div>
   </label>
 </template>
@@ -146,7 +150,7 @@ export default {
 
 .info-section {
   position: absolute;
-  top: 3px;
+  top: 5px;
   right: 10px;
   cursor: pointer;
 }
@@ -163,30 +167,40 @@ export default {
 
 .fire-icon {
   color: #f76809;
-  font-size: 18px;
-  margin-right: 5px;
+  font-size: 15px;
 }
 
 .streak-count {
   font-size: 15px;
   color: white;
+  margin-left: 5px;
 }
 
 .details-dropdown {
-  margin-top: 10px;
-  border-radius: 8px;
   font-size: 14px;
   color: #f0f0f0;
   display: flex;
   flex-direction: column;
   z-index: 1;
+  /* background: rgba(255, 255, 255, 0.1); */
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .detail-container {
+  padding: 0px 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  border-bottom: 1px dashed white;
+}
+
+.detail-container p {
+  margin-bottom: 10px;
+  margin-top: 14px;
+  color: white;
 }
 
 .habit-card.completed::before {
@@ -195,5 +209,15 @@ export default {
 
 .habit-card.completed {
   color: white;
+}
+
+.delete-button {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  color: white;
+  font-weight: 100;
+  border: none;
+  background: transparent;
 }
 </style>
