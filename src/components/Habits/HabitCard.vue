@@ -174,7 +174,6 @@ export default {
 
 .details-dropdown {
   margin-top: 10px;
-  /* background: rgba(255, 255, 255, 0.1); */
   border-radius: 8px;
   font-size: 14px;
   color: #f0f0f0;
@@ -188,7 +187,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  padding: 0px 10px;
 }
 
 .habit-card.completed::before {
