@@ -3,20 +3,28 @@
     :class="['habit-card', { completed: isCompleted }]"
     @click="toggleCompletion"
   >
-    <span>{{ habitName }}</span>
+    <div class="habit-info">
+      <span>{{ habitName }}</span>
 
-    <!-- Info icon -->
-    <div class="info-section">
-      <i class="fa fa-bars"></i>
+      <!-- Info icon -->
+      <div class="info-section" @click.stop="toggleDetails">
+        <i class="fa fa-bars"></i>
+      </div>
+
+      <!-- Fire icon with streak count -->
+      <div class="streak-section">
+        <i class="fa fa-fire fire-icon"></i>
+        <span class="streak-count">{{ streak }}</span>
+      </div>
     </div>
 
-    <!-- Fire icon with streak count -->
-    <div class="streak-section">
-      <i class="fa fa-fire fire-icon"></i>
-      <span class="streak-count">{{ streak }}</span>
+    <!-- Dropdown for habit details -->
+    <div v-if="showDetails" class="details-dropdown">
+      <p>Current Streak: {{ streak }}</p>
+      <p>Best Streak: {{ bestStreak }}</p>
+      <p>Total Completions: {{ totalCompletions }}</p>
+      <p>First Completed: {{ firstCompletionDate }}</p>
     </div>
-
-    <!-- <span v-if="isCompleted" class="checkmark">✓</span> -->
   </label>
 </template>
 
@@ -36,10 +44,23 @@ export default {
       type: Number,
       default: 0,
     },
+    bestStreak: {
+      type: Number,
+      default: 0,
+    },
+    totalCompletions: {
+      type: Number,
+      default: 0,
+    },
+    firstCompletionDate: {
+      type: String,
+      default: "N/A",
+    },
   },
   data() {
     return {
       isCompleted: this.completed,
+      showDetails: false,
       chimeSound: new Audio(require("@/assets/chime.mp3")),
     };
   },
@@ -53,6 +74,9 @@ export default {
       if (this.isCompleted) {
         this.playChime();
       }
+    },
+    toggleDetails() {
+      this.showDetails = !this.showDetails;
     },
     playChime() {
       this.chimeSound.play();
@@ -70,15 +94,20 @@ export default {
   border-radius: 10px;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   font-size: 16px;
   font-weight: 100;
   text-transform: capitalize;
   color: #fff;
   cursor: pointer;
-  justify-content: space-between;
   transition: color 0.3s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.habit-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .habit-card::before {
@@ -107,13 +136,13 @@ export default {
   position: absolute;
   top: 3px;
   right: 10px;
+  cursor: pointer;
 }
 
 .info-section i {
   font-size: 12px;
 }
 
-/* Streak section styling */
 .streak-section {
   position: absolute;
   bottom: 10px;
@@ -121,7 +150,7 @@ export default {
 }
 
 .fire-icon {
-  color: #f76809; /* Ember orange color when the habit is completed */
+  color: #f76809;
   font-size: 18px;
   margin-right: 5px;
 }
@@ -129,6 +158,15 @@ export default {
 .streak-count {
   font-size: 15px;
   color: white;
+}
+
+.details-dropdown {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #f0f0f0;
 }
 
 .habit-card.completed::before {
