@@ -174,14 +174,12 @@ export default {
 
 .details-dropdown {
   margin-top: 10px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
   border-radius: 8px;
   font-size: 14px;
   color: #f0f0f0;
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc;
   z-index: 1;
 }
 
