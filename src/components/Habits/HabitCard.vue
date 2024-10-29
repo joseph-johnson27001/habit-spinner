@@ -37,7 +37,7 @@
         <p>{{ totalCompletions }}</p>
       </div>
       <div class="detail-container">
-        <p>:Completed This Year</p>
+        <p>Completed This Year:</p>
         <p>{{ totalCompletions }}</p>
       </div>
       <div class="detail-container">
