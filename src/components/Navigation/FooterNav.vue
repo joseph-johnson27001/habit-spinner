@@ -120,7 +120,7 @@ export default {
   top: -1px;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background-color: #24b2da;
 }
 
