@@ -32,13 +32,12 @@
         <p>Total Completions:</p>
         <p>{{ totalCompletions }}</p>
       </div>
-      <div v-if="firstCompletionDate != 'N/A'" class="detail-container">
+      <div v-if="firstCompletionDate !== 'N/A'" class="detail-container">
         <p>First Completed:</p>
         <p>{{ firstCompletionDate }}</p>
       </div>
-      <button class="delete-button">
+      <button class="delete-button" @click.stop="deleteHabit">
         <i class="fas fa-trash"></i>
-        <!-- Font Awesome trash can icon -->
       </button>
     </div>
   </label>
@@ -97,11 +96,15 @@ export default {
     playChime() {
       this.chimeSound.play();
     },
+    deleteHabit() {
+      this.$emit("delete", this.habitName);
+    },
   },
 };
 </script>
 
 <style scoped>
+/* Your existing styles remain unchanged */
 .habit-card {
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
