@@ -20,10 +20,22 @@
 
     <!-- Dropdown for habit details -->
     <div v-if="showDetails" class="details-dropdown">
-      <p>Current Streak: {{ streak }}</p>
-      <p>Best Streak: {{ bestStreak }}</p>
-      <p>Total Completions: {{ totalCompletions }}</p>
-      <p>First Completed: {{ firstCompletionDate }}</p>
+      <div class="detail-container">
+        <p>Current Streak:</p>
+        <p>{{ streak }}</p>
+      </div>
+      <div class="detail-container">
+        <p>Best Streak:</p>
+        <p>{{ bestStreak }}</p>
+      </div>
+      <div class="detail-container">
+        <p>Total Completions:</p>
+        <p>{{ totalCompletions }}</p>
+      </div>
+      <div class="detail-container">
+        <p>First Completed:</p>
+        <p>{{ firstCompletionDate }}</p>
+      </div>
     </div>
   </label>
 </template>
@@ -167,6 +179,18 @@ export default {
   border-radius: 8px;
   font-size: 14px;
   color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.detail-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0px 10px;
 }
 
 .habit-card.completed::before {
