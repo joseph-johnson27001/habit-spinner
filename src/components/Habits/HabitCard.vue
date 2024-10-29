@@ -186,7 +186,7 @@ export default {
   padding: 10px;
   border-radius: 10px;
   margin: 10px 0px;
-  padding: 10px 10px 25px 10px;
+  padding: 10px 15px 25px 15px;
 }
 
 .detail-container {
