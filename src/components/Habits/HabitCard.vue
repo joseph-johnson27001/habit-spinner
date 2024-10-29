@@ -5,13 +5,18 @@
   >
     <span>{{ habitName }}</span>
 
+    <!-- Info icon -->
+    <div class="info-section">
+      <i class="fa fa-info info-icon"></i>
+    </div>
+
     <!-- Fire icon with streak count -->
     <div class="streak-section">
       <i class="fa fa-fire fire-icon"></i>
       <span class="streak-count">{{ streak }}</span>
     </div>
 
-    <span v-if="isCompleted" class="checkmark">✓</span>
+    <!-- <span v-if="isCompleted" class="checkmark">✓</span> -->
   </label>
 </template>
 
@@ -98,10 +103,16 @@ export default {
   font-size: 15px;
 }
 
+.info-section {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 /* Streak section styling */
 .streak-section {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   right: 10px;
 }
 
