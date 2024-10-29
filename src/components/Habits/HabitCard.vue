@@ -7,7 +7,7 @@
 
     <!-- Info icon -->
     <div class="info-section">
-      <i class="fa fa-info info-icon"></i>
+      <i class="fa fa-bars"></i>
     </div>
 
     <!-- Fire icon with streak count -->
@@ -105,8 +105,12 @@ export default {
 
 .info-section {
   position: absolute;
-  top: 10px;
+  top: 3px;
   right: 10px;
+}
+
+.info-section i {
+  font-size: 12px;
 }
 
 /* Streak section styling */
