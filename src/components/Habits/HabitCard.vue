@@ -52,14 +52,18 @@
         <p>Last Completed:</p>
         <p>{{ latestCompletedDate }}</p>
       </div>
-      <button class="delete-button" @click.stop="deleteHabit">
-        <i class="fas fa-trash"></i>
-      </button>
+      <div>
+        <button class="delete-button" @click.stop="deleteHabit">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
     </div>
   </label>
 </template>
 
 <script>
+import moment from "moment"; // Import moment.js
+
 export default {
   name: "HabitCard",
   props: {
@@ -113,15 +117,38 @@ export default {
   },
   methods: {
     toggleCompletion() {
-      const wasCompleted = this.isCompleted;
-      this.isCompleted = !this.isCompleted;
-      const streakChange = this.isCompleted ? 1 : wasCompleted ? -1 : 0;
-      this.$emit("update", { isCompleted: this.isCompleted, streakChange });
+      this.isCompleted = !this.isCompleted; // Toggle the completion status
 
-      if (this.isCompleted) {
+      // Determine the current date
+      const now = moment();
+      const firstCompletion =
+        this.firstCompletionDate === "n/a"
+          ? now
+          : moment(this.firstCompletionDate);
+
+      if (this.isCompleted == true) {
+        // User is marking the habit as completed
         this.playChime();
+        this.$emit("update", {
+          isCompleted: true,
+          streakChange: 1,
+          bestStreak: Math.max(this.bestStreak, this.streak + 1),
+          totalCompletions: this.totalCompletions + 1,
+          completedThisWeek: this.completedWeek + 1,
+          completedThisMonth: this.completedMonth + 1,
+          completedThisYear: this.completedYear + 1,
+          firstCompletionDate: firstCompletion.isSame("n/a")
+            ? now.format("YYYY-MM-DD")
+            : firstCompletion.format("YYYY-MM-DD"),
+        });
+      } else {
+        this.$emit("update", {
+          isCompleted: false,
+          streakChange: -1,
+        });
       }
     },
+
     toggleDetails() {
       this.showDetails = !this.showDetails;
     },
@@ -129,14 +156,13 @@ export default {
       this.chimeSound.play();
     },
     deleteHabit() {
-      this.$emit("delete", this.habitName);
+      console.log("WRITE THE CODE TO DELETE THIS");
     },
   },
 };
 </script>
 
 <style scoped>
-/* Your existing styles remain unchanged */
 .habit-card {
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
@@ -178,16 +204,12 @@ export default {
   z-index: 1;
 }
 
-.checkmark {
-  color: white;
-  font-size: 15px;
-}
-
 .info-section {
   position: absolute;
   top: 5px;
   right: 10px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .info-section i {
