@@ -12,7 +12,7 @@
       </div>
 
       <!-- Fire icon with streak count -->
-      <div class="streak-section">
+      <div v-if="!showDetails" class="streak-section">
         <i class="fa fa-fire fire-icon"></i>
         <span class="streak-count">{{ streak }}</span>
       </div>
