@@ -2,29 +2,29 @@ import { createStore } from "vuex";
 
 const loadHabitsFromLocalStorage = () => {
   const habits = localStorage.getItem("habits");
-  return habits ? JSON.parse(habits) : []; // Load habits from local storage or return an empty array
+  return habits ? JSON.parse(habits) : [];
 };
 
 const saveHabitsToLocalStorage = (habits) => {
-  localStorage.setItem("habits", JSON.stringify(habits)); // Save habits to local storage
+  localStorage.setItem("habits", JSON.stringify(habits));
 };
 
 export default createStore({
   state: {
-    habits: loadHabitsFromLocalStorage(), // Load initial state from local storage
+    habits: loadHabitsFromLocalStorage(),
   },
   mutations: {
     ADD_HABIT(state, habit) {
-      state.habits.push(habit); // Adds a new habit to the list
-      saveHabitsToLocalStorage(state.habits); // Save updated habits to local storage
+      state.habits.push(habit);
+      saveHabitsToLocalStorage(state.habits);
     },
     UPDATE_HABIT(state, { index, updatedHabit }) {
-      state.habits.splice(index, 1, updatedHabit); // Updates a specific habit
-      saveHabitsToLocalStorage(state.habits); // Save updated habits to local storage
+      state.habits.splice(index, 1, updatedHabit);
+      saveHabitsToLocalStorage(state.habits);
     },
     REMOVE_HABIT(state, index) {
-      state.habits.splice(index, 1); // Remove a habit
-      saveHabitsToLocalStorage(state.habits); // Save updated habits to local storage
+      state.habits.splice(index, 1);
+      saveHabitsToLocalStorage(state.habits);
     },
   },
   actions: {
@@ -39,6 +39,6 @@ export default createStore({
     },
   },
   getters: {
-    habits: (state) => state.habits, // Returns the list of habits
+    habits: (state) => state.habits,
   },
 });
