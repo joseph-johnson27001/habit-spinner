@@ -222,5 +222,6 @@ export default {
   font-weight: 100;
   border: none;
   background: transparent;
+  cursor: pointer;
 }
 </style>
