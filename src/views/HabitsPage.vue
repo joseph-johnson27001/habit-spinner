@@ -6,19 +6,10 @@
         :key="index"
         :habitName="habit.name"
         :completed="habit.completed"
-        :streak="habit.streak"
-        :bestStreak="habit.bestStreak"
-        :completedWeek="habit.completedThisWeek"
-        :completedMonth="habit.completedThisMonth"
-        :completedYear="habit.completedThisYear"
-        :totalCompletions="habit.totalCompletions"
-        :firstCompletionDate="habit.firstCompletionDate"
-        :latestCompletedDate="habit.latestCompletedDate"
         @update="updateHabit(index, $event)"
-        @delete="removeHabit(index)"
+        :streak="habit.streak"
       />
     </div>
-
     <NewHabitCard @add="showAddHabitModal" />
 
     <!-- AddHabitModal component -->
@@ -53,11 +44,11 @@ export default {
     ...mapGetters(["habits"]),
   },
   methods: {
-    updateHabit(index, { isCompleted }) {
-      // Create an updated habit object with the current values from the store
+    updateHabit(index, { isCompleted, streakChange }) {
       const updatedHabit = {
         ...this.habits[index],
         completed: isCompleted,
+        streak: this.habits[index].streak + streakChange,
       };
       this.$store.dispatch("updateHabit", { index, updatedHabit });
     },

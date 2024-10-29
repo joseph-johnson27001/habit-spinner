@@ -30,15 +30,15 @@
       </div>
       <div class="detail-container">
         <p>Completed This Week:</p>
-        <p>{{ completedWeek }}</p>
+        <p>{{ totalCompletions }}</p>
       </div>
       <div class="detail-container">
         <p>Completed This Month:</p>
-        <p>{{ completedMonth }}</p>
+        <p>{{ totalCompletions }}</p>
       </div>
       <div class="detail-container">
-        <p>Completed This Year:</p>
-        <p>{{ completedYear }}</p>
+        <p>:Completed This Year</p>
+        <p>{{ totalCompletions }}</p>
       </div>
       <div class="detail-container">
         <p>Total Completions:</p>
@@ -52,18 +52,14 @@
         <p>Last Completed:</p>
         <p>{{ latestCompletedDate }}</p>
       </div>
-      <div>
-        <button class="delete-button" @click.stop="deleteHabit">
-          <i class="fas fa-trash"></i>
-        </button>
-      </div>
+      <button class="delete-button" @click.stop="deleteHabit">
+        <i class="fas fa-trash"></i>
+      </button>
     </div>
   </label>
 </template>
 
 <script>
-import moment from "moment"; // Import moment.js
-
 export default {
   name: "HabitCard",
   props: {
@@ -117,38 +113,15 @@ export default {
   },
   methods: {
     toggleCompletion() {
-      this.isCompleted = !this.isCompleted; // Toggle the completion status
+      const wasCompleted = this.isCompleted;
+      this.isCompleted = !this.isCompleted;
+      const streakChange = this.isCompleted ? 1 : wasCompleted ? -1 : 0;
+      this.$emit("update", { isCompleted: this.isCompleted, streakChange });
 
-      // Determine the current date
-      const now = moment();
-      const firstCompletion =
-        this.firstCompletionDate === "n/a"
-          ? now
-          : moment(this.firstCompletionDate);
-
-      if (this.isCompleted == true) {
-        // User is marking the habit as completed
+      if (this.isCompleted) {
         this.playChime();
-        this.$emit("update", {
-          isCompleted: true,
-          streakChange: 1,
-          bestStreak: Math.max(this.bestStreak, this.streak + 1),
-          totalCompletions: this.totalCompletions + 1,
-          completedThisWeek: this.completedWeek + 1,
-          completedThisMonth: this.completedMonth + 1,
-          completedThisYear: this.completedYear + 1,
-          firstCompletionDate: firstCompletion.isSame("n/a")
-            ? now.format("YYYY-MM-DD")
-            : firstCompletion.format("YYYY-MM-DD"),
-        });
-      } else {
-        this.$emit("update", {
-          isCompleted: false,
-          streakChange: -1,
-        });
       }
     },
-
     toggleDetails() {
       this.showDetails = !this.showDetails;
     },
@@ -156,13 +129,14 @@ export default {
       this.chimeSound.play();
     },
     deleteHabit() {
-      console.log("WRITE THE CODE TO DELETE THIS");
+      this.$emit("delete", this.habitName);
     },
   },
 };
 </script>
 
 <style scoped>
+/* Your existing styles remain unchanged */
 .habit-card {
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
@@ -204,12 +178,16 @@ export default {
   z-index: 1;
 }
 
+.checkmark {
+  color: white;
+  font-size: 15px;
+}
+
 .info-section {
   position: absolute;
   top: 5px;
   right: 10px;
   cursor: pointer;
-  z-index: 2;
 }
 
 .info-section i {
