@@ -182,14 +182,14 @@ export default {
   display: flex;
   flex-direction: column;
   z-index: 1;
-  /* background: rgba(255, 255, 255, 0.1); */
+  background: rgba(255, 255, 255, 0.1);
   padding: 10px;
   border-radius: 10px;
-  margin-top: 10px;
+  margin: 10px 0px;
+  padding: 10px 10px 25px 10px;
 }
 
 .detail-container {
-  padding: 0px 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
