@@ -10,6 +10,7 @@
         :streak="habit.streak"
       />
     </div>
+
     <NewHabitCard @add="showAddHabitModal" />
 
     <!-- AddHabitModal component -->

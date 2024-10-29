@@ -29,12 +29,28 @@
         <p>{{ bestStreak }}</p>
       </div>
       <div class="detail-container">
+        <p>Completed This Week:</p>
+        <p>{{ completedWeek }}</p>
+      </div>
+      <div class="detail-container">
+        <p>Completed This Month:</p>
+        <p>{{ completedMonth }}</p>
+      </div>
+      <div class="detail-container">
+        <p>Completed This Year:</p>
+        <p>{{ completedYear }}</p>
+      </div>
+      <div class="detail-container">
         <p>Total Completions:</p>
         <p>{{ totalCompletions }}</p>
       </div>
-      <div v-if="firstCompletionDate !== 'N/A'" class="detail-container">
+      <div class="detail-container">
         <p>First Completed:</p>
         <p>{{ firstCompletionDate }}</p>
+      </div>
+      <div class="detail-container">
+        <p>Last Completed:</p>
+        <p>{{ latestCompletedDate }}</p>
       </div>
       <button class="delete-button" @click.stop="deleteHabit">
         <i class="fas fa-trash"></i>
@@ -69,7 +85,23 @@ export default {
     },
     firstCompletionDate: {
       type: String,
-      default: "N/A",
+      default: "n/a",
+    },
+    latestCompletedDate: {
+      type: String,
+      default: "n/a",
+    },
+    completedWeek: {
+      type: Number,
+      default: 0,
+    },
+    completedMonth: {
+      type: Number,
+      default: 0,
+    },
+    completedYear: {
+      type: Number,
+      default: 0,
     },
   },
   data() {
