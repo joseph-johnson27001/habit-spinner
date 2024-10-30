@@ -36,7 +36,7 @@ const mutations = {
     habit.completedYear += 1;
 
     if (habit.streak === 0) {
-      habit.firstCompletionDate = moment().format("MM-DD-YYYY");
+      habit.firstCompletionDate = moment().format("DD-MM-YYYY");
     }
     habit.streak += 1;
 
@@ -45,7 +45,7 @@ const mutations = {
       habit.bestStreak = habit.streak;
     }
 
-    habit.latestCompletedDate = moment().format("MM-DD-YYYY");
+    habit.latestCompletedDate = moment().format("DD-MM-YYYY");
   },
   UNCOMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
@@ -67,7 +67,7 @@ const mutations = {
     }
   },
   RESET_COMPLETED_STATE(state) {
-    const today = moment().format("MM-DD-YYYY");
+    const today = moment().format("DD-MM-YYYY");
     state.habits.forEach((habit) => {
       if (habit.latestCompletedDate !== today) {
         habit.completed = false; // Reset to false if the last completion date is not today

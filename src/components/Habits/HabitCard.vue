@@ -121,6 +121,7 @@ export default {
       this.chimeSound.play();
     },
     deleteHabit() {
+      this.$emit("setShowDetailsIndex", this.habitIndex);
       this.deleteHabitAction(this.habitIndex);
     },
   },
