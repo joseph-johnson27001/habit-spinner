@@ -138,9 +138,7 @@ export default {
     playChime() {
       this.chimeSound.play();
     },
-    deleteHabit() {
-      // Implement delete habit functionality if required
-    },
+    deleteHabit() {},
   },
 };
 </script>

@@ -23,23 +23,22 @@ const mutations = {
       completedYear: 0,
     });
   },
+  DELETE_HABIT(state, index) {
+    state.habits.splice(index, 1); // Remove the habit at the specified index
+  },
   COMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
-
-    // Update habit properties
     habit.completed = true;
-    habit.totalCompletions += 1; // Increment total completions
-    habit.completedWeek += 1; // Increment completed this week
-    habit.completedMonth += 1; // Increment completed this month
-    habit.completedYear += 1; // Increment completed this year
+    habit.totalCompletions += 1;
+    habit.completedWeek += 1;
+    habit.completedMonth += 1;
+    habit.completedYear += 1;
 
-    // Update streak
     if (habit.streak === 0) {
       habit.firstCompletionDate = moment().format("MM-DD-YYYY"); // Set first completion date if first time
     }
-    habit.streak += 1; // Increment current streak
+    habit.streak += 1;
 
-    // Update latest completed date
     habit.latestCompletedDate = moment().format("MM-DD-YYYY"); // Set last completed date
   },
 };
@@ -50,6 +49,9 @@ const actions = {
   },
   completeHabit({ commit }, index) {
     commit("COMPLETE_HABIT", index);
+  },
+  deleteHabitAction({ commit }, index) {
+    commit("DELETE_HABIT", index);
   },
 };
 
