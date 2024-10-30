@@ -11,6 +11,7 @@
         :totalCompletions="habit.totalCompletions"
         :firstCompletionDate="habit.firstCompletionDate"
         :latestCompletedDate="habit.latestCompletedDate"
+        :habitIndex="index"
         @update="updateHabit(index, $event)"
       />
     </div>

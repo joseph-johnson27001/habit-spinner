@@ -46,11 +46,13 @@
       </div>
       <div class="detail-container">
         <p>First Completed:</p>
-        <p>{{ firstCompletionDate }}</p>
+        <p v-if="firstCompletionDate">{{ firstCompletionDate }}</p>
+        <p v-else>N/A</p>
       </div>
       <div class="detail-container">
         <p>Last Completed:</p>
-        <p>{{ latestCompletedDate }}</p>
+        <p v-if="latestCompletedDate">{{ latestCompletedDate }}</p>
+        <p v-else>N/A</p>
       </div>
       <button class="delete-button" @click.stop="deleteHabit">
         <i class="fas fa-trash"></i>
@@ -60,6 +62,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"; // Import mapActions
+
 export default {
   name: "HabitCard",
   props: {
@@ -107,6 +111,10 @@ export default {
       type: Number,
       default: 0,
     },
+    habitIndex: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
@@ -116,11 +124,12 @@ export default {
     };
   },
   methods: {
-    toggleCompletion() {
+    ...mapActions("habits", ["completeHabit"]),
+    async toggleCompletion() {
       this.isCompleted = !this.isCompleted;
-
       if (this.isCompleted) {
         this.playChime();
+        this.completeHabit(this.habitIndex);
       }
     },
     toggleDetails() {
@@ -129,7 +138,9 @@ export default {
     playChime() {
       this.chimeSound.play();
     },
-    deleteHabit() {},
+    deleteHabit() {
+      // Implement delete habit functionality if required
+    },
   },
 };
 </script>
