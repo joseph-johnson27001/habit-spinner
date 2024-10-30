@@ -1,5 +1,5 @@
 <template>
-  <label
+  <div
     :class="['habit-card', { completed: completed }]"
     @click="toggleCompletion"
   >
@@ -54,11 +54,11 @@
         <p v-if="latestCompletedDate">{{ latestCompletedDate }}</p>
         <p v-else>N/A</p>
       </div>
-      <button class="delete-button">
-        <i class="fas fa-trash" @click.stop="deleteHabit"></i>
+      <button class="delete-button" @click.stop="deleteHabit">
+        <i class="fas fa-trash"></i>
       </button>
     </div>
-  </label>
+  </div>
 </template>
 
 <script>
