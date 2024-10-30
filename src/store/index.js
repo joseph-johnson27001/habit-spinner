@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import moment from "moment";
+import moment from "moment"; // Import Moment.js
 
 const loadHabitsFromLocalStorage = () => {
   const habits = localStorage.getItem("habits");
@@ -16,7 +16,6 @@ export default createStore({
   },
   mutations: {
     ADD_HABIT(state, habit) {
-      console.log("New Habit:", habit);
       state.habits.push({
         ...habit,
         bestStreak: 0,
@@ -24,20 +23,33 @@ export default createStore({
         completedThisMonth: 0,
         completedThisYear: 0,
         totalCompletions: 0,
-        latestCompletedDate: moment().format("MMMM Do yy"),
+        firstCompletionDate: moment().format("DD-MM-YYYY"),
+        latestCompletedDate: moment().format("DD-MM-YYYY"),
       });
+      saveHabitsToLocalStorage(state.habits);
+    },
+    UPDATE_HABIT(state, { index, updatedHabit }) {
+      state.habits.splice(index, 1, updatedHabit);
+      saveHabitsToLocalStorage(state.habits);
+    },
+    REMOVE_HABIT(state, index) {
+      state.habits.splice(index, 1);
       saveHabitsToLocalStorage(state.habits);
     },
   },
   actions: {
     addHabit({ commit }, habitName) {
-      const newHabit = {
+      commit("ADD_HABIT", {
         name: habitName,
         completed: false,
         streak: 0,
-        firstCompletionDate: moment().format("MMMM Do yy"),
-      };
-      commit("ADD_HABIT", newHabit);
+      });
+    },
+    updateHabit({ commit }, { index, updatedHabit }) {
+      commit("UPDATE_HABIT", { index, updatedHabit });
+    },
+    removeHabit({ commit }, index) {
+      commit("REMOVE_HABIT", index);
     },
   },
   getters: {
