@@ -2,7 +2,7 @@
   <div class="habits-page">
     <div class="habits-list">
       <HabitCard
-        v-for="(habit, index) in habits"
+        v-for="(habit, index) in allHabits"
         :key="index"
         :habitName="habit.name"
         :completed="habit.completed"
@@ -14,6 +14,7 @@
         @update="updateHabit(index, $event)"
       />
     </div>
+
     <NewHabitCard @add="showAddHabitModal" />
 
     <!-- AddHabitModal component -->
@@ -27,7 +28,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from "vuex"; // Import mapGetters
 import HabitCard from "@/components/Habits/HabitCard.vue";
 import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
 import AddHabitModal from "@/components/Habits/AddHabitModal.vue";
@@ -45,26 +46,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["habits"]),
+    ...mapGetters("habits", ["allHabits"]),
   },
   methods: {
-    updateHabit(index, { isCompleted, streakChange }) {
-      const updatedHabit = {
-        ...this.habits[index],
-        completed: isCompleted,
-        streak: this.habits[index].streak + streakChange,
-      };
-      this.$store.dispatch("updateHabit", { index, updatedHabit });
-    },
-    removeHabit(index) {
-      this.$store.dispatch("removeHabit", index); // Dispatch action to remove a habit
-    },
     showAddHabitModal() {
       this.showModal = true;
     },
     addNewHabit(habitName) {
-      this.$store.dispatch("addHabit", habitName);
-      this.showModal = false; // Close the modal after adding the habit
+      this.$store.dispatch("habits/addHabit", habitName);
+      this.showModal = false;
     },
   },
 };

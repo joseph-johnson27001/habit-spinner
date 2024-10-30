@@ -91,6 +91,10 @@ export default {
       type: String,
       default: "n/a",
     },
+    previousCompletedDate: {
+      type: String,
+      default: "n/a",
+    },
     completedWeek: {
       type: Number,
       default: 0,
@@ -113,10 +117,7 @@ export default {
   },
   methods: {
     toggleCompletion() {
-      const wasCompleted = this.isCompleted;
       this.isCompleted = !this.isCompleted;
-      const streakChange = this.isCompleted ? 1 : wasCompleted ? -1 : 0;
-      this.$emit("update", { isCompleted: this.isCompleted, streakChange });
 
       if (this.isCompleted) {
         this.playChime();
@@ -128,15 +129,12 @@ export default {
     playChime() {
       this.chimeSound.play();
     },
-    deleteHabit() {
-      this.$emit("delete", this.habitName);
-    },
+    deleteHabit() {},
   },
 };
 </script>
 
 <style scoped>
-/* Your existing styles remain unchanged */
 .habit-card {
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);

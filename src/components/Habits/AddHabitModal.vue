@@ -52,10 +52,10 @@ export default {
       this.$refs.habitInput.focus();
     },
     addHabit() {
-      if (this.newHabitName.trim()) {
-        this.$emit("add-habit", this.newHabitName);
-        this.newHabitName = "";
-      }
+      const trimmedHabitName = this.newHabitName.trim();
+      if (trimmedHabitName === "") return;
+      this.$emit("add-habit", trimmedHabitName);
+      this.newHabitName = "";
     },
     cancel() {
       this.$emit("close");
