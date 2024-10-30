@@ -79,12 +79,14 @@ export default {
 }
 
 .modal-content {
+  margin-bottom: 40vh;
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 30px;
   border-radius: 12px;
   width: 80%;
   max-width: 500px;
+  max-height: 300px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   color: white;
