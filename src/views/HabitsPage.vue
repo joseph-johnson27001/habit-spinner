@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"; // Import mapGetters
+import { mapGetters, mapActions } from "vuex"; // Import mapGetters and mapActions
 import HabitCard from "@/components/Habits/HabitCard.vue";
 import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
 import AddHabitModal from "@/components/Habits/AddHabitModal.vue";
@@ -52,6 +52,8 @@ export default {
     ...mapGetters("habits", ["allHabits"]),
   },
   methods: {
+    ...mapActions("habits", ["resetCompletedState"]), // Add resetCompletedState to methods
+
     showAddHabitModal() {
       this.showModal = true;
     },
@@ -59,6 +61,9 @@ export default {
       this.$store.dispatch("habits/addHabit", habitName);
       this.showModal = false;
     },
+  },
+  mounted() {
+    this.resetCompletedState();
   },
 };
 </script>

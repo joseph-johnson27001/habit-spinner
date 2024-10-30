@@ -59,9 +59,17 @@ const mutations = {
     if (habit.completed === false) {
       habit.latestCompletedDate = null;
     }
-    if (habit.currentBestStreak == true) {
+    if (habit.currentBestStreak === true) {
       habit.bestStreak -= 1;
     }
+  },
+  RESET_COMPLETED_STATE(state) {
+    const today = moment().format("MM-DD-YYYY");
+    state.habits.forEach((habit) => {
+      if (habit.latestCompletedDate !== today) {
+        habit.completed = false; // Reset to false if the last completion date is not today
+      }
+    });
   },
 };
 
@@ -77,6 +85,9 @@ const actions = {
   },
   deleteHabitAction({ commit }, index) {
     commit("DELETE_HABIT", index);
+  },
+  resetCompletedState({ commit }) {
+    commit("RESET_COMPLETED_STATE");
   },
 };
 
