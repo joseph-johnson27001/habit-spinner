@@ -11,8 +11,10 @@
         :totalCompletions="habit.totalCompletions"
         :firstCompletionDate="habit.firstCompletionDate"
         :latestCompletedDate="habit.latestCompletedDate"
+        :completedWeek="habit.completedWeek"
+        :completedMonth="habit.completedMonth"
+        :completedYear="habit.completedYear"
         :habitIndex="index"
-        @update="updateHabit(index, $event)"
       />
     </div>
 

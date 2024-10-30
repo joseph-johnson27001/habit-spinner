@@ -1,6 +1,6 @@
 <template>
   <label
-    :class="['habit-card', { completed: isCompleted }]"
+    :class="['habit-card', { completed: completed }]"
     @click="toggleCompletion"
   >
     <div class="habit-info">
@@ -30,15 +30,15 @@
       </div>
       <div class="detail-container">
         <p>Completed This Week:</p>
-        <p>{{ totalCompletions }}</p>
+        <p>{{ completedWeek }}</p>
       </div>
       <div class="detail-container">
         <p>Completed This Month:</p>
-        <p>{{ totalCompletions }}</p>
+        <p>{{ completedMonth }}</p>
       </div>
       <div class="detail-container">
         <p>Completed This Year:</p>
-        <p>{{ totalCompletions }}</p>
+        <p>{{ completedYear }}</p>
       </div>
       <div class="detail-container">
         <p>Total Completions:</p>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"; // Import mapActions
+import { mapActions } from "vuex";
 
 export default {
   name: "HabitCard",
@@ -95,10 +95,6 @@ export default {
       type: String,
       default: "n/a",
     },
-    previousCompletedDate: {
-      type: String,
-      default: "n/a",
-    },
     completedWeek: {
       type: Number,
       default: 0,
@@ -118,18 +114,18 @@ export default {
   },
   data() {
     return {
-      isCompleted: this.completed,
       showDetails: false,
       chimeSound: new Audio(require("@/assets/chime.mp3")),
     };
   },
   methods: {
-    ...mapActions("habits", ["completeHabit"]),
-    async toggleCompletion() {
-      this.isCompleted = !this.isCompleted;
-      if (this.isCompleted) {
+    ...mapActions("habits", ["completeHabit", "uncompleteHabit"]),
+    toggleCompletion() {
+      if (!this.completed) {
         this.playChime();
         this.completeHabit(this.habitIndex);
+      } else {
+        this.uncompleteHabit(this.habitIndex);
       }
     },
     toggleDetails() {
@@ -138,7 +134,9 @@ export default {
     playChime() {
       this.chimeSound.play();
     },
-    deleteHabit() {},
+    deleteHabit() {
+      // Implement delete habit functionality
+    },
   },
 };
 </script>
