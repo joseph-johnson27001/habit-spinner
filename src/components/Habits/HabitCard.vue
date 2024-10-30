@@ -54,8 +54,8 @@
         <p v-if="latestCompletedDate">{{ latestCompletedDate }}</p>
         <p v-else>N/A</p>
       </div>
-      <button class="delete-button" @click.stop="deleteHabit">
-        <i class="fas fa-trash"></i>
+      <button class="delete-button">
+        <i class="fas fa-trash" @click.stop="deleteHabit"></i>
       </button>
     </div>
   </label>
@@ -119,7 +119,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions("habits", ["completeHabit", "uncompleteHabit"]),
+    ...mapActions("habits", [
+      "completeHabit",
+      "uncompleteHabit",
+      "deleteHabitAction",
+    ]),
     toggleCompletion() {
       if (!this.completed) {
         this.playChime();
@@ -135,7 +139,7 @@ export default {
       this.chimeSound.play();
     },
     deleteHabit() {
-      // Implement delete habit functionality
+      this.deleteHabitAction(this.habitIndex);
     },
   },
 };
