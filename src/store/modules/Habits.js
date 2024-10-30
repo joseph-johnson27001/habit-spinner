@@ -25,7 +25,7 @@ const mutations = {
     });
   },
   DELETE_HABIT(state, index) {
-    state.habits.splice(index, 1); // Remove the habit at the specified index
+    state.habits.splice(index, 1);
   },
   COMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
@@ -36,7 +36,7 @@ const mutations = {
     habit.completedYear += 1;
 
     if (habit.streak === 0) {
-      habit.firstCompletionDate = moment().format("MM-DD-YYYY"); // Set first completion date if first time
+      habit.firstCompletionDate = moment().format("MM-DD-YYYY");
     }
     habit.streak += 1;
 
@@ -45,20 +45,19 @@ const mutations = {
       habit.bestStreak = habit.streak;
     }
 
-    habit.latestCompletedDate = moment().format("MM-DD-YYYY"); // Set last completed date
+    habit.latestCompletedDate = moment().format("MM-DD-YYYY");
   },
   UNCOMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
     habit.completed = false;
-    habit.totalCompletions -= 1; // Decrement total completions
-    habit.completedWeek -= 1; // Decrement completed this week
-    habit.completedMonth -= 1; // Decrement completed this month
-    habit.completedYear -= 1; // Decrement completed this year
+    habit.totalCompletions -= 1;
+    habit.completedWeek -= 1;
+    habit.completedMonth -= 1;
+    habit.completedYear -= 1;
 
-    // If the streak was interrupted, reset it
-    habit.streak = Math.max(0, habit.streak - 1); // Decrement current streak but ensure it doesn't go below 0
+    habit.streak = Math.max(0, habit.streak - 1);
     if (habit.completed === false) {
-      habit.latestCompletedDate = null; // Reset last completed date
+      habit.latestCompletedDate = null;
     }
     if (habit.currentBestStreak == true) {
       habit.bestStreak -= 1;
