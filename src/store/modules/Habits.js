@@ -59,6 +59,9 @@ const mutations = {
     if (habit.completed === false) {
       habit.latestCompletedDate = null;
     }
+    if (habit.totalCompletions === 0) {
+      habit.firstCompletionDate = null;
+    }
     if (habit.currentBestStreak === true) {
       habit.bestStreak -= 1;
     }
