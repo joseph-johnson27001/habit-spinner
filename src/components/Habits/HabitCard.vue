@@ -2,6 +2,7 @@
   <div
     :class="['habit-card', { completed: completed }]"
     @click="toggleCompletion"
+    ref="habitCard"
   >
     <div class="habit-info">
       <span>{{ habitName }}</span>
@@ -19,7 +20,7 @@
     </div>
 
     <!-- Dropdown for habit details -->
-    <div v-if="showDetails" class="details-dropdown">
+    <div v-if="shouldShowDetails" class="details-dropdown">
       <div class="detail-container">
         <p>Current Streak:</p>
         <p>{{ streak }}</p>
@@ -67,56 +68,28 @@ import { mapActions } from "vuex";
 export default {
   name: "HabitCard",
   props: {
-    habitName: {
-      type: String,
-      required: true,
-    },
-    completed: {
-      type: Boolean,
-      default: false,
-    },
-    streak: {
-      type: Number,
-      default: 0,
-    },
-    bestStreak: {
-      type: Number,
-      default: 0,
-    },
-    totalCompletions: {
-      type: Number,
-      default: 0,
-    },
-    firstCompletionDate: {
-      type: String,
-      default: "n/a",
-    },
-    latestCompletedDate: {
-      type: String,
-      default: "n/a",
-    },
-    completedWeek: {
-      type: Number,
-      default: 0,
-    },
-    completedMonth: {
-      type: Number,
-      default: 0,
-    },
-    completedYear: {
-      type: Number,
-      default: 0,
-    },
-    habitIndex: {
-      type: Number,
-      required: true,
-    },
+    habitName: String,
+    completed: Boolean,
+    streak: Number,
+    bestStreak: Number,
+    totalCompletions: Number,
+    firstCompletionDate: String,
+    latestCompletedDate: String,
+    completedWeek: Number,
+    completedMonth: Number,
+    completedYear: Number,
+    habitIndex: Number,
+    showDetailsIndex: Number,
   },
   data() {
     return {
-      showDetails: false,
       chimeSound: new Audio(require("@/assets/chime.mp3")),
     };
+  },
+  computed: {
+    shouldShowDetails() {
+      return this.habitIndex === this.showDetailsIndex;
+    },
   },
   methods: {
     ...mapActions("habits", [
@@ -133,7 +106,16 @@ export default {
       }
     },
     toggleDetails() {
-      this.showDetails = !this.showDetails;
+      this.$emit("setShowDetailsIndex", this.habitIndex);
+      this.scrollToCard();
+    },
+    scrollToCard() {
+      this.$nextTick(() => {
+        this.$refs.habitCard.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
     },
     playChime() {
       this.chimeSound.play();
