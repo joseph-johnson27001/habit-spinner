@@ -6,8 +6,12 @@
         :key="index"
         :habitName="habit.name"
         :completed="habit.completed"
-        @update="updateHabit(index, $event)"
         :streak="habit.streak"
+        :bestStreak="habit.bestStreak"
+        :totalCompletions="habit.totalCompletions"
+        :firstCompletionDate="habit.firstCompletionDate"
+        :latestCompletedDate="habit.latestCompletedDate"
+        @update="updateHabit(index, $event)"
       />
     </div>
     <NewHabitCard @add="showAddHabitModal" />
