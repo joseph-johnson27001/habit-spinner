@@ -52,6 +52,7 @@ const mutations = {
 
     habit.latestCompletedDate = moment().format("DD-MM-YYYY");
   },
+
   async UNCOMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
     habit.latestCompletedDate = habit.previouslyCompletedDate;

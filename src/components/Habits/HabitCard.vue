@@ -55,15 +55,22 @@
         <p v-if="latestCompletedDate">{{ latestCompletedDate }}</p>
         <p v-else>N/A</p>
       </div>
-      <button class="delete-button" @click.stop="deleteHabit">
+      <button class="delete-button" @click.stop="showDeleteModal = true">
         <i class="fas fa-trash"></i>
       </button>
     </div>
+    <DeleteHabitModal
+      v-if="showDeleteModal"
+      :show="showDeleteModal"
+      @confirm-delete="confirmDeleteHabit"
+      @close="showDeleteModal = false"
+    />
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import DeleteHabitModal from "@/components/Habits/DeleteHabitModal.vue";
 
 export default {
   name: "HabitCard",
@@ -81,9 +88,13 @@ export default {
     habitIndex: Number,
     showDetailsIndex: Number,
   },
+  components: {
+    DeleteHabitModal,
+  },
   data() {
     return {
       chimeSound: new Audio(require("@/assets/chime.mp3")),
+      showDeleteModal: false,
     };
   },
   computed: {
@@ -104,6 +115,10 @@ export default {
       } else {
         this.uncompleteHabit(this.habitIndex);
       }
+    },
+    confirmDeleteHabit() {
+      this.deleteHabitAction(this.habitIndex);
+      this.showDeleteModal = false;
     },
     toggleDetails() {
       this.$emit("setShowDetailsIndex", this.habitIndex);
