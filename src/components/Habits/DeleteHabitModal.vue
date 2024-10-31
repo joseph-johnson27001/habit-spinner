@@ -48,6 +48,7 @@ export default {
 }
 
 .modal-content {
+  margin-bottom: 40vh;
   position: relative;
   background: #c0392b;
   padding: 30px;
