@@ -18,6 +18,7 @@ const mutations = {
       totalCompletions: 0,
       firstCompletionDate: null,
       latestCompletedDate: null,
+      previouslyCompletedDate: null,
       completedWeek: 0,
       completedMonth: 0,
       completedYear: 0,
@@ -27,8 +28,9 @@ const mutations = {
   DELETE_HABIT(state, index) {
     state.habits.splice(index, 1);
   },
-  COMPLETE_HABIT(state, index) {
+  async COMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
+    habit.previouslyCompletedDate = habit.latestCompletedDate;
     habit.completed = true;
     habit.totalCompletions += 1;
     habit.completedWeek += 1;
@@ -47,8 +49,9 @@ const mutations = {
 
     habit.latestCompletedDate = moment().format("DD-MM-YYYY");
   },
-  UNCOMPLETE_HABIT(state, index) {
+  async UNCOMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
+    habit.latestCompletedDate = habit.previouslyCompletedDate;
     habit.completed = false;
     habit.totalCompletions -= 1;
     habit.completedWeek -= 1;
@@ -56,9 +59,9 @@ const mutations = {
     habit.completedYear -= 1;
 
     habit.streak = Math.max(0, habit.streak - 1);
-    if (habit.completed === false) {
-      habit.latestCompletedDate = null;
-    }
+    // if (habit.completed === false) {
+    //   habit.latestCompletedDate = null;
+    // }
     if (habit.totalCompletions === 0) {
       habit.firstCompletionDate = null;
     }
