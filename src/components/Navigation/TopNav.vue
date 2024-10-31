@@ -27,6 +27,7 @@
 
 <script>
 import CurrencyDisplay from "@/components/Navigation/CurrencyDisplay.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "TopNav",
@@ -35,14 +36,13 @@ export default {
   },
   data() {
     return {
-      totalHabits: 10,
-      habitsCompleted: 0,
       streak: 5,
       coins: 120,
       rewardPasses: 1,
     };
   },
   computed: {
+    ...mapGetters("habits", ["totalHabits", "habitsCompleted"]),
     isRewardsPage() {
       return this.$route.path === "/rewards";
     },

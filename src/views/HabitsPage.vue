@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       showModal: false,
-      showDetailsIndex: null, // Track the index of the habit with open details
+      showDetailsIndex: null,
     };
   },
   computed: {
@@ -64,7 +64,6 @@ export default {
       this.showModal = false;
     },
     setShowDetailsIndex(index) {
-      // Toggle details visibility for the clicked habit card
       this.showDetailsIndex = this.showDetailsIndex === index ? null : index;
     },
   },

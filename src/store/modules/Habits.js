@@ -6,6 +6,9 @@ const state = () => ({
 
 const getters = {
   allHabits: (state) => state.habits,
+  totalHabits: (state) => state.habits.length,
+  habitsCompleted: (state) =>
+    state.habits.filter((habit) => habit.completed).length,
 };
 
 const mutations = {
