@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import RewardCard from "@/components/Rewards/RewardCard.vue";
 import NewRewardCard from "@/components/Rewards/NewRewardCard.vue";
 
@@ -27,23 +28,20 @@ export default {
     RewardCard,
     NewRewardCard,
   },
-  data() {
-    return {
-      rewards: [
-        { name: "Spa Day", redeemed: false, cost: 50 },
-        { name: "Movie Ticket", redeemed: false, cost: 20 },
-        { name: "Dinner at a Restaurant", redeemed: false, cost: 80 },
-        { name: "New Book", redeemed: false, cost: 30 },
-      ],
-    };
+  computed: {
+    ...mapGetters("rewards", ["allRewards"]),
+    rewards() {
+      return this.allRewards;
+    },
   },
   methods: {
+    ...mapActions("rewards", ["redeemReward", "addReward"]),
     redeemReward(index) {
-      this.rewards[index].redeemed = true;
-      // Optional: Update logic to deduct coins or handle other reward redemption logic
+      this.redeemReward(index); // Dispatch Vuex action
     },
     showAddRewardDialog() {
-      console.log("Add new reward dialog triggered!");
+      const newReward = { name: "Custom Reward", redeemed: false, cost: 40 };
+      this.addReward(newReward); // Dispatch Vuex action to add new reward
     },
   },
 };

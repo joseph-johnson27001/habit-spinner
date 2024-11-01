@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "RewardCard",
   props: {
@@ -28,6 +30,10 @@ export default {
       type: Number,
       required: true,
     },
+    rewardId: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
@@ -36,15 +42,21 @@ export default {
     };
   },
   methods: {
+    ...mapMutations("rewards", ["REDEEM_REWARD"]),
     toggleRedeem() {
       if (!this.isRedeemed) {
         this.isRedeemed = true;
-        this.$emit("redeem");
+        this.REDEEM_REWARD(this.rewardId); // Update reward status in Vuex
         this.playRedeemSound();
       }
     },
     playRedeemSound() {
       this.redeemSound.play();
+    },
+  },
+  watch: {
+    redeemed(newVal) {
+      this.isRedeemed = newVal;
     },
   },
 };
