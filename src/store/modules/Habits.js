@@ -87,7 +87,7 @@ const mutations = {
   },
 
   // Rollover completed habits to stored habits if a new day has started
-  ROLLOVER_COMPLETED_HABITS(state) {
+  async ROLLOVER_COMPLETED_HABITS(state) {
     const today = moment().format("DD-MM-YYYY").toString();
     if (state.lastTrackedDate !== today) {
       // Add today’s completed habits to stored habits and reset today’s count
