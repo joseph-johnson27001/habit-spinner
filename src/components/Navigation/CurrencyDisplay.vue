@@ -3,24 +3,24 @@
     <!-- Reward Passes Display -->
     <div class="currency-item">
       <i class="fa fa-ticket ticket-icon"></i>
-      <span class="currency-value">{{ rewardPasses }}</span>
+      <span class="currency-value">{{ getTickets }}</span>
     </div>
 
     <!-- Coins Display -->
     <div class="currency-item">
       <i class="fa fa-coins coin-icon"></i>
-      <span class="currency-value">{{ coins }}</span>
+      <span class="currency-value">{{ getCoins }}</span>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "CurrencyDisplay",
-  props: {
-    coins: { type: Number, default: 0 },
-    streak: { type: Number, default: 0 },
-    rewardPasses: { type: Number, default: 0 },
+  computed: {
+    ...mapGetters("currency", ["getCoins", "getTickets"]),
   },
 };
 </script>
