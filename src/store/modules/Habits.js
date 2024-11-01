@@ -2,6 +2,9 @@ import moment from "moment";
 
 const state = () => ({
   habits: [],
+  todayCompletedHabits: 0,
+  storedHabits: 0,
+  lastTrackedDate: moment().format("DD-MM-YYYY").toString(), // Track last date of update
 });
 
 const getters = {
@@ -9,6 +12,8 @@ const getters = {
   totalHabits: (state) => state.habits.length,
   habitsCompleted: (state) =>
     state.habits.filter((habit) => habit.completed).length,
+  todayCompletedHabits: (state) => state.todayCompletedHabits,
+  storedHabits: (state) => state.storedHabits,
 };
 
 const mutations = {
@@ -29,9 +34,13 @@ const mutations = {
     });
   },
   DELETE_HABIT(state, index) {
+    const habit = state.habits[index];
+    if (habit.completed) {
+      state.todayCompletedHabits = Math.max(0, state.todayCompletedHabits - 1);
+    }
     state.habits.splice(index, 1);
   },
-  async COMPLETE_HABIT(state, index) {
+  COMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
     habit.previouslyCompletedDate = habit.latestCompletedDate;
     habit.completed = true;
@@ -51,9 +60,12 @@ const mutations = {
     }
 
     habit.latestCompletedDate = moment().format("DD-MM-YYYY");
+
+    // Update today's completed habits count
+    state.todayCompletedHabits += 1;
   },
 
-  async UNCOMPLETE_HABIT(state, index) {
+  UNCOMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
     habit.latestCompletedDate = habit.previouslyCompletedDate;
     habit.completed = false;
@@ -63,23 +75,26 @@ const mutations = {
     habit.completedYear -= 1;
 
     habit.streak = Math.max(0, habit.streak - 1);
-    // if (habit.completed === false) {
-    //   habit.latestCompletedDate = null;
-    // }
     if (habit.totalCompletions === 0) {
       habit.firstCompletionDate = null;
     }
     if (habit.currentBestStreak === true) {
       habit.bestStreak -= 1;
     }
+
+    // Decrease today's completed habits count
+    state.todayCompletedHabits = Math.max(0, state.todayCompletedHabits - 1);
   },
-  RESET_COMPLETED_STATE(state) {
-    const today = moment().format("DD-MM-YYYY");
-    state.habits.forEach((habit) => {
-      if (habit.latestCompletedDate !== today) {
-        habit.completed = false; // Reset to false if the last completion date is not today
-      }
-    });
+
+  // Rollover completed habits to stored habits if a new day has started
+  ROLLOVER_COMPLETED_HABITS(state) {
+    const today = moment().format("DD-MM-YYYY").toString();
+    if (state.lastTrackedDate !== today) {
+      // Add today’s completed habits to stored habits and reset today’s count
+      state.storedHabits += state.todayCompletedHabits;
+      state.todayCompletedHabits = 0;
+      state.lastTrackedDate = today; // Update lastTrackedDate to today
+    }
   },
 };
 
@@ -87,17 +102,23 @@ const actions = {
   addHabit({ commit }, habit) {
     commit("ADD_HABIT", habit);
   },
-  completeHabit({ commit }, index) {
+  completeHabit({ commit, dispatch }, index) {
     commit("COMPLETE_HABIT", index);
+    dispatch("checkDateForRollover");
   },
-  uncompleteHabit({ commit }, index) {
+  uncompleteHabit({ commit, dispatch }, index) {
     commit("UNCOMPLETE_HABIT", index);
+    dispatch("checkDateForRollover");
   },
-  deleteHabitAction({ commit }, index) {
+  deleteHabitAction({ commit, dispatch }, index) {
     commit("DELETE_HABIT", index);
+    dispatch("checkDateForRollover");
+  },
+  checkDateForRollover({ commit }) {
+    commit("ROLLOVER_COMPLETED_HABITS");
   },
   resetCompletedState({ commit }) {
-    commit("RESET_COMPLETED_STATE");
+    commit("ROLLOVER_COMPLETED_HABITS");
   },
 };
 
