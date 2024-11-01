@@ -86,15 +86,33 @@ const mutations = {
     state.todayCompletedHabits = Math.max(0, state.todayCompletedHabits - 1);
   },
 
-  // Rollover completed habits to stored habits if a new day has started
+  // Rollover completed habits and reset streaks if a new day has started
   async ROLLOVER_COMPLETED_HABITS(state) {
     const today = moment().format("DD-MM-YYYY").toString();
+
+    // Check if the rollover is needed based on the date
     if (state.lastTrackedDate !== today) {
+      // Increment stored habits
       state.storedHabits += state.todayCompletedHabits;
       state.todayCompletedHabits = 0;
       state.lastTrackedDate = today;
+
+      // Reset streaks if the latest completion date is not yesterday
+      state.habits.forEach((habit) => {
+        if (habit.latestCompletedDate) {
+          const daysSinceLastCompletion = moment(today, "DD-MM-YYYY").diff(
+            moment(habit.latestCompletedDate, "DD-MM-YYYY"),
+            "days"
+          );
+          if (daysSinceLastCompletion > 1) {
+            habit.streak = 0;
+            habit.currentBestStreak = false;
+          }
+        }
+      });
     }
   },
+
   DECREMENT_STORED_HABITS(state) {
     if (state.storedHabits > 0) {
       state.storedHabits -= 1;
