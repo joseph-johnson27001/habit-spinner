@@ -118,7 +118,9 @@ export default {
     },
     confirmDeleteHabit() {
       this.deleteHabitAction(this.habitIndex);
-      this.toggleDetails();
+      if (this.$store.state.habits.length < 0) {
+        this.toggleDetails();
+      }
       this.showDeleteModal = false;
     },
     toggleDetails() {
