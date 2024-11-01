@@ -92,7 +92,7 @@ const mutations = {
     if (state.lastTrackedDate !== today) {
       state.storedHabits += state.todayCompletedHabits;
       state.todayCompletedHabits = 0;
-      state.lastTrackedDate = today; // Update lastTrackedDate to today
+      state.lastTrackedDate = today;
     }
   },
   DECREMENT_STORED_HABITS(state) {

@@ -118,6 +118,7 @@ export default {
     },
     confirmDeleteHabit() {
       this.deleteHabitAction(this.habitIndex);
+      this.toggleDetails();
       this.showDeleteModal = false;
     },
     toggleDetails() {
