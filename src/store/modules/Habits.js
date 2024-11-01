@@ -4,7 +4,7 @@ const state = () => ({
   habits: [],
   todayCompletedHabits: 0,
   storedHabits: 0,
-  lastTrackedDate: moment().format("DD-MM-YYYY").toString(), // Track last date of update
+  lastTrackedDate: moment().format("DD-MM-YYYY").toString(),
 });
 
 const getters = {
@@ -90,7 +90,6 @@ const mutations = {
   async ROLLOVER_COMPLETED_HABITS(state) {
     const today = moment().format("DD-MM-YYYY").toString();
     if (state.lastTrackedDate !== today) {
-      // Add today’s completed habits to stored habits and reset today’s count
       state.storedHabits += state.todayCompletedHabits;
       state.todayCompletedHabits = 0;
       state.lastTrackedDate = today; // Update lastTrackedDate to today

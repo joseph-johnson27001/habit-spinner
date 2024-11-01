@@ -19,6 +19,10 @@
           <i class="fa fa-fire fire-icon"></i>
           <span>{{ streak }}</span>
         </div>
+        <div v-else-if="isGamePage" class="side-section">
+          Available Plays: {{ storedHabits }}
+        </div>
+
         <span v-else>{{ habitsCompleted }} / {{ totalHabits }}</span>
       </div>
     </div>
@@ -42,12 +46,20 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("habits", ["totalHabits", "habitsCompleted"]),
+    ...mapGetters("habits", [
+      "totalHabits",
+      "habitsCompleted",
+      "storedHabits",
+      "todayCompletedHabits",
+    ]),
     isRewardsPage() {
       return this.$route.path === "/rewards";
     },
     isProfilePage() {
       return this.$route.path === "/profile";
+    },
+    isGamePage() {
+      return this.$route.path === "/spinner";
     },
   },
 };
