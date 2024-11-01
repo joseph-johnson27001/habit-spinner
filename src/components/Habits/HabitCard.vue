@@ -108,6 +108,7 @@ export default {
       "uncompleteHabit",
       "deleteHabitAction",
     ]),
+
     toggleCompletion() {
       if (!this.completed) {
         this.playChime();
@@ -116,12 +117,11 @@ export default {
         this.uncompleteHabit(this.habitIndex);
       }
     },
-    confirmDeleteHabit() {
+    async confirmDeleteHabit() {
       this.deleteHabitAction(this.habitIndex);
-      if (this.$store.state.habits.length < 0) {
-        this.toggleDetails();
-      }
       this.showDeleteModal = false;
+
+      this.toggleDetails();
     },
     toggleDetails() {
       this.$emit("setShowDetailsIndex", this.habitIndex);
@@ -129,14 +129,16 @@ export default {
     },
     scrollToCard() {
       this.$nextTick(() => {
-        const cardPosition =
-          this.$refs.habitCard.getBoundingClientRect().top + window.scrollY - 6; // Offset
-
-        // Scroll to the calculated position with smooth behavior
-        window.scrollTo({
-          top: cardPosition,
-          behavior: "smooth",
-        });
+        if (this.$refs.habitCard) {
+          const cardPosition =
+            this.$refs.habitCard.getBoundingClientRect().top +
+            window.scrollY -
+            6; // Offset
+          window.scrollTo({
+            top: cardPosition,
+            behavior: "smooth",
+          });
+        }
       });
     },
     playChime() {
