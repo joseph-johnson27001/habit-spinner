@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "RewardCard",
@@ -42,11 +42,11 @@ export default {
     };
   },
   methods: {
-    ...mapMutations("rewards", ["REDEEM_REWARD"]),
+    ...mapActions("rewards", ["redeemReward"]),
     toggleRedeem() {
       if (!this.isRedeemed) {
         this.isRedeemed = true;
-        this.REDEEM_REWARD(this.rewardId); // Update reward status in Vuex
+        this.redeemReward(this.rewardId);
         this.playRedeemSound();
       }
     },

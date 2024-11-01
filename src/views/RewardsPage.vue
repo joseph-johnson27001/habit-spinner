@@ -1,18 +1,16 @@
 <template>
   <div class="rewards-page">
-    <!-- Rewards List -->
     <div class="rewards-list">
       <RewardCard
         v-for="(reward, index) in rewards"
-        :key="index"
+        :key="reward.rewardId"
+        :rewardId="index"
         :rewardName="reward.name"
         :redeemed="reward.redeemed"
         :cost="reward.cost"
         @redeem="redeemReward(index)"
       />
     </div>
-
-    <!-- New Reward Card -->
     <NewRewardCard @add="showAddRewardDialog" />
   </div>
 </template>
@@ -35,13 +33,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions("rewards", ["redeemReward", "addReward"]),
-    redeemReward(index) {
-      this.redeemReward(index); // Dispatch Vuex action
-    },
+    ...mapActions("rewards", ["redeemReward"]),
     showAddRewardDialog() {
-      const newReward = { name: "Custom Reward", redeemed: false, cost: 40 };
-      this.addReward(newReward); // Dispatch Vuex action to add new reward
+      console.log("Add new reward dialog triggered!");
     },
   },
 };
