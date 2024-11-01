@@ -1,4 +1,3 @@
-// store/modules/Rewards.js
 export default {
   namespaced: true,
   state: () => ({
