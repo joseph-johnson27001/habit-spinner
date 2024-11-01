@@ -96,6 +96,11 @@ const mutations = {
       state.lastTrackedDate = today; // Update lastTrackedDate to today
     }
   },
+  DECREMENT_STORED_HABITS(state) {
+    if (state.storedHabits > 0) {
+      state.storedHabits -= 1;
+    }
+  },
 };
 
 const actions = {
@@ -119,6 +124,9 @@ const actions = {
   },
   resetCompletedState({ commit }) {
     commit("ROLLOVER_COMPLETED_HABITS");
+  },
+  decrementStoredHabits({ commit }) {
+    commit("DECREMENT_STORED_HABITS");
   },
 };
 

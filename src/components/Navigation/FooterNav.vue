@@ -45,7 +45,6 @@
 
       <!-- Settings Button -->
       <router-link
-        @click="this.tasksCompleted = !this.tasksCompleted"
         to="/settings"
         class="nav-button"
         :class="{ active: $route.path === '/settings' }"
@@ -58,17 +57,16 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
+import { mapGetters } from "vuex";
 
 export default {
   name: "NavBar",
-  components: {
-    RouterLink,
-  },
-  data() {
-    return {
-      tasksCompleted: false, // This would be dynamically updated based on task completion status
-    };
+  computed: {
+    ...mapGetters("habits", ["storedHabits"]),
+
+    tasksCompleted() {
+      return this.storedHabits > 0;
+    },
   },
 };
 </script>

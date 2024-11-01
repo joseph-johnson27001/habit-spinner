@@ -5,8 +5,15 @@
 
     <!-- Display today's completed habits and stored habits -->
     <div>
-      <p>Today's Completed Habits: {{ todayCompletedHabits }}</p>
-      <p>Stored Completed Habits: {{ storedHabits }}</p>
+      <p>Plays For Tomorrow: {{ todayCompletedHabits }}</p>
+      <p>Plays Available: {{ storedHabits }}</p>
+    </div>
+
+    <div>
+      <!-- Button to decrement storedHabits -->
+      <button @click="useStoredPlay" :disabled="storedHabits <= 0">
+        Use a Play
+      </button>
     </div>
   </div>
 </template>
@@ -17,10 +24,12 @@ import { mapGetters } from "vuex";
 export default {
   name: "SpinnerPage",
   computed: {
-    ...mapGetters("habits", [
-      "todayCompletedHabits",
-      "storedHabits", // Changed to match the updated state
-    ]),
+    ...mapGetters("habits", ["todayCompletedHabits", "storedHabits"]),
+  },
+  methods: {
+    useStoredPlay() {
+      this.$store.dispatch("habits/decrementStoredHabits");
+    },
   },
 };
 </script>
