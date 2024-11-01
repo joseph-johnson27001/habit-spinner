@@ -126,9 +126,13 @@ export default {
     },
     scrollToCard() {
       this.$nextTick(() => {
-        this.$refs.habitCard.scrollIntoView({
+        const cardPosition =
+          this.$refs.habitCard.getBoundingClientRect().top + window.scrollY - 6; // Offset
+
+        // Scroll to the calculated position with smooth behavior
+        window.scrollTo({
+          top: cardPosition,
           behavior: "smooth",
-          block: "start",
         });
       });
     },
