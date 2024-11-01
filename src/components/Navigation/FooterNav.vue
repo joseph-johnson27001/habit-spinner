@@ -21,12 +21,12 @@
         <span>HABITS</span>
       </router-link>
 
-      <!-- Centerpiece Tracker Button (Circular) -->
+      <!-- Centerpiece Spinner Button (Circular) -->
       <router-link
-        to="/tracker"
-        class="nav-button tracker-button"
+        to="/spinner"
+        class="nav-button spinner-button"
         :class="{
-          active: $route.path === '/tracker',
+          active: $route.path === '/spinner',
           'ready-to-play': tasksCompleted,
         }"
       >
@@ -144,8 +144,8 @@ export default {
   margin-top: 4px;
 }
 
-/* Centerpiece Tracker Button Styling */
-.tracker-button {
+/* Centerpiece Spinner Button Styling */
+.spinner-button {
   position: absolute;
   bottom: 35px; /* Makes it rise above the navbar */
   width: 45px;
@@ -161,20 +161,20 @@ export default {
   z-index: 1001;
 }
 
-/* Icon inside the tracker button */
-.tracker-button i {
+/* Icon inside the spinner button */
+.spinner-button i {
   font-size: 28px;
 }
 
 /* Glow effect when the user has completed their tasks */
-.tracker-button.ready-to-play {
+.spinner-button.ready-to-play {
   background-color: #f76809;
   box-shadow: 0 0 20px rgba(247, 104, 9, 0.8);
   transform: scale(1.1);
   animation: pulse 2s infinite ease-in-out;
 }
 
-.tracker-button.active::before {
+.spinner-button.active::before {
   background: none;
   outline: none;
 }
