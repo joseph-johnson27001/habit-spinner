@@ -86,24 +86,29 @@ const mutations = {
     state.todayCompletedHabits = Math.max(0, state.todayCompletedHabits - 1);
   },
 
-  // Rollover completed habits and reset streaks if a new day has started
   async ROLLOVER_COMPLETED_HABITS(state) {
-    const today = moment().format("DD-MM-YYYY").toString();
+    const today = moment().format("DD-MM-YYYY");
 
-    // Check if the rollover is needed based on the date
+    // Only proceed if today is different from the last tracked date
     if (state.lastTrackedDate !== today) {
-      // Increment stored habits
+      // Store the number of habits completed today before resetting
       state.storedHabits += state.todayCompletedHabits;
       state.todayCompletedHabits = 0;
       state.lastTrackedDate = today;
 
-      // Reset streaks if the latest completion date is not yesterday
+      // Reset the completion status and streaks for each habit
       state.habits.forEach((habit) => {
+        // Reset completed status for a new day
+        habit.completed = false;
+
+        // Check if the streak should reset
         if (habit.latestCompletedDate) {
           const daysSinceLastCompletion = moment(today, "DD-MM-YYYY").diff(
             moment(habit.latestCompletedDate, "DD-MM-YYYY"),
             "days"
           );
+
+          // If it’s been more than one day since the last completion, reset the streak
           if (daysSinceLastCompletion > 1) {
             habit.streak = 0;
             habit.currentBestStreak = false;
