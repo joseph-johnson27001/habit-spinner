@@ -82,7 +82,7 @@
 .mo-fire svg {
   width: 100%;
   height: auto;
-  max-height: 200px;
+  max-height: 225px;
   position: relative;
 }
 .flame {
