@@ -49,7 +49,7 @@ const mutations = {
     habit.completedMonth += 1;
     habit.completedYear += 1;
 
-    if (habit.streak === 0) {
+    if (habit.bestStreak === 0) {
       habit.firstCompletionDate = moment().format("DD-MM-YYYY");
     }
     habit.streak += 1;
