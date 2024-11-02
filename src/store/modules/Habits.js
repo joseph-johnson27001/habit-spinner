@@ -4,7 +4,6 @@ const state = () => ({
   habits: [],
   todayCompletedHabits: 0,
   storedHabits: 0,
-  lastTrackedDate: moment().format("DD-MM-YYYY").toString(),
 });
 
 const getters = {
@@ -86,36 +85,33 @@ const mutations = {
     state.todayCompletedHabits = Math.max(0, state.todayCompletedHabits - 1);
   },
 
-  async ROLLOVER_COMPLETED_HABITS(state) {
+  ROLLOVER_COMPLETED_HABITS(state) {
     const today = moment().format("DD-MM-YYYY");
 
-    // Only proceed if today is different from the last tracked date
-    if (state.lastTrackedDate !== today) {
-      // Store the number of habits completed today before resetting
-      state.storedHabits += state.todayCompletedHabits;
-      state.todayCompletedHabits = 0;
-      state.lastTrackedDate = today;
+    // Loop through each habit and check if the `latestCompletedDate` is outdated
+    state.habits.forEach((habit) => {
+      if (habit.latestCompletedDate) {
+        const daysSinceLastCompletion = moment(today, "DD-MM-YYYY").diff(
+          moment(habit.latestCompletedDate, "DD-MM-YYYY"),
+          "days"
+        );
 
-      // Reset the completion status and streaks for each habit
-      state.habits.forEach((habit) => {
-        // Reset completed status for a new day
-        habit.completed = false;
-
-        // Check if the streak should reset
-        if (habit.latestCompletedDate) {
-          const daysSinceLastCompletion = moment(today, "DD-MM-YYYY").diff(
-            moment(habit.latestCompletedDate, "DD-MM-YYYY"),
-            "days"
-          );
-
-          // If it’s been more than one day since the last completion, reset the streak
-          if (daysSinceLastCompletion > 1) {
-            habit.streak = 0;
-            habit.currentBestStreak = false;
-          }
+        // Reset `completed` status for a new day
+        if (daysSinceLastCompletion >= 1) {
+          habit.completed = false;
         }
-      });
-    }
+
+        // Reset the streak if it has been more than a day since the last completion
+        if (daysSinceLastCompletion > 1) {
+          habit.streak = 0;
+          habit.currentBestStreak = false;
+        }
+      }
+    });
+
+    // Update the stored habits count
+    state.storedHabits += state.todayCompletedHabits;
+    state.todayCompletedHabits = 0;
   },
 
   DECREMENT_STORED_HABITS(state) {
