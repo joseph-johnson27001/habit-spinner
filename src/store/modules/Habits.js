@@ -4,6 +4,7 @@ const state = () => ({
   habits: [],
   todayCompletedHabits: 0,
   storedHabits: 0,
+  lastTrackedDate: moment().format("DD-MM-YYYY"),
 });
 
 const getters = {
@@ -88,7 +89,15 @@ const mutations = {
   ROLLOVER_COMPLETED_HABITS(state) {
     const today = moment().format("DD-MM-YYYY");
 
-    // Loop through each habit and check if the `latestCompletedDate` is outdated
+    // Check if the stored habits count needs to be updated
+    if (state.lastTrackedDate !== today) {
+      // Update stored habits count and reset today's completed habits
+      state.storedHabits += state.todayCompletedHabits;
+      state.todayCompletedHabits = 0;
+      state.lastTrackedDate = today;
+    }
+
+    // Reset individual habit completion status and streaks if needed
     state.habits.forEach((habit) => {
       if (habit.latestCompletedDate) {
         const daysSinceLastCompletion = moment(today, "DD-MM-YYYY").diff(
@@ -108,10 +117,6 @@ const mutations = {
         }
       }
     });
-
-    // Update the stored habits count
-    state.storedHabits += state.todayCompletedHabits;
-    state.todayCompletedHabits = 0;
   },
 
   DECREMENT_STORED_HABITS(state) {
