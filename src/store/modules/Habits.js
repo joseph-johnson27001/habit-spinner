@@ -40,7 +40,7 @@ const mutations = {
     }
     state.habits.splice(index, 1);
   },
-  COMPLETE_HABIT(state, index) {
+  async COMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
     habit.previouslyCompletedDate = habit.latestCompletedDate;
     habit.completed = true;
@@ -48,11 +48,11 @@ const mutations = {
     habit.completedWeek += 1;
     habit.completedMonth += 1;
     habit.completedYear += 1;
+    habit.streak += 1;
 
     if (habit.bestStreak === 0) {
       habit.firstCompletionDate = moment().format("DD-MM-YYYY");
     }
-    habit.streak += 1;
 
     if (habit.streak > habit.bestStreak) {
       habit.currentBestStreak = true;
@@ -65,7 +65,7 @@ const mutations = {
     state.todayCompletedHabits += 1;
   },
 
-  UNCOMPLETE_HABIT(state, index) {
+  async UNCOMPLETE_HABIT(state, index) {
     const habit = state.habits[index];
     habit.latestCompletedDate = habit.previouslyCompletedDate;
     habit.completed = false;
@@ -86,7 +86,7 @@ const mutations = {
     state.todayCompletedHabits = Math.max(0, state.todayCompletedHabits - 1);
   },
 
-  ROLLOVER_COMPLETED_HABITS(state) {
+  async ROLLOVER_COMPLETED_HABITS(state) {
     const today = moment().format("DD-MM-YYYY");
 
     // Check if the stored habits count needs to be updated
