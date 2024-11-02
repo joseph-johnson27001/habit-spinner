@@ -69,24 +69,20 @@
 </template>
 
 <style scoped>
-body {
-  width: 100%;
-  position: relative;
-  background-color: #000;
-  padding: 0;
-  margin: 0;
-}
 .mo-fire {
   width: 200px;
   height: auto;
   position: absolute;
   left: 50%;
-  margin-left: -135px;
-  top: 50px;
+  margin-left: -120px;
+  top: 70px;
+  max-height: 200px;
 }
+
 .mo-fire svg {
   width: 100%;
   height: auto;
+  max-height: 200px;
   position: relative;
 }
 .flame {
