@@ -14,9 +14,11 @@
           :streak="streak"
           :rewardPasses="rewardPasses"
         />
-        <!-- Streak Display -->
+        <!-- Settings Display -->
         <div v-else-if="isProfilePage" class="side-section">
-          <i class="fas fa-cog settings-icon"></i>
+          <router-link to="/settings">
+            <i class="fas fa-cog settings-icon"></i>
+          </router-link>
         </div>
         <div v-else-if="isGamePage" class="side-section">
           Available Plays: {{ storedHabits }}
@@ -72,6 +74,7 @@ export default {
   z-index: 100;
   display: flex;
   justify-content: center;
+  align-items: center;
   background: linear-gradient(135deg, #3a66d0, #6aafe6);
   border-bottom: 1px solid #2f4a92;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -117,8 +120,10 @@ h2 {
 }
 
 .settings-icon {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 @media only screen and (min-width: 1200px) {
