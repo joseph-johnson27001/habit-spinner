@@ -5,6 +5,9 @@ const state = () => ({
   todayCompletedHabits: 0,
   storedHabits: 0,
   lastTrackedDate: moment().format("DD-MM-YYYY"),
+  lastTrackedWeek: moment().week(),
+  lastTrackedMonth: moment().month(),
+  lastTrackedYear: moment().year(),
 });
 
 const getters = {
@@ -89,34 +92,57 @@ const mutations = {
   async ROLLOVER_COMPLETED_HABITS(state) {
     const today = moment().format("DD-MM-YYYY");
 
-    // Check if the stored habits count needs to be updated
+    // Update `storedHabits` if a new day has started
     if (state.lastTrackedDate !== today) {
-      // Update stored habits count and reset today's completed habits
       state.storedHabits += state.todayCompletedHabits;
       state.todayCompletedHabits = 0;
       state.lastTrackedDate = today;
     }
 
-    // Reset individual habit completion status and streaks if needed
+    // Check if a new week, month, or year has started
+    const currentWeek = moment().week();
+    const currentMonth = moment().month();
+    const currentYear = moment().year();
+
+    // Reset weekly, monthly, and yearly completion counts if needed
     state.habits.forEach((habit) => {
+      if (state.lastTrackedWeek !== currentWeek) {
+        habit.completedWeek = 0; // Reset weekly count
+      }
+      if (state.lastTrackedMonth !== currentMonth) {
+        habit.completedMonth = 0; // Reset monthly count
+      }
+      if (state.lastTrackedYear !== currentYear) {
+        habit.completedYear = 0; // Reset yearly count
+      }
+
+      // Reset individual habit completion status and streaks if needed
       if (habit.latestCompletedDate) {
         const daysSinceLastCompletion = moment(today, "DD-MM-YYYY").diff(
           moment(habit.latestCompletedDate, "DD-MM-YYYY"),
           "days"
         );
 
-        // Reset `completed` status for a new day
         if (daysSinceLastCompletion >= 1) {
-          habit.completed = false;
+          habit.completed = false; // Reset completed status for a new day
         }
-
-        // Reset the streak if it has been more than a day since the last completion
         if (daysSinceLastCompletion > 1) {
-          habit.streak = 0;
+          habit.streak = 0; // Reset the streak if more than a day has passed
           habit.currentBestStreak = false;
         }
       }
     });
+
+    // Update last tracked week, month, and year to current values
+    if (state.lastTrackedWeek !== currentWeek) {
+      state.lastTrackedWeek = currentWeek;
+    }
+    if (state.lastTrackedMonth !== currentMonth) {
+      state.lastTrackedMonth = currentMonth;
+    }
+    if (state.lastTrackedYear !== currentYear) {
+      state.lastTrackedYear = currentYear;
+    }
   },
 
   DECREMENT_STORED_HABITS(state) {
