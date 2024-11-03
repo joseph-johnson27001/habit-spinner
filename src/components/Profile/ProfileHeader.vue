@@ -76,14 +76,14 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-right: 20px;
+  margin-right: 10px;
   border: 1px solid #ccc;
   margin-left: 5px;
 }
 
 h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 100;
 }
 
@@ -102,7 +102,7 @@ p {
 }
 
 .badge-container {
-  margin-left: 20px; /* Adjust position as needed */
+  margin-right: 5px; /* Adjust position as needed */
   display: flex;
   align-items: center;
 }
