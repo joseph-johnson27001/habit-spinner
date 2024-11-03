@@ -102,14 +102,13 @@ p {
 }
 
 .badge-container {
-  margin-right: 5px; /* Adjust position as needed */
   display: flex;
   align-items: center;
 }
 
 .badge {
-  width: 40px; /* Adjust size as needed */
-  height: 40px;
+  width: 80px;
+  height: 80px;
 }
 
 .edit-icon {
