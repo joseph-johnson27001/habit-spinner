@@ -1,17 +1,25 @@
 <template>
   <div class="profile-header">
     <div class="profile-info">
-      <img :src="defaultProfilePic" alt="Profile Picture" class="profile-pic" />
-      <div>
-        <h2>{{ user.name }}</h2>
-        <div class="tagline-container">
-          <p class="tagline">
-            {{ user.bio }}
-            <!-- <i class="fa fa-pencil-alt edit-icon" @click="editProfile"></i> -->
-          </p>
+      <div class="left-container">
+        <img
+          :src="defaultProfilePic"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+        <div>
+          <h2>{{ user.name }}</h2>
+          <div class="tagline-container">
+            <p class="tagline">
+              {{ user.bio }}
+            </p>
+          </div>
         </div>
       </div>
-      <!-- Pencil icon -->
+      <!-- Badge Display -->
+      <div class="badge-container">
+        <img :src="badgeImage" alt="User Badge" class="badge" />
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +38,11 @@ export default {
       defaultProfilePic: "/images/Joe_Taj.jpg",
     };
   },
+  computed: {
+    badgeImage() {
+      return "/images/badges/first-habit-badge.png";
+    },
+  },
   methods: {
     editProfile() {
       this.$emit("edit");
@@ -41,15 +54,22 @@ export default {
 <style scoped>
 .profile-header {
   display: flex;
-  margin-bottom: 20px;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .profile-info {
-  align-items: center;
   display: flex;
+  align-items: center;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-pic {
@@ -59,11 +79,6 @@ export default {
   margin-right: 20px;
   border: 1px solid #ccc;
   margin-left: 5px;
-}
-
-.profile-info {
-  text-align: left;
-  flex-grow: 1;
 }
 
 h2 {
@@ -84,6 +99,17 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.badge-container {
+  margin-left: 20px; /* Adjust position as needed */
+  display: flex;
+  align-items: center;
+}
+
+.badge {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
 }
 
 .edit-icon {
