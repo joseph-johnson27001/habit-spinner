@@ -2,24 +2,18 @@
   <div class="profile-page">
     <ProfileHeader :user="user" @edit="editProfile" />
     <HabitStats :stats="userStats" />
-    <AchievementSection :badges="userBadges" />
-    <ActivityFeed :activities="userActivities" />
   </div>
 </template>
 
 <script>
 import ProfileHeader from "@/components/Profile/ProfileHeader.vue";
 import HabitStats from "@/components/Profile/HabitStats/HabitStats.vue";
-// import AchievementSection from "@/components/Profile/AchievementSection.vue";
-// import ActivityFeed from "@/components/Profile/ActivityFeed.vue";
 
 export default {
   name: "ProfilePage",
   components: {
     ProfileHeader,
     HabitStats,
-    // AchievementSection,
-    // ActivityFeed,
   },
   data() {
     return {

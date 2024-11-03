@@ -43,14 +43,14 @@
         <span>REWARDS</span>
       </router-link>
 
-      <!-- Settings Button -->
+      <!-- Awards Button -->
       <router-link
-        to="/settings"
+        to="/awards"
         class="nav-button"
-        :class="{ active: $route.path === '/settings' }"
+        :class="{ active: $route.path === '/awards' }"
       >
-        <i class="fas fa-cog"></i>
-        <span>SETTINGS</span>
+        <i class="fas fa-trophy"></i>
+        <span>AWARDS</span>
       </router-link>
     </div>
   </div>

@@ -16,8 +16,7 @@
         />
         <!-- Streak Display -->
         <div v-else-if="isProfilePage" class="side-section">
-          <i class="fa fa-fire fire-icon"></i>
-          <span>{{ streak }}</span>
+          <i class="fas fa-cog settings-icon"></i>
         </div>
         <div v-else-if="isGamePage" class="side-section">
           Available Plays: {{ storedHabits }}
@@ -115,6 +114,11 @@ h2 {
   color: #f76809;
   margin-right: 5px;
   font-size: 1.4rem;
+}
+
+.settings-icon {
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 1200px) {
