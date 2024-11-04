@@ -24,7 +24,11 @@
           Available Plays: {{ storedHabits }}
         </div>
 
-        <span v-else>{{ habitsCompleted }} / {{ totalHabits }}</span>
+        <span v-else-if="isHabitsPage"
+          >{{ habitsCompleted }} / {{ totalHabits }}</span
+        >
+
+        <span v-else> <i class="fas fa-star"></i> {{ level }}</span>
       </div>
     </div>
   </nav>
@@ -44,6 +48,7 @@ export default {
       streak: 5,
       coins: 120,
       rewardPasses: 1,
+      level: 8,
     };
   },
   computed: {
@@ -61,6 +66,9 @@ export default {
     },
     isGamePage() {
       return this.$route.path === "/spinner";
+    },
+    isHabitsPage() {
+      return this.$route.path === "/";
     },
   },
 };
