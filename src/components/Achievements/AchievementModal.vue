@@ -60,7 +60,7 @@ export default {
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 10px;
   border-radius: 8px;
-  min-width: 80%;
+  width: 80%;
   max-width: 400px;
   text-align: center;
   position: relative;
@@ -69,7 +69,7 @@ export default {
 }
 
 .achievement-modal.greyscale {
-  filter: grayscale(95%);
+  background: #848388;
 }
 
 .close-button {
