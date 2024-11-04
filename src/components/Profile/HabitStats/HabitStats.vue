@@ -55,7 +55,7 @@ export default {
         {
           title: "Habits Completed This Week",
           value: this.weeklyCompleted,
-          bg: "#3498DB", // Calm blue for consistency
+          bg: "#9a74d6",
         },
         {
           title: "Habits Completed This Month",
@@ -65,12 +65,12 @@ export default {
         {
           title: "Habits Completed This Year",
           value: this.yearlyCompleted,
-          bg: "#E74C3C", // Strong red for major achievements
+          bg: "#3498DB", // Calm blue for consistency
         },
         {
           title: "Total Completed Habits",
           value: this.totalCompletedHabits,
-          bg: "#F39C12", // Golden yellow for importance
+          bg: "#E74C3C", // Strong red for major achievements
         },
       ];
     },
