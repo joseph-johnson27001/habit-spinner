@@ -28,7 +28,7 @@
           >{{ habitsCompleted }} / {{ totalHabits }}</span
         >
 
-        <span v-else> <i class="fas fa-star"></i> {{ level }}</span>
+        <span v-else> <i class="fas fa-star star-icon"></i> {{ level }}</span>
       </div>
     </div>
   </nav>
@@ -121,17 +121,15 @@ h2 {
   align-items: center;
 }
 
-.fire-icon {
-  color: #f76809;
-  margin-right: 5px;
-  font-size: 1.4rem;
-}
-
 .settings-icon {
   font-size: 1.4rem;
   cursor: pointer;
   text-decoration: none;
   color: white;
+}
+
+.star-icon {
+  color: #f7d451;
 }
 
 @media only screen and (min-width: 1200px) {
