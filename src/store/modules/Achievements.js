@@ -37,7 +37,7 @@ export default {
         title: "Monthly Master",
         description: "Complete a habit for 30 days in a row",
         completed: false,
-        reward: "monthly-master-badge.png",
+        reward: "monthly-badge.png",
         completedDate: null,
       },
       {
