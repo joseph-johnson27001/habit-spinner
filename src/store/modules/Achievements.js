@@ -30,7 +30,7 @@ export default {
         title: "Two-Week Titan",
         description: "Maintain a 14-day habit streak",
         completed: false,
-        reward: "two-week-titan-badge.png",
+        reward: "two-week-badge.png",
         completedDate: null,
       },
       {
