@@ -45,12 +45,12 @@
 
       <!-- Awards Button -->
       <router-link
-        to="/awards"
+        to="/achievements"
         class="nav-button"
-        :class="{ active: $route.path === '/awards' }"
+        :class="{ active: $route.path === '/achievements' }"
       >
         <i class="fas fa-trophy"></i>
-        <span>AWARDS</span>
+        <span>ACHIEVEMENTS</span>
       </router-link>
     </div>
   </div>

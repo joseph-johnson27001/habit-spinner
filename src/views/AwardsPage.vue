@@ -1,1 +1,0 @@
-<template>AWARDS PAGE</template>

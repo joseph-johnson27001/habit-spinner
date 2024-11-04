@@ -4,7 +4,7 @@ import RewardsPage from "../views/RewardsPage.vue";
 import SpinnerPage from "../views/SpinnerPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
 import SettingsPage from "@/views/SettingsPage.vue";
-import AwardsPage from "@/views/AwardsPage.vue";
+import AchievementsPage from "@/views/AchievementsPage.vue";
 
 const routes = [
   {
@@ -29,9 +29,9 @@ const routes = [
     component: ProfilePage,
   },
   {
-    path: "/awards",
-    name: "Awards",
-    component: AwardsPage,
+    path: "/achievements",
+    name: "Achievements",
+    component: AchievementsPage,
   },
   {
     path: "/settings",
