@@ -60,7 +60,7 @@ export default {
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 10px;
   border-radius: 8px;
-  width: 90%;
+  min-width: 80%;
   max-width: 400px;
   text-align: center;
   position: relative;
