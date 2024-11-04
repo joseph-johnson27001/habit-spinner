@@ -11,6 +11,7 @@
       <p>{{ achievement.description }}</p>
       <p v-if="completed" class="status completed">Status: Completed</p>
       <p v-else class="status in-progress">Status: In Progress</p>
+      <p v-if="completed">Completed On: {{ achievement.completedDate }}</p>
     </div>
   </div>
 </template>
@@ -26,6 +27,10 @@ export default {
     completed: {
       type: Boolean,
       default: false,
+    },
+    completedDate: {
+      type: String,
+      default: null,
     },
   },
   methods: {

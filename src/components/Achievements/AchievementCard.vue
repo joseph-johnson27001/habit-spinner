@@ -71,7 +71,7 @@ export default {
 }
 
 .achievement-card.grayscale {
-  filter: grayscale(100%);
+  filter: grayscale(95%);
 }
 
 .badge-image {
