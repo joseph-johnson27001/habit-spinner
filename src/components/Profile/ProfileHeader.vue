@@ -2,11 +2,11 @@
   <div class="profile-header">
     <div class="profile-info">
       <div class="left-container">
-        <!-- <img
+        <img
           :src="defaultProfilePic"
           alt="Profile Picture"
           class="profile-pic"
-        /> -->
+        />
         <div>
           <h2>{{ user.name }}</h2>
           <div class="tagline-container">
@@ -79,7 +79,6 @@ export default {
   border-radius: 50%;
   margin-right: 10px;
   border: 1px solid #ccc;
-  margin-left: 5px;
 }
 
 h2 {
