@@ -51,11 +51,7 @@ export default {
           value: this.habitsCompleted,
           bg: "linear-gradient(135deg, #2ECC71, #27AE60)", // Gradient from bright green to rich green
         },
-        {
-          title: "Total Completed Habits",
-          value: this.totalCompletedHabits,
-          bg: "#F39C12", // Golden yellow for importance
-        },
+
         {
           title: "Habits Completed This Week",
           value: this.weeklyCompleted,
@@ -70,6 +66,11 @@ export default {
           title: "Habits Completed This Year",
           value: this.yearlyCompleted,
           bg: "#E74C3C", // Strong red for major achievements
+        },
+        {
+          title: "Total Completed Habits",
+          value: this.totalCompletedHabits,
+          bg: "#F39C12", // Golden yellow for importance
         },
       ];
     },
