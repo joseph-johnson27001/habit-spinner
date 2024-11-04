@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import AchievementCard from "@/components/Achievements/AchievementCard.vue";
 import AchievementModal from "@/components/Achievements/AchievementModal.vue";
 
@@ -32,27 +33,22 @@ export default {
   data() {
     return {
       selectedAchievement: null,
-      achievements: [
-        {
-          title: "Habit Newbie",
-          description: "Complete your first habit",
-          completed: true,
-          reward: "first-habit-badge.png",
-        },
-        {
-          title: "Starter Streak",
-          description: "Maintain a 3-day streak on a habit",
-          completed: false,
-          reward: "first-habit-badge.png",
-        },
-        // Additional achievements can be added here
-      ],
     };
   },
+  computed: {
+    ...mapGetters("achievements", ["achievementsList"]),
+    achievements() {
+      return this.achievementsList;
+    },
+  },
   methods: {
+    ...mapActions("achievements", ["fetchAchievements"]),
     showAchievementModal(achievement) {
       this.selectedAchievement = achievement;
     },
+  },
+  mounted() {
+    this.fetchAchievements(); // Fetch achievements on page load
   },
 };
 </script>

@@ -4,6 +4,7 @@ import { createStore } from "vuex";
 import habits from "./modules/Habits";
 import rewards from "./modules/Rewards";
 import currency from "./modules/Currency";
+import achievements from "./modules/Achievements";
 
 // LocalStorage plugin to persist specific state modules
 const localStoragePlugin = (store) => {
@@ -31,6 +32,7 @@ const store = createStore({
     habits,
     rewards,
     currency,
+    achievements,
   },
   plugins: [localStoragePlugin],
 });
