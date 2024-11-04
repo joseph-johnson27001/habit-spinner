@@ -1,6 +1,6 @@
 <template>
   <div class="achievement-modal-overlay" @click.self="close">
-    <div class="achievement-modal">
+    <div :class="['achievement-modal', { greyscale: !completed }]">
       <button class="close-button" @click="close">X</button>
       <img
         :src="`/images/badges/${achievement.reward}`"
@@ -9,9 +9,10 @@
       />
       <h2>{{ achievement.title }}</h2>
       <p>{{ achievement.description }}</p>
-      <p v-if="completed" class="status completed">Status: Completed</p>
-      <p v-else class="status in-progress">Status: In Progress</p>
-      <p v-if="completed">Completed On: {{ achievement.completedDate }}</p>
+
+      <p v-if="completed" class="completed-date">
+        Completed On: {{ achievement.completedDate }}
+      </p>
     </div>
   </div>
 </template>
@@ -56,13 +57,19 @@ export default {
 }
 
 .achievement-modal {
-  background: white;
-  padding: 30px;
+  background: linear-gradient(to right, #4a90e2, #9a74d6);
+  padding: 10px;
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
   text-align: center;
   position: relative;
+  color: white;
+  transition: filter 0.3s ease;
+}
+
+.achievement-modal.greyscale {
+  filter: grayscale(95%);
 }
 
 .close-button {
@@ -73,12 +80,16 @@ export default {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  color: white;
+}
+
+h2 {
+  margin: 0px;
 }
 
 .modal-badge-image {
   width: 80px;
   height: 80px;
-  margin-bottom: 20px;
 }
 
 .status {
@@ -86,7 +97,11 @@ export default {
 }
 
 .completed {
-  color: green;
+  color: #f7d451;
+}
+
+.completed-date {
+  color: #f7d451;
 }
 
 .in-progress {
