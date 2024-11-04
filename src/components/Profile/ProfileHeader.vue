@@ -2,11 +2,11 @@
   <div class="profile-header">
     <div class="profile-info">
       <div class="left-container">
-        <img
+        <!-- <img
           :src="defaultProfilePic"
           alt="Profile Picture"
           class="profile-pic"
-        />
+        /> -->
         <div>
           <h2>{{ user.name }}</h2>
           <div class="tagline-container">
@@ -57,6 +57,7 @@ export default {
   flex-direction: column;
   width: 100%;
   margin-bottom: 20px;
+  padding: 0px 10px;
 }
 
 .profile-info {
@@ -83,7 +84,7 @@ export default {
 
 h2 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 100;
 }
 
