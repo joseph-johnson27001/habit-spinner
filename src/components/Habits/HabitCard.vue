@@ -234,7 +234,6 @@ export default {
   flex-direction: column;
   z-index: 1;
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
   border-radius: 10px;
   margin: 10px 0px;
   padding: 10px 15px 25px 15px;

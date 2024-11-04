@@ -1,12 +1,32 @@
 <template>
-  <div class="achievement-card" @click="openModal">
-    <img
-      :src="`/images/badges/${achievement.reward}`"
-      alt="Achievement Badge"
-      class="badge-image"
-    />
-    <h3>{{ achievement.title }}</h3>
-    <p v-if="achievement.completed" class="completed-status">Completed</p>
+  <div
+    :class="[
+      'achievement-card',
+      { completed: achievement.completed, grayscale: !achievement.completed },
+    ]"
+    @click="openModal"
+    ref="achievementCard"
+  >
+    <div class="achievement-info">
+      <span>{{ achievement.title }}</span>
+      <!-- Badge icon in top-right corner -->
+      <img
+        :src="`/images/badges/${achievement.reward}`"
+        alt="Achievement Badge"
+        class="badge-image"
+      />
+    </div>
+
+    <!-- Description below title -->
+    <p
+      v-if="achievement.completed"
+      class="achievement-description completed-status"
+    >
+      {{ achievement.description }}
+    </p>
+    <p v-else class="achievement-description">
+      {{ achievement.description }}
+    </p>
   </div>
 </template>
 
@@ -29,27 +49,47 @@ export default {
 
 <style scoped>
 .achievement-card {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  position: relative;
+  background: linear-gradient(to right, #4a90e2, #9a74d6);
+  padding: 20px 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 100;
+  text-transform: capitalize;
+  color: #fff;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: color 0.3s ease, transform 0.2s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-.achievement-card:hover {
-  transform: scale(1.05);
+.achievement-card.completed {
+  color: white;
+}
+
+.achievement-card.grayscale {
+  filter: grayscale(100%);
 }
 
 .badge-image {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.achievement-description {
+  font-size: 14px;
+  color: #f0f0f0;
+  margin-top: 10px;
 }
 
 .completed-status {
-  color: green;
   font-weight: bold;
+  color: #f7d451;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div class="achievements-page">
-    <h1>Achievements</h1>
     <div class="achievements-grid">
       <AchievementCard
         v-for="(achievement, index) in achievements"
@@ -44,7 +43,7 @@ export default {
           title: "Starter Streak",
           description: "Maintain a 3-day streak on a habit",
           completed: false,
-          reward: "starter-streak-badge.png",
+          reward: "first-habit-badge.png",
         },
         // Additional achievements can be added here
       ],
@@ -60,13 +59,7 @@ export default {
 
 <style scoped>
 .achievements-page {
-  padding: 20px;
+  padding: 0px 10px 60px 10px;
   text-align: center;
-}
-
-.achievements-grid {
-  display: grid;
-  gap: 20px;
-  margin-top: 20px;
 }
 </style>
