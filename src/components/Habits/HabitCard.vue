@@ -1,6 +1,9 @@
 <template>
   <div
-    :class="['habit-card', { completed: completed }]"
+    :class="[
+      'habit-card',
+      { completed: completed, 'show-details-padding': shouldShowDetails },
+    ]"
     @click="toggleCompletion"
     ref="habitCard"
   >
@@ -169,6 +172,11 @@ export default {
   cursor: pointer;
   transition: color 0.3s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Extra padding when details are shown */
+.habit-card.show-details-padding {
+  padding-top: 30px;
 }
 
 .habit-info {
