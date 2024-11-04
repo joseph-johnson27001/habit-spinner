@@ -13,10 +13,20 @@ const state = () => ({
 const getters = {
   allHabits: (state) => state.habits,
   totalHabits: (state) => state.habits.length,
+  totalCompletedHabits: (state) =>
+    state.habits.reduce((sum, habit) => sum + habit.totalCompletions, 0),
   habitsCompleted: (state) =>
     state.habits.filter((habit) => habit.completed).length,
   todayCompletedHabits: (state) => state.todayCompletedHabits,
   storedHabits: (state) => state.storedHabits,
+  bestStreak: (state) =>
+    state.habits.reduce((max, habit) => Math.max(max, habit.bestStreak), 0),
+  weeklyCompleted: (state) =>
+    state.habits.reduce((sum, habit) => sum + habit.completedWeek, 0),
+  monthlyCompleted: (state) =>
+    state.habits.reduce((sum, habit) => sum + habit.completedMonth, 0),
+  yearlyCompleted: (state) =>
+    state.habits.reduce((sum, habit) => sum + habit.completedYear, 0),
 };
 
 const mutations = {
