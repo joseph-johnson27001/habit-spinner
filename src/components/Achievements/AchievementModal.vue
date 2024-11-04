@@ -11,7 +11,7 @@
       <p>{{ achievement.description }}</p>
 
       <p v-if="completed" class="completed-date">
-        Completed On: {{ achievement.completedDate }}
+        Achieved: {{ achievement.completedDate }}
       </p>
     </div>
   </div>
