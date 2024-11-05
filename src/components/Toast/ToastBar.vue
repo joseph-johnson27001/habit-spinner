@@ -41,7 +41,7 @@ export default {
   methods: {
     startTimer() {
       this.timer = setTimeout(() => {
-        this.isVisible = false;
+        this.isVisible = true;
       }, 3000);
     },
     clearTimer() {
@@ -104,7 +104,7 @@ export default {
   width: 60px;
   height: 60px;
   position: absolute;
-  top: 5px;
+
   right: 0px;
 }
 
