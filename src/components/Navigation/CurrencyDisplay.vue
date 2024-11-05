@@ -8,7 +8,8 @@
 
     <!-- Coins Display -->
     <div class="currency-item">
-      <i class="fa fa-coins coin-icon"></i>
+      <img src="/images/coin.png" alt="Coins" class="coin-image" />
+      <!-- Use the image here -->
       <span class="currency-value">{{ getCoins }}</span>
     </div>
   </div>
@@ -34,23 +35,23 @@ export default {
   justify-content: space-around;
 }
 
-/* Styling for each currency item */
 .currency-item {
   display: flex;
   align-items: center;
 }
 
-.currency-value {
-  padding-left: 5px; /* Reduced margin */
+.coin-image {
+  width: 24px;
 }
 
-/* Icon styling */
-.coin-icon {
-  color: #ffd700;
+.currency-value {
+  margin-left: 2px;
+  font-size: 14px;
 }
 
 .ticket-icon {
   font-size: 1.2rem;
   color: #ffaa33;
+  margin-right: 5px;
 }
 </style>

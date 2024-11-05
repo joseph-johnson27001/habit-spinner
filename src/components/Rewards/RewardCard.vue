@@ -5,8 +5,8 @@
   >
     <span class="reward-name">{{ rewardName }}</span>
     <span v-if="!isRedeemed" class="reward-cost">
-      <i class="fa fa-coins coin-icon"></i>
-      {{ cost }}
+      <img src="/images/coin.png" alt="Coins" class="coin-image" />
+      <span class="coin-value"> {{ cost }}</span>
     </span>
     <span v-if="isRedeemed" class="checkmark">✓ Redeemed</span>
   </label>
@@ -114,9 +114,14 @@ export default {
   align-items: center;
 }
 
-.coin-icon {
-  font-size: 1.2rem;
-  color: #ffd700;
-  margin-right: 5px;
+.coin-image {
+  width: 24px;
+  height: auto;
+  margin-right: 0px;
+}
+
+.coin-value {
+  margin-left: 2px;
+  font-size: 14px;
 }
 </style>
