@@ -56,8 +56,8 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
-  padding: 0px 10px;
+  margin: 10px 0 20px 0px;
+  padding: 0 10px;
 }
 
 .profile-info {

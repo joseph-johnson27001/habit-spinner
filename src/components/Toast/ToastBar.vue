@@ -3,6 +3,7 @@
     name="fade-slide"
     @after-enter="startTimer"
     @after-leave="clearTimer"
+    @click="navigate()"
   >
     <div v-if="isVisible" class="toast-bar">
       <!-- Badge icon in top-right corner -->
@@ -41,10 +42,14 @@ export default {
     startTimer() {
       this.timer = setTimeout(() => {
         this.isVisible = false;
-      }, 3000);
+      }, 4000);
     },
     clearTimer() {
       clearTimeout(this.timer);
+    },
+    navigate() {
+      this.isVisible = false;
+      this.$router.push({ path: "/achievements" });
     },
   },
 };
