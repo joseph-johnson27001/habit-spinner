@@ -129,7 +129,7 @@ export default {
   position: absolute;
   right: 0px;
   opacity: 0; /* Initially hidden */
-  animation: pop-in 0.7s 1s linear both; /* Apply animation with delay and keep final state */
+  animation: pop-in 0.6s 0.3s linear both; /* Apply animation with delay and keep final state */
 }
 
 /* Fade-in and slide from the left */
