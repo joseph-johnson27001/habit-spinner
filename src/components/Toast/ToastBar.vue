@@ -29,7 +29,7 @@ export default {
     return {
       isVisible: false,
       timer: null,
-      title: "Achievement Completed!",
+      title: "Achievement Complete!",
       message: "You've Earned The Warrior Badge!",
     };
   },
@@ -42,7 +42,7 @@ export default {
     startTimer() {
       this.timer = setTimeout(() => {
         this.isVisible = false;
-      }, 4000);
+      }, 3000);
     },
     clearTimer() {
       clearTimeout(this.timer);
@@ -78,10 +78,10 @@ export default {
 
 /* Accent bar on the left side */
 .accent-bar {
-  width: 3px;
+  width: 6px;
   height: 60px; /* Match this height to the toast bar height */
   background: linear-gradient(to right, #4a90e2, #9a74d6);
-  border-radius: 4px 0 4px 0;
+  border-radius: 10px 0 10px 0;
   margin-right: 10px;
 }
 
@@ -101,10 +101,10 @@ export default {
 }
 
 .badge-image {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   position: absolute;
-  top: 0px;
+  top: 5px;
   right: 0px;
 }
 
