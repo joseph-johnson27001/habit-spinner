@@ -56,7 +56,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 10px 0 20px 0px;
+  margin: 5px 0 15px 0px;
   padding: 0 10px;
 }
 
@@ -107,8 +107,8 @@ p {
 }
 
 .badge {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
 }
 
 .edit-icon {
