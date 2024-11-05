@@ -121,6 +121,7 @@ export default {
 }
 
 .coin-value {
+  margin-top: 4px;
   margin-left: 2px;
   font-size: 14px;
 }
