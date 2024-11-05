@@ -100,12 +100,36 @@ export default {
   margin-top: 5px;
 }
 
+@keyframes pop-in {
+  0% {
+    transform: scale(0.3); /* Start small */
+    opacity: 0; /* Start invisible */
+  }
+  40% {
+    transform: scale(1.4); /* Slight overshoot for a popping effect */
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.7); /* Slight overshoot for a popping effect */
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.2); /* Slight overshoot for a popping effect */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1); /* Settle at normal size */
+    opacity: 1; /* Ensure it stays visible */
+  }
+}
+
 .badge-image {
   width: 60px;
   height: 60px;
   position: absolute;
-
   right: 0px;
+  opacity: 0; /* Initially hidden */
+  animation: pop-in 0.7s 1s linear both; /* Apply animation with delay and keep final state */
 }
 
 /* Fade-in and slide from the left */
