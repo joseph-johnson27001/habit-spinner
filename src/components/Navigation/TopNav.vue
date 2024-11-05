@@ -78,27 +78,21 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .top-nav {
   width: 100%;
   background: transparent;
-  position: fixed; /* Change from relative to fixed */
-  top: 0; /* Position at the top */
-  left: 0; /* Position to the left */
-  z-index: 100; /* Keep it above other elements */
+  position: relative;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #3a66d0, #6aafe6);
   border-bottom: 1px solid #2f4a92;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  height: 60px; /* Height of the navigation bar */
+  height: 65px;
   text-align: center;
-}
-
-.content-container {
-  /* Add padding at the top to account for the height of the TopNav */
-  padding-top: 75px; /* This should be slightly more than the height of the top nav */
 }
 
 .top-nav-content {
