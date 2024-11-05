@@ -1,47 +1,52 @@
 <template>
-  <nav class="top-nav">
-    <div class="top-nav-content">
-      <!-- Center: Heading -->
-      <div class="center-section heading">
-        <h2>Ember</h2>
-      </div>
-
-      <!-- Right side: Conditional Display -->
-      <div class="side-section">
-        <CurrencyDisplay
-          v-if="isRewardsPage"
-          :coins="coins"
-          :streak="streak"
-          :rewardPasses="rewardPasses"
-        />
-        <!-- Settings Display -->
-        <div v-else-if="isProfilePage" class="side-section">
-          <router-link to="/settings">
-            <i class="fas fa-cog settings-icon"></i>
-          </router-link>
-        </div>
-        <div v-else-if="isGamePage" class="side-section">
-          Available Plays: {{ storedHabits }}
+  <div>
+    <nav class="top-nav">
+      <div class="top-nav-content">
+        <!-- Center: Heading -->
+        <div class="center-section heading">
+          <h2>Ember</h2>
         </div>
 
-        <span v-else-if="isHabitsPage"
-          >{{ habitsCompleted }} / {{ totalHabits }}</span
-        >
+        <!-- Right side: Conditional Display -->
+        <div class="side-section">
+          <CurrencyDisplay
+            v-if="isRewardsPage"
+            :coins="coins"
+            :streak="streak"
+            :rewardPasses="rewardPasses"
+          />
+          <!-- Settings Display -->
+          <div v-else-if="isProfilePage" class="side-section">
+            <router-link to="/settings">
+              <i class="fas fa-cog settings-icon"></i>
+            </router-link>
+          </div>
+          <div v-else-if="isGamePage" class="side-section">
+            Available Plays: {{ storedHabits }}
+          </div>
 
-        <span v-else> <i class="fas fa-star star-icon"></i> {{ level }}</span>
+          <span v-else-if="isHabitsPage"
+            >{{ habitsCompleted }} / {{ totalHabits }}</span
+          >
+
+          <span v-else> <i class="fas fa-star star-icon"></i> {{ level }}</span>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+    <ToastBar v-if="toastMessage" />
+  </div>
 </template>
 
 <script>
 import CurrencyDisplay from "@/components/Navigation/CurrencyDisplay.vue";
 import { mapGetters } from "vuex";
+import ToastBar from "@/components/Toast/ToastBar.vue";
 
 export default {
   name: "TopNav",
   components: {
     CurrencyDisplay,
+    ToastBar,
   },
   data() {
     return {
@@ -49,6 +54,8 @@ export default {
       coins: 120,
       rewardPasses: 1,
       level: 8,
+      toastMessage: "Test",
+      toastBgColor: "#9a74d6",
     };
   },
   computed: {
