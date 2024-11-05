@@ -58,16 +58,17 @@ export default {
   color: white;
   border-radius: 6px;
   position: fixed;
-  top: 70px;
+  top: 75px;
   left: 50%;
   transform: translateX(-50%);
   width: 80vw;
   max-width: 600px;
   z-index: 1;
   background: #29292c;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
   height: 30px;
   z-index: 2;
+  opacity: 0.9;
 }
 
 /* Accent bar on the left side */
@@ -82,7 +83,7 @@ export default {
 /* Content inside the toast */
 .toast-content {
   text-align: left;
-  font-weight: 100 !important;
+  font-weight: 100;
 }
 
 .toast-heading {
@@ -104,7 +105,7 @@ export default {
 
 /* Fade-in and slide from the left */
 .fade-slide-enter-active {
-  animation: fade-slide-in 0.3s ease-out forwards;
+  animation: fade-slide-in 0.2s ease-out forwards;
 }
 .fade-slide-leave-active {
   animation: fade-shrink-out 0.3s ease-out forwards;
@@ -116,14 +117,14 @@ export default {
     transform: translateX(-100%);
   }
   to {
-    opacity: 1;
+    opacity: 0.9;
     transform: translateX(-50%);
   }
 }
 
 @keyframes fade-shrink-out {
   from {
-    opacity: 1;
+    opacity: 0.9;
     transform: translateX(-50%) scale(1);
   }
   to {
