@@ -54,7 +54,6 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
 }
 
 @media only screen and (min-width: 1200px) {
