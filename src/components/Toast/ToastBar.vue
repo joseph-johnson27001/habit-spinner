@@ -59,7 +59,7 @@ export default {
 .toast-bar {
   display: flex;
   align-items: center;
-  padding: 20px 15px;
+  padding: 0px 15px;
   color: white;
   border-radius: 6px;
   position: fixed;
@@ -71,7 +71,7 @@ export default {
   z-index: 1;
   background: #29292c;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-  height: 30px;
+  min-height: 25px;
   z-index: 2;
   opacity: 0.9;
 }
@@ -92,7 +92,7 @@ export default {
 }
 
 .toast-heading {
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 0px;
 }
 
