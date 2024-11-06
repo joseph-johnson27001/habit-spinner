@@ -1,11 +1,5 @@
 <template>
   <div class="currency-display">
-    <!-- Reward Passes Display -->
-    <div class="currency-item">
-      <i class="fa fa-ticket ticket-icon"></i>
-      <span class="currency-value">{{ getTickets }}</span>
-    </div>
-
     <!-- Coins Display -->
     <div class="currency-item">
       <img src="/images/coin.png" alt="Coins" class="coin-image" />
@@ -47,11 +41,5 @@ export default {
 .currency-value {
   margin-left: 2px;
   font-size: 14px;
-}
-
-.ticket-icon {
-  font-size: 1.2rem;
-  color: #ffaa33;
-  margin-right: 5px;
 }
 </style>

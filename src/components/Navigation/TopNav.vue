@@ -51,7 +51,6 @@ export default {
   data() {
     return {
       streak: 5,
-      coins: 120,
       rewardPasses: 1,
       level: 8,
     };
