@@ -6,16 +6,17 @@
     @click="navigate()"
   >
     <div v-if="isVisible" class="toast-bar">
-      <!-- Badge icon in top-right corner -->
-      <img
-        :src="`/images/badges/first-habit-badge.png`"
-        alt="Achievement Badge"
-        class="badge-image"
-      />
       <div class="accent-bar"></div>
       <div class="toast-content">
-        <h4 class="toast-heading">{{ title }}</h4>
-        <p class="toast-message">{{ message }}</p>
+        <div>
+          <h4 class="toast-heading">{{ title }}</h4>
+          <p class="toast-message">{{ message }}</p>
+        </div>
+        <img
+          :src="`/images/badges/first-habit-badge.png`"
+          alt="Achievement Badge"
+          class="badge-image"
+        />
       </div>
     </div>
   </transition>
@@ -41,7 +42,7 @@ export default {
   methods: {
     startTimer() {
       this.timer = setTimeout(() => {
-        this.isVisible = false;
+        this.isVisible = true;
       }, 3000);
     },
     clearTimer() {
@@ -59,7 +60,7 @@ export default {
 .toast-bar {
   display: flex;
   align-items: center;
-  padding: 0px 15px;
+  padding: 0px 0px 0px 15px;
   color: white;
   border-radius: 6px;
   position: fixed;
@@ -89,6 +90,10 @@ export default {
 .toast-content {
   text-align: left;
   font-weight: 100;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .toast-heading {
@@ -98,6 +103,24 @@ export default {
 
 .toast-message {
   margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.badge-image {
+  width: 60px;
+  height: 60px;
+  opacity: 0; /* Initially hidden */
+  animation: pop-in 0.6s 0.4s linear both; /* Apply animation with delay and keep final state */
+  display: flex;
+  align-self: center;
+}
+
+/* Fade-in and slide from the left */
+.fade-slide-enter-active {
+  animation: fade-slide-in 0.4s ease-out forwards;
+}
+.fade-slide-leave-active {
+  animation: fade-shrink-out 0.3s ease-out forwards;
 }
 
 @keyframes pop-in {
@@ -121,23 +144,6 @@ export default {
     transform: scale(1); /* Settle at normal size */
     opacity: 1; /* Ensure it stays visible */
   }
-}
-
-.badge-image {
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  right: 0px;
-  opacity: 0; /* Initially hidden */
-  animation: pop-in 0.6s 0.4s linear both; /* Apply animation with delay and keep final state */
-}
-
-/* Fade-in and slide from the left */
-.fade-slide-enter-active {
-  animation: fade-slide-in 0.4s ease-out forwards;
-}
-.fade-slide-leave-active {
-  animation: fade-shrink-out 0.3s ease-out forwards;
 }
 
 @keyframes fade-slide-in {
