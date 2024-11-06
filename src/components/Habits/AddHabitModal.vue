@@ -99,20 +99,19 @@ h2 {
 }
 
 .habit-input {
-  width: 100%;
-  padding: 15px 20px;
+  width: 90%;
+  padding: 10px 20px;
   border: 1px solid #4a90e2;
   border-radius: 8px;
   font-size: 18px;
   outline: none;
-  margin-bottom: 20px;
   background: linear-gradient(to right, #ffffff, #f4f6f8);
-  color: #4a90e2;
+  color: #2f4a92;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, border 0.3s ease;
-  box-sizing: border-box;
   font-family: "Baloo 2", sans-serif;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .habit-input::placeholder {
@@ -155,10 +154,6 @@ h2 {
   padding: 15px 15px;
   border-radius: 10px;
   transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-.add-button:hover {
-  transform: scale(1.03); /* Slight size increase on hover */
 }
 
 /* Close Button Styling */
