@@ -83,7 +83,7 @@ export default {
   margin-bottom: 50vh;
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
-  padding: 30px;
+  padding: 20px 30px 30px 30px;
   border-radius: 12px;
   width: 80%;
   max-width: 300px;
@@ -100,10 +100,9 @@ h2 {
 }
 
 .habit-input {
-  margin-top: 2px;
   width: 90%;
-  padding: 12px 15px;
-  border: 1px solid #333;
+  padding: 10px 15px;
+  border: 1px solid #2f4a92;
   border-radius: 6px;
   font-size: 18px;
   outline: none;
@@ -121,15 +120,16 @@ h2 {
 
 .modal-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .add-button {
-  font-size: 22px;
+  font-size: 26px;
   margin-bottom: -10px;
+  margin-right: -5px;
   cursor: pointer;
   background: transparent;
-  color: #ffe44d;
+  color: #fdda11;
   border: none;
   font-weight: 100;
 }
