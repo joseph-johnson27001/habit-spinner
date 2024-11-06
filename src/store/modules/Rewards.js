@@ -15,9 +15,13 @@ export default {
     ADD_REWARD(state, reward) {
       state.rewards.push(reward);
     },
-    REDEEM_REWARD(state, index) {
-      if (state.rewards[index]) {
+    REDEEM_REWARD(state, { index, rootState }) {
+      if (
+        state.rewards[index] &&
+        rootState.currency.coins >= state.rewards[index].cost
+      ) {
         state.rewards[index].redeemed = true;
+        rootState.currency.coins -= state.rewards[index].cost;
       }
     },
   },
@@ -25,8 +29,8 @@ export default {
     addReward({ commit }, reward) {
       commit("ADD_REWARD", reward);
     },
-    redeemReward({ commit }, index) {
-      commit("REDEEM_REWARD", index);
+    redeemReward({ commit, rootState }, index) {
+      commit("REDEEM_REWARD", { index, rootState });
     },
   },
 };
