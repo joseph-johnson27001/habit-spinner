@@ -42,7 +42,7 @@ export default {
   methods: {
     startTimer() {
       this.timer = setTimeout(() => {
-        this.isVisible = true;
+        this.isVisible = false;
       }, 3000);
     },
     clearTimer() {
