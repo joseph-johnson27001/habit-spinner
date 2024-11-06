@@ -116,6 +116,7 @@ h2 {
   color: #6a80a1;
   opacity: 1;
   font-weight: 400;
+  font-size: 16px;
 }
 
 .modal-actions {

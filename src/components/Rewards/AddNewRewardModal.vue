@@ -29,7 +29,7 @@
 
         <div class="modal-actions">
           <button type="submit" class="modal-button add-button">
-            Add Reward
+            <i class="fa fa-check" aria-hidden="true"></i>
           </button>
         </div>
       </form>
@@ -81,30 +81,33 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
+  font-family: "Baloo 2", sans-serif;
 }
 
 .modal-content {
+  margin-bottom: 50vh;
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
-  padding: 20px 30px;
+  padding: 20px 30px 30px 30px;
   border-radius: 12px;
   width: 80%;
-  max-width: 500px;
-  max-height: 350px;
+  max-width: 300px;
+  max-height: 300px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   color: white;
+  text-align: left;
 }
 
 h2 {
-  margin: 0 0 20px;
+  margin: 10px 0px 5px 0px;
   font-weight: 100;
   font-family: "Baloo 2", sans-serif;
 }
@@ -115,77 +118,48 @@ h2 {
 
 .reward-input {
   width: 90%;
-  padding: 10px 20px;
-  border: 1px solid #4a90e2;
-  border-radius: 8px;
+  padding: 10px 15px;
+  border: 1px solid #2f4a92;
+  border-radius: 6px;
   font-size: 18px;
   outline: none;
-  background: linear-gradient(to right, #ffffff, #f4f6f8);
   color: #2f4a92;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, border 0.3s ease;
   font-family: "Baloo 2", sans-serif;
   font-weight: 600;
+  background: linear-gradient(to right, #ffffff, #f4f6f8);
 }
 
 .reward-input::placeholder {
   color: #6a80a1;
   opacity: 1;
   font-weight: 400;
+  font-size: 16px;
 }
 
 .modal-actions {
   display: flex;
-  justify-content: center;
-}
-
-.modal-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: inherit;
+  justify-content: flex-end;
 }
 
 .add-button {
+  font-size: 24px;
+  cursor: pointer;
   background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 15px 15px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-.cancel-button {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 15px 15px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-  margin-left: 10px;
-}
-
-.cancel-button:hover {
-  transform: scale(1.03); /* Slight size increase on hover */
+  color: #fdda11;
+  border: none;
+  font-weight: 100;
+  margin: -5px -5px -10px 0px;
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   background: none;
   border: none;
   color: white;
   font-size: 20px;
   cursor: pointer;
   font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.close-button:hover {
-  color: #ccc;
 }
 </style>
