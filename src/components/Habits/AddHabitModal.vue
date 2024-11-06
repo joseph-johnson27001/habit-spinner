@@ -14,7 +14,7 @@
       />
       <div class="modal-actions">
         <button @click="addHabit" class="modal-button add-button">
-          Add Habit
+          <i class="fa fa-check" aria-hidden="true"></i>
         </button>
       </div>
     </div>
@@ -76,6 +76,7 @@ export default {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  font-family: "Baloo 2", sans-serif;
 }
 
 .modal-content {
@@ -85,30 +86,28 @@ export default {
   padding: 30px;
   border-radius: 12px;
   width: 80%;
-  max-width: 500px;
+  max-width: 300px;
   max-height: 300px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   color: white;
+  text-align: left;
 }
 
 h2 {
-  margin: 0 0 20px;
+  margin: 10px 0px;
   font-weight: 100;
-  font-family: "Baloo 2", sans-serif;
 }
 
 .habit-input {
+  margin-top: 2px;
   width: 90%;
-  padding: 10px 20px;
-  border: 1px solid #4a90e2;
-  border-radius: 8px;
+  padding: 12px 15px;
+  border: 1px solid #2f4a92;
+  border-radius: 6px;
   font-size: 18px;
   outline: none;
-  background: linear-gradient(to right, #ffffff, #f4f6f8);
   color: #2f4a92;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, border 0.3s ease;
   font-family: "Baloo 2", sans-serif;
   font-weight: 600;
   margin-bottom: 20px;
@@ -120,43 +119,21 @@ h2 {
   font-weight: 400;
 }
 
-.habit-input:focus {
-  border: 1px solid #4a90e2;
-  background: linear-gradient(to right, #ffffff, #f0f4ff);
-  color: #2f4a92;
-}
-
-.habit-input:hover {
-  border: 1px solid #9a74d6;
-  box-shadow: 0 4px 15px rgba(154, 116, 214, 0.3),
-    inset 0 0 8px rgba(154, 116, 214, 0.15);
-}
-
 .modal-actions {
   display: flex;
-  justify-content: center;
-}
-
-.modal-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: inherit;
+  justify-content: flex-end;
 }
 
 .add-button {
+  font-size: 22px;
+  padding-top: 5px;
+  cursor: pointer;
   background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 15px 15px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, background-color 0.3s ease;
+  color: #ffe44d;
+  border: none;
+  font-weight: 100;
 }
 
-/* Close Button Styling */
 .close-button {
   position: absolute;
   top: 10px;
@@ -167,10 +144,5 @@ h2 {
   font-size: 20px;
   cursor: pointer;
   font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.close-button:hover {
-  color: #ccc;
 }
 </style>
