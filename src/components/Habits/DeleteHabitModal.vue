@@ -55,7 +55,7 @@ export default {
   border-radius: 12px;
   width: 80%;
   max-width: 400px;
-  text-align: center;
+  text-align: left;
   color: white;
 }
 
@@ -66,7 +66,7 @@ h2 {
 
 .modal-actions {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 20px;
 }
 
