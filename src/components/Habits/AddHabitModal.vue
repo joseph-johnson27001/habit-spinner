@@ -95,7 +95,7 @@ export default {
 }
 
 h2 {
-  margin: 10px 0px;
+  margin: 10px 0px 5px 0px;
   font-weight: 100;
 }
 
