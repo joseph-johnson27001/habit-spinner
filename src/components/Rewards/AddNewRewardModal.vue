@@ -1,32 +1,36 @@
 <template>
   <div class="modal-overlay" v-if="isVisible">
     <div class="modal-content">
+      <button class="close-button" @click="closeModal">×</button>
       <h2>Add New Reward</h2>
       <form @submit.prevent="handleAddReward">
         <div class="form-group">
-          <label for="rewardName">Reward Name:</label>
           <input
             type="text"
             id="rewardName"
             v-model="newReward.name"
             required
+            class="reward-input"
+            placeholder="Enter Reward Name"
           />
         </div>
 
         <div class="form-group">
-          <label for="rewardCost">Cost:</label>
           <input
             type="number"
             id="rewardCost"
             v-model="newReward.cost"
             min="1"
             required
+            class="reward-input"
+            placeholder="Enter Reward Cost"
           />
         </div>
 
-        <div class="form-group">
-          <button type="submit">Add Reward</button>
-          <button type="button" @click="closeModal">Cancel</button>
+        <div class="modal-actions">
+          <button type="submit" class="modal-button add-button">
+            Add Reward
+          </button>
         </div>
       </form>
     </div>
@@ -87,35 +91,101 @@ export default {
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  width: 400px;
+  position: relative;
+  background: linear-gradient(to right, #4a90e2, #9a74d6);
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 500px;
+  max-height: 350px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  color: white;
 }
 
 h2 {
-  margin-top: 0;
+  margin: 0 0 20px;
+  font-weight: 100;
+  font-family: "Baloo 2", sans-serif;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+.reward-input {
+  width: 90%;
+  padding: 10px 20px;
+  border: 1px solid #4a90e2;
+  border-radius: 8px;
+  font-size: 18px;
+  outline: none;
+  background: linear-gradient(to right, #ffffff, #f4f6f8);
+  color: #2f4a92;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 600;
 }
 
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.reward-input::placeholder {
+  color: #6a80a1;
+  opacity: 1;
+  font-weight: 400;
 }
 
-button {
-  margin-right: 10px;
+.modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: inherit;
+}
+
+.add-button {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 15px 15px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.cancel-button {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 15px 15px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.cancel-button:hover {
+  transform: scale(1.03); /* Slight size increase on hover */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ccc;
 }
 </style>
