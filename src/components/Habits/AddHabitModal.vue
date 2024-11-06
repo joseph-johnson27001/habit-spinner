@@ -80,7 +80,7 @@ export default {
 }
 
 .modal-content {
-  margin-bottom: 40vh;
+  margin-bottom: 50vh;
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 30px;
