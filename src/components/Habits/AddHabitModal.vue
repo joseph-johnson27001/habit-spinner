@@ -120,13 +120,12 @@ h2 {
 
 .modal-actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .add-button {
-  font-size: 26px;
-  margin-bottom: -10px;
-  margin-right: -5px;
+  font-size: 24px;
+  margin: -5px -5px -10px 0px;
   cursor: pointer;
   background: transparent;
   color: #fdda11;
