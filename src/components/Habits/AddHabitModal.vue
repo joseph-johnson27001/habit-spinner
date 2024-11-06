@@ -103,7 +103,7 @@ h2 {
   margin-top: 2px;
   width: 90%;
   padding: 12px 15px;
-  border: 1px solid #2f4a92;
+  border: 1px solid #333;
   border-radius: 6px;
   font-size: 18px;
   outline: none;
@@ -126,7 +126,7 @@ h2 {
 
 .add-button {
   font-size: 22px;
-  padding-top: 5px;
+  margin-bottom: -10px;
   cursor: pointer;
   background: transparent;
   color: #ffe44d;
@@ -136,8 +136,8 @@ h2 {
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   background: none;
   border: none;
   color: white;
