@@ -29,7 +29,7 @@
 
         <div class="modal-actions">
           <button type="submit" class="modal-button add-button">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+            <i class="fa fa-check" aria-hidden="true"></i>
           </button>
         </div>
       </form>

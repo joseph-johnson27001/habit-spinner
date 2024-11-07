@@ -14,7 +14,7 @@
       />
       <div class="modal-actions">
         <button @click="addHabit" class="modal-button add-button">
-          <i class="fa fa-plus" aria-hidden="true"></i>
+          <i class="fa fa-check" aria-hidden="true"></i>
         </button>
       </div>
     </div>
