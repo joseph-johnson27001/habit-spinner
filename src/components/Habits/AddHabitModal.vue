@@ -14,7 +14,7 @@
       />
       <div class="modal-actions">
         <button @click="addHabit" class="modal-button add-button">
-          <i class="fa fa-check" aria-hidden="true"></i>
+          <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
     </div>
@@ -121,7 +121,7 @@ h2 {
 
 .modal-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .add-button {
@@ -129,9 +129,12 @@ h2 {
   margin: -5px -5px -10px 0px;
   cursor: pointer;
   background: transparent;
-  color: #fdda11;
+  color: #fff;
   border: none;
   font-weight: 100;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  padding: 6px 10px;
 }
 
 .close-button {
