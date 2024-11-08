@@ -13,7 +13,7 @@
           <p class="toast-message">{{ message }}</p>
         </div>
         <img
-          :src="`/images/badges/first-habit-badge.png`"
+          :src="`/images/badges/weekly-warrior-badge.png`"
           alt="Achievement Badge"
           class="badge-image"
         />
@@ -31,7 +31,7 @@ export default {
       isVisible: false,
       timer: null,
       title: "Achievement Complete!",
-      message: "You've Earned The Warrior Badge!",
+      message: "You've Earned The Weekly Warrior Badge!",
     };
   },
   mounted() {
