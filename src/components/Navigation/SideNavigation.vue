@@ -64,28 +64,34 @@ export default {
 .overlay {
   position: fixed;
   top: 40;
-  right: 0;
+  right: -100%;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: flex-end;
   z-index: 200;
   font-family: "Baloo 2", sans-serif;
+  transition: right 0.5s ease; /* Smooth transition for sliding in and out */
 }
 
 /* Side Navigation Styles */
 .side-navigation {
-  width: 80%;
+  width: 60%;
   background: #e6e6e6;
   height: 100%;
   max-width: 300px;
   padding: 20px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 1.1rem;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* When the overlay is active and should be visible */
+.overlay.active {
+  right: 0; /* Bring the side navigation into view */
 }
 
 /* Top Section with Coin and Plays */

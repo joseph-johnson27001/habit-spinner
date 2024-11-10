@@ -14,8 +14,11 @@
       </div>
     </nav>
 
-    <!-- Conditionally render the SideNavigation component -->
-    <SideNavigation v-if="slideOpen" @close="toggleSidebar" />
+    <!-- SideNavigation component, style controlled by slideOpen -->
+    <SideNavigation
+      :style="{ right: slideOpen ? '0' : '-100%' }"
+      @close="toggleSidebar"
+    />
 
     <ToastBar />
   </div>
