@@ -95,13 +95,12 @@ export default {
 /* Top Section with Coin and Plays */
 .top-section {
   display: flex;
-  text-align: left;
 }
 
 .status {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .coin-icon {

@@ -74,12 +74,12 @@ export default {
 <style scoped>
 .nav-bar {
   width: 100%;
-  border-top: 1px solid #ccc;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.5); */
   display: flex;
   justify-content: center;
   background-color: #f3f2f2;
