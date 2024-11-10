@@ -34,11 +34,11 @@ export default {
       message: "You've Earned The Weekly Warrior Badge!",
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.isVisible = true;
-    }, 1000);
-  },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.isVisible = true;
+  //   }, 1000);
+  // },
   methods: {
     startTimer() {
       this.timer = setTimeout(() => {

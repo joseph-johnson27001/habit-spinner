@@ -9,13 +9,13 @@
 
         <!-- Right side: Conditional Display -->
         <div class="side-section">
-          <CurrencyDisplay
+          <!-- <CurrencyDisplay
             v-if="isRewardsPage"
             :coins="coins"
             :streak="streak"
             :rewardPasses="rewardPasses"
           />
-          <!-- Settings Display -->
+    
           <div v-else-if="isProfilePage" class="side-section">
             <router-link to="/settings">
               <i class="fas fa-cog settings-icon"></i>
@@ -29,7 +29,9 @@
             >{{ habitsCompleted }} / {{ totalHabits }}</span
           >
 
-          <span v-else> <i class="fas fa-star star-icon"></i> {{ level }}</span>
+          <span v-else> <i class="fas fa-star star-icon"></i> {{ level }}</span> -->
+
+          <i class="fas fa-bars hamburger-bars"></i>
         </div>
       </div>
     </nav>
@@ -38,14 +40,13 @@
 </template>
 
 <script>
-import CurrencyDisplay from "@/components/Navigation/CurrencyDisplay.vue";
 import { mapGetters } from "vuex";
 import ToastBar from "@/components/Toast/ToastBar.vue";
 
 export default {
   name: "TopNav",
   components: {
-    CurrencyDisplay,
+    // CurrencyDisplay,
     ToastBar,
   },
   data() {
@@ -103,13 +104,6 @@ export default {
   color: white;
 }
 
-.habits-completed {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 1;
-}
-
 h2 {
   font-family: "Baloo 2", sans-serif;
   font-optical-sizing: auto;
@@ -125,15 +119,9 @@ h2 {
   align-items: center;
 }
 
-.settings-icon {
-  font-size: 1.4rem;
+.hamburger-bars {
   cursor: pointer;
-  text-decoration: none;
-  color: white;
-}
-
-.star-icon {
-  color: #f7d451;
+  font-size: 18px;
 }
 
 @media only screen and (min-width: 1200px) {
