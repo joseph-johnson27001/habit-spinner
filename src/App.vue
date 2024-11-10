@@ -22,19 +22,39 @@ export default {
 </script>
 
 <style>
+/* Ensure html and body take up full viewport height */
+html,
 body {
-  padding: 0;
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 #app {
-  background-color: #f5f4f0;
   display: flex;
   flex-direction: column;
+  height: 100%; /* Inherit full viewport height */
+  background-color: #f5f4f0;
   font-family: "Nunito", sans-serif;
-  min-height: 100vh;
   text-align: center;
-  overflow-y: scroll;
+  overflow-y: scroll; /* Enable scrolling only within the content area */
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px; /* To ensure content doesn't overlap with TopNav */
+  flex: 1; /* Allows content-container to grow and fill available space */
+}
+
+@media only screen and (min-width: 1200px) {
+  .content-container {
+    width: 95%;
+    border-top: none;
+  }
 }
 
 /* Hide scrollbar for WebKit browsers */
