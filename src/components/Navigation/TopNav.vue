@@ -15,10 +15,7 @@
     </nav>
 
     <!-- SideNavigation component, style controlled by slideOpen -->
-    <SideNavigation
-      :style="{ right: slideOpen ? '0' : '-100%' }"
-      @close="toggleSidebar"
-    />
+    <SideNavigation :slideOpen="slideOpen" @close="toggleSidebar" />
 
     <ToastBar />
   </div>
@@ -52,7 +49,7 @@ export default {
   width: 100%;
   background: transparent;
   position: fixed; /* Fix the nav to the top of the page */
-  top: 40; /* Stick to the top */
+  top: 0;
   left: 0; /* Ensure it takes the full width */
   z-index: 3; /* Ensure it stays on top of other content */
   display: flex;

@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay">
+  <div :class="['overlay', { active: slideOpen }]">
     <div class="side-navigation">
       <!-- Top section: Coins and Plays (streaks) -->
       <div class="top-section">
@@ -71,43 +71,36 @@ export default {
 /* Overlay styles */
 .overlay {
   position: fixed;
-  top: 0; /* Positioning starts from the top */
-  right: -100%;
+  top: 66px; /* Start just below the TopNav */
+  right: -100%; /* Start hidden off-screen */
   width: 100%;
-  height: 75vh;
-  max-height: 600px;
+  height: calc(100vh - 66px); /* Take up all space below the TopNav */
   display: flex;
   justify-content: flex-end;
-  z-index: 2;
+  z-index: 9000;
   font-family: "Baloo 2", sans-serif;
-  transition: right 0.5s ease; /* Smooth transition for sliding in and out */
+  transition: right 0.3s ease; /* Smooth slide-in */
+}
+
+.overlay.active {
+  right: 0; /* Bring into view */
 }
 
 /* Side Navigation Styles */
 .side-navigation {
   width: 100%;
   background: #efefef;
-  margin-top: 66px;
-  height: 100%;
   max-width: 400px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* Space out top and bottom */
   font-size: 1.1rem;
-  border: 1px solid #ccc;
+  border-left: 1px solid #ccc;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-/* When the overlay is active and should be visible */
-.overlay.active {
-  right: 0; /* Bring the side navigation into view */
 }
 
 /* Top Section with Coin and Plays */
-
 .status {
   display: flex;
   justify-content: space-around;
@@ -156,7 +149,6 @@ export default {
 
 /* Bottom Link (Settings) */
 .bottom-link {
-  border-top: 1px dashed #ccc;
   padding-top: 10px;
   text-align: left;
 }
