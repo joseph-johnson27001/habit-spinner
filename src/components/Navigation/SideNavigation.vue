@@ -69,7 +69,7 @@ export default {
   height: 100vh;
   display: flex;
   justify-content: flex-end;
-  z-index: 200;
+  z-index: 2;
   font-family: "Baloo 2", sans-serif;
   transition: right 0.5s ease; /* Smooth transition for sliding in and out */
 }
@@ -78,6 +78,7 @@ export default {
 .side-navigation {
   width: 60%;
   background: #e6e6e6;
+  margin-top: 66px;
   height: 100%;
   max-width: 300px;
   padding: 20px;

@@ -51,8 +51,10 @@ export default {
 .top-nav {
   width: 100%;
   background: transparent;
-  position: relative;
-  z-index: 100;
+  position: fixed; /* Fix the nav to the top of the page */
+  top: 40; /* Stick to the top */
+  left: 0; /* Ensure it takes the full width */
+  z-index: 3; /* Ensure it stays on top of other content */
   display: flex;
   justify-content: center;
   align-items: center;
