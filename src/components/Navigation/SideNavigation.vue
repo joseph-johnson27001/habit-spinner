@@ -74,7 +74,7 @@ export default {
   top: 66px; /* Start just below the TopNav */
   right: -100%; /* Start hidden off-screen */
   width: 100%;
-  height: calc(100vh - 66px); /* Take up all space below the TopNav */
+  height: calc(100% - 66px); /* Take up all space below the TopNav */
   display: flex;
   justify-content: flex-end;
   z-index: 9000;
