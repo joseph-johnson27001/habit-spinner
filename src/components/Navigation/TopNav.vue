@@ -7,75 +7,48 @@
           <h2>Ember</h2>
         </div>
 
-        <!-- Right side: Conditional Display -->
+        <!-- Right side: Hamburger Icon -->
         <div class="side-section">
-          <!-- <CurrencyDisplay
-            v-if="isRewardsPage"
-            :coins="coins"
-            :streak="streak"
-            :rewardPasses="rewardPasses"
-          />
-    
-          <div v-else-if="isProfilePage" class="side-section">
-            <router-link to="/settings">
-              <i class="fas fa-cog settings-icon"></i>
-            </router-link>
-          </div>
-          <div v-else-if="isGamePage" class="side-section">
-            Available Plays: {{ storedHabits }}
-          </div>
-
-          <span v-else-if="isHabitsPage"
-            >{{ habitsCompleted }} / {{ totalHabits }}</span
-          >
-
-          <span v-else> <i class="fas fa-star star-icon"></i> {{ level }}</span> -->
-
-          <i class="fas fa-bars hamburger-bars"></i>
+          <i class="fas fa-bars hamburger-bars" @click="toggleSidebar"></i>
         </div>
       </div>
     </nav>
+
+    <!-- Side Navigation Overlay -->
+    <SideNavigation v-if="isSidebarOpen" @close="toggleSidebar" />
+
     <ToastBar />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import ToastBar from "@/components/Toast/ToastBar.vue";
+import SideNavigation from "@/components/Navigation/SideNavigation.vue";
 
 export default {
   name: "TopNav",
   components: {
-    // CurrencyDisplay,
     ToastBar,
+    SideNavigation,
   },
   data() {
     return {
-      streak: 5,
-      rewardPasses: 1,
-      level: 8,
+      isSidebarOpen: false,
     };
   },
-  computed: {
-    ...mapGetters("habits", [
-      "totalHabits",
-      "habitsCompleted",
-      "storedHabits",
-      "todayCompletedHabits",
-    ]),
-    isRewardsPage() {
-      return this.$route.path === "/rewards";
-    },
-    isProfilePage() {
-      return this.$route.path === "/profile";
-    },
-    isGamePage() {
-      return this.$route.path === "/spinner";
-    },
-    isHabitsPage() {
-      return this.$route.path === "/";
+  methods: {
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
     },
   },
+  // computed: {
+  //   ...mapGetters("habits", [
+  //     "totalHabits",
+  //     "habitsCompleted",
+  //     "storedHabits",
+  //     "todayCompletedHabits",
+  //   ]),
+  // },
 };
 </script>
 
