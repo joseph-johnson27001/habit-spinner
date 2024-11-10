@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "SideNavigation",
   props: {
@@ -49,6 +51,10 @@ export default {
     close() {
       this.$emit("close"); // Emit close event to parent component
     },
+  },
+  computed: {
+    ...mapGetters("habits", ["storedHabits"]),
+    ...mapGetters("currency", ["getCoins"]),
   },
 };
 </script>
@@ -71,11 +77,11 @@ export default {
 /* Side Navigation Styles */
 .side-navigation {
   width: 80%;
-  background: #f3f3f3;
+  background: #e6e6e6;
   height: 100%;
   max-width: 300px;
   padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
