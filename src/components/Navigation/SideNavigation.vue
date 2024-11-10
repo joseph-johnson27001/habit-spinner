@@ -71,7 +71,13 @@ export default {
 /* Overlay styles */
 .overlay {
   position: fixed;
-  height: 100vh;
+  top: 0; /* Positioning starts from the top */
+  right: -100%;
+  width: 100%;
+  height: 75vh;
+  max-height: 600px;
+  display: flex;
+  justify-content: flex-end;
   z-index: 2;
   font-family: "Baloo 2", sans-serif;
   transition: right 0.5s ease; /* Smooth transition for sliding in and out */
@@ -79,11 +85,11 @@ export default {
 
 /* Side Navigation Styles */
 .side-navigation {
-  width: 100vw;
-  background: #f3f2f2;
+  width: 100%;
+  background: #efefef;
   margin-top: 66px;
   height: 100%;
-  max-width: 300px;
+  max-width: 400px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -152,8 +158,6 @@ export default {
 .bottom-link {
   border-top: 1px dashed #ccc;
   padding-top: 10px;
-  margin-top: 20px;
-  margin-bottom: 170px;
   text-align: left;
 }
 
