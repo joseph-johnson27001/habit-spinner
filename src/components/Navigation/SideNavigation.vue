@@ -8,6 +8,8 @@
           <span>{{ getCoins }}</span>
           <i class="fas fa-fire fire-icon"></i>
           <span>{{ storedHabits }}</span>
+          <i class="fas fa-star star-icon"></i>
+          <span>8</span>
         </div>
       </div>
 
@@ -63,12 +65,7 @@ export default {
 /* Overlay styles */
 .overlay {
   position: fixed;
-  top: 40;
-  right: -100%;
-  width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: flex-end;
   z-index: 2;
   font-family: "Baloo 2", sans-serif;
   transition: right 0.5s ease; /* Smooth transition for sliding in and out */
@@ -76,7 +73,7 @@ export default {
 
 /* Side Navigation Styles */
 .side-navigation {
-  width: 60%;
+  width: 100vw;
   background: #e6e6e6;
   margin-top: 66px;
   height: 100%;
@@ -113,8 +110,12 @@ export default {
 }
 
 .fire-icon {
-  color: orange;
+  color: #f76809;
   font-size: 18px;
+}
+
+.star-icon {
+  color: #ffcc00;
 }
 
 /* Navigation Links */
@@ -150,13 +151,5 @@ export default {
 .bottom-link a {
   text-decoration: none;
   color: #333;
-}
-
-.close-btn {
-  background: transparent;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 20px;
 }
 </style>
