@@ -4,12 +4,18 @@
       <!-- Top section: Coins and Plays (streaks) -->
       <div class="top-section">
         <div class="status">
-          <i class="fas fa-coins coin-icon"></i>
-          <span>{{ getCoins }}</span>
-          <i class="fas fa-fire fire-icon"></i>
-          <span>{{ storedHabits }}</span>
-          <i class="fas fa-star star-icon"></i>
-          <span>8</span>
+          <div>
+            <i class="fas fa-coins coin-icon"></i>
+            <span>{{ getCoins }}</span>
+          </div>
+          <div>
+            <i class="fas fa-fire fire-icon"></i>
+            <span>{{ storedHabits }}</span>
+          </div>
+          <div>
+            <i class="fas fa-star star-icon"></i>
+            <span>8</span>
+          </div>
         </div>
       </div>
 
@@ -74,7 +80,7 @@ export default {
 /* Side Navigation Styles */
 .side-navigation {
   width: 100vw;
-  background: #e6e6e6;
+  background: #f3f2f2;
   margin-top: 66px;
   height: 100%;
   max-width: 300px;
@@ -85,6 +91,8 @@ export default {
   font-size: 1.1rem;
   border: 1px solid #ccc;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 /* When the overlay is active and should be visible */
@@ -93,27 +101,29 @@ export default {
 }
 
 /* Top Section with Coin and Plays */
-.top-section {
-  display: flex;
-}
 
 .status {
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  gap: 8px;
+  font-size: 18px;
 }
 
 .coin-icon {
   font-size: 18px;
+  margin-right: 6px;
   color: #ffcc00;
 }
 
 .fire-icon {
   color: #f76809;
+  margin-right: 6px;
   font-size: 18px;
 }
 
 .star-icon {
+  font-size: 18px;
+  margin-right: 6px;
   color: #ffcc00;
 }
 
