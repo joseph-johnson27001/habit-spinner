@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay" @click.self="close">
+  <div class="overlay">
     <div class="side-navigation">
       <!-- Top section: Coins and Plays (streaks) -->
       <div class="top-section">
@@ -29,11 +29,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "SideNavigation",
-  emits: ["close"],
+  props: {
+    slideOpen: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       links: [
@@ -42,25 +45,22 @@ export default {
       ],
     };
   },
-  computed: {
-    ...mapGetters("habits", ["storedHabits"]),
-    ...mapGetters("currency", ["getCoins"]),
-  },
   methods: {
     close() {
-      this.$emit("close");
+      this.$emit("close"); // Emit close event to parent component
     },
   },
 };
 </script>
 
 <style scoped>
+/* Overlay styles */
 .overlay {
   position: fixed;
   top: 40;
   right: 0;
   width: 100%;
-  height: 85vh;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: flex-end;
@@ -68,17 +68,17 @@ export default {
   font-family: "Baloo 2", sans-serif;
 }
 
+/* Side Navigation Styles */
 .side-navigation {
   width: 80%;
   background: #f3f3f3;
   height: 100%;
+  max-width: 300px;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transform: translateX(100%);
-  animation: slideIn 0.3s forwards;
   font-size: 1.1rem;
 }
 
@@ -130,7 +130,7 @@ export default {
   border-top: 1px dashed #ccc;
   padding-top: 10px;
   margin-top: 20px;
-  margin-bottom: 55px;
+  margin-bottom: 170px;
   text-align: left;
 }
 
@@ -145,15 +145,5 @@ export default {
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 20px;
-}
-
-/* Slide-in animation */
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
 }
 </style>

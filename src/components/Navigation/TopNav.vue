@@ -14,8 +14,8 @@
       </div>
     </nav>
 
-    <!-- Side Navigation Overlay -->
-    <SideNavigation v-if="isSidebarOpen" @close="toggleSidebar" />
+    <!-- Conditionally render the SideNavigation component -->
+    <SideNavigation v-if="slideOpen" @close="toggleSidebar" />
 
     <ToastBar />
   </div>
@@ -33,22 +33,14 @@ export default {
   },
   data() {
     return {
-      isSidebarOpen: false,
+      slideOpen: false, // Sidebar initially closed
     };
   },
   methods: {
     toggleSidebar() {
-      this.isSidebarOpen = !this.isSidebarOpen;
+      this.slideOpen = !this.slideOpen; // Toggle the sidebar open/close
     },
   },
-  // computed: {
-  //   ...mapGetters("habits", [
-  //     "totalHabits",
-  //     "habitsCompleted",
-  //     "storedHabits",
-  //     "todayCompletedHabits",
-  //   ]),
-  // },
 };
 </script>
 
