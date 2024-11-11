@@ -4,6 +4,7 @@ import { createStore } from "vuex";
 import habits from "./modules/Habits";
 import rewards from "./modules/Rewards";
 import currency from "./modules/Currency";
+import levels from "./modules/Levels";
 import achievements from "./modules/Achievements";
 import settings from "./modules/Settings";
 
@@ -33,6 +34,7 @@ const store = createStore({
     habits,
     rewards,
     currency,
+    levels,
     achievements,
     settings,
   },

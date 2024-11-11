@@ -5,8 +5,10 @@
       <div class="top-section">
         <div class="status">
           <div class="status-item">
-            <i class="fas fa-coins coin-icon"></i>
-            <span>{{ getCoins }}</span>
+            <div>
+              <i class="fas fa-coins coin-icon"></i>
+              <span>{{ getCoins }}</span>
+            </div>
             <div class="progress-bar">
               <div
                 class="progress-fill"
@@ -15,8 +17,10 @@
             </div>
           </div>
           <div class="status-item">
-            <i class="fas fa-fire fire-icon"></i>
-            <span>{{ storedHabits }}</span>
+            <div>
+              <i class="fas fa-fire fire-icon"></i>
+              <span>{{ storedHabits }}</span>
+            </div>
             <div class="progress-bar">
               <div
                 class="progress-fill"
@@ -25,8 +29,10 @@
             </div>
           </div>
           <div class="status-item">
-            <i class="fas fa-star star-icon"></i>
-            <span>8</span>
+            <div>
+              <i class="fas fa-star star-icon"></i>
+              <span>{{ getLevel }}</span>
+            </div>
             <div class="progress-bar">
               <div
                 class="progress-fill"
@@ -93,6 +99,7 @@ export default {
   computed: {
     ...mapGetters("habits", ["storedHabits"]),
     ...mapGetters("currency", ["getCoins"]),
+    ...mapGetters("levels", ["getLevel"]),
 
     // Mock progress values (replace with actual logic for progress calculation)
     coinProgress() {
@@ -160,21 +167,22 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 80px;
+  font-size: 20px;
 }
 
 .coin-icon {
   color: #ffcc00;
-  font-size: 22px;
+  margin-right: 5px;
 }
 
 .fire-icon {
   color: #f76809;
-  font-size: 22px;
+  margin-right: 5px;
 }
 
 .star-icon {
   color: #ffd700;
-  font-size: 22px;
+  margin-right: 5px;
 }
 
 /* Progress Bar Styles */

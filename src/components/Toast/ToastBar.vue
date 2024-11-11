@@ -120,7 +120,7 @@ export default {
   animation: fade-slide-in 0.4s ease-out forwards;
 }
 .fade-slide-leave-active {
-  animation: fade-shrink-out 0.3s ease-out forwards;
+  animation: fade-shrink-out 0.4s ease-out forwards;
 }
 
 @keyframes pop-in {
