@@ -140,7 +140,7 @@ export default {
           const cardPosition =
             this.$refs.habitCard.getBoundingClientRect().top +
             window.scrollY -
-            70; // Offset
+            74; // Offset
           window.scrollTo({
             top: cardPosition,
             behavior: "smooth",
