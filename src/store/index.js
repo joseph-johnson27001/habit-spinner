@@ -5,6 +5,7 @@ import habits from "./modules/Habits";
 import rewards from "./modules/Rewards";
 import currency from "./modules/Currency";
 import achievements from "./modules/Achievements";
+import settings from "./modules/Settings";
 
 // LocalStorage plugin to persist specific state modules
 const localStoragePlugin = (store) => {
@@ -33,6 +34,7 @@ const store = createStore({
     rewards,
     currency,
     achievements,
+    settings,
   },
   plugins: [localStoragePlugin],
 });
