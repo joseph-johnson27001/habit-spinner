@@ -46,6 +46,7 @@ body {
 body {
   scrollbar-width: none; /* Hides the scrollbar */
   -ms-overflow-style: none; /* IE and Edge */
+  background-color: #f5f4f0;
 }
 
 .content-container {
