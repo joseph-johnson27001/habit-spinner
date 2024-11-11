@@ -1,20 +1,38 @@
 <template>
   <div :class="['overlay', { active: slideOpen }]">
     <div class="side-navigation">
-      <!-- Top section: Coins and Plays (streaks) -->
+      <!-- Top section: Coins, Streaks, and Level -->
       <div class="top-section">
         <div class="status">
-          <div>
+          <div class="status-item">
             <i class="fas fa-coins coin-icon"></i>
             <span>{{ getCoins }}</span>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                :style="{ width: coinProgress + '%' }"
+              ></div>
+            </div>
           </div>
-          <div>
+          <div class="status-item">
             <i class="fas fa-fire fire-icon"></i>
             <span>{{ storedHabits }}</span>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                :style="{ width: streakProgress + '%' }"
+              ></div>
+            </div>
           </div>
-          <div>
+          <div class="status-item">
             <i class="fas fa-star star-icon"></i>
             <span>8</span>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                :style="{ width: levelProgress + '%' }"
+              ></div>
+            </div>
           </div>
         </div>
       </div>
@@ -72,14 +90,25 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters("habits", ["storedHabits"]),
+    ...mapGetters("currency", ["getCoins"]),
+
+    // Mock progress values (replace with actual logic for progress calculation)
+    coinProgress() {
+      return (this.getCoins / 100) * 100; // Example percentage
+    },
+    streakProgress() {
+      return (this.storedHabits / 30) * 100; // Example, adjust based on actual streak goal
+    },
+    levelProgress() {
+      return (8 / 10) * 100; // Assuming level 8 out of 10, adjust based on actual level max
+    },
+  },
   methods: {
     close() {
       this.$emit("close");
     },
-  },
-  computed: {
-    ...mapGetters("habits", ["storedHabits"]),
-    ...mapGetters("currency", ["getCoins"]),
   },
 };
 </script>
@@ -117,7 +146,7 @@ export default {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Top Section with Coin and Plays */
+/* Top Section with Status Items */
 .status {
   display: flex;
   justify-content: space-around;
@@ -126,22 +155,42 @@ export default {
   margin-bottom: 10px;
 }
 
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+}
+
 .coin-icon {
-  font-size: 18px;
-  margin-right: 6px;
   color: #ffcc00;
+  font-size: 22px;
 }
 
 .fire-icon {
   color: #f76809;
-  margin-right: 6px;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .star-icon {
-  font-size: 18px;
-  margin-right: 6px;
-  color: #ffcc00;
+  color: #ffd700;
+  font-size: 22px;
+}
+
+/* Progress Bar Styles */
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #9a74d6;
+  transition: width 0.3s ease;
 }
 
 /* Navigation Links */
