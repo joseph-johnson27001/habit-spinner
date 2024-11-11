@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import DeleteHabitModal from "@/components/Habits/DeleteHabitModal.vue";
 
 export default {
@@ -104,6 +104,7 @@ export default {
     shouldShowDetails() {
       return this.habitIndex === this.showDetailsIndex;
     },
+    ...mapGetters("settings", ["getAlertSettings"]), // Mapping Vuex getter
   },
   methods: {
     ...mapActions("habits", [
@@ -114,16 +115,19 @@ export default {
 
     toggleCompletion() {
       if (!this.completed) {
-        this.playChime();
+        // Only play chime if alert sounds are enabled
+        if (this.getAlertSettings) {
+          this.playChime();
+        }
         this.completeHabit(this.habitIndex);
       } else {
         this.uncompleteHabit(this.habitIndex);
       }
     },
+
     async confirmDeleteHabit() {
       this.deleteHabitAction(this.habitIndex);
       this.showDeleteModal = false;
-
       this.toggleDetails();
     },
     toggleDetails() {
@@ -146,10 +150,6 @@ export default {
     },
     playChime() {
       this.chimeSound.play();
-    },
-    deleteHabit() {
-      this.$emit("setShowDetailsIndex", this.habitIndex);
-      this.deleteHabitAction(this.habitIndex);
     },
   },
 };
