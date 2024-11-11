@@ -19,18 +19,20 @@
         </div>
       </div>
 
-      <!-- Links Section -->
+      <!-- Links Section with Icons -->
       <ul class="nav-links">
         <li v-for="link in links" :key="link.text">
-          <router-link :to="link.to" @click="close">{{
-            link.text
-          }}</router-link>
+          <router-link :to="link.to" @click="close">
+            <i :class="link.icon" class="link-icon"></i> {{ link.text }}
+          </router-link>
         </li>
       </ul>
 
-      <!-- Settings Link at the Bottom -->
+      <!-- Settings Link with Cog Icon -->
       <div class="bottom-link">
-        <router-link to="/settings" @click="close">Settings</router-link>
+        <router-link to="/settings" @click="close">
+          <i class="fas fa-cog link-icon"></i> Settings
+        </router-link>
       </div>
     </div>
   </div>
@@ -50,14 +52,29 @@ export default {
   data() {
     return {
       links: [
-        { text: "How to use this app", to: "/how-to-use" },
-        { text: "The Science of making habits", to: "/science-of-habits" },
+        {
+          text: "How to use this app",
+          to: "/how-to-use",
+          icon: "fas fa-question-circle",
+        },
+        {
+          text: "The Science of making habits",
+          to: "/science-of-habits",
+          icon: "fas fa-flask",
+        },
+        {
+          text: "Tips & Tricks",
+          to: "/tips-and-tricks",
+          icon: "fas fa-lightbulb",
+        },
+        { text: "Resources", to: "/resources", icon: "fas fa-book" },
+        { text: "FAQ", to: "/faq", icon: "fas fa-info-circle" },
       ],
     };
   },
   methods: {
     close() {
-      this.$emit("close"); // Emit close event to parent component
+      this.$emit("close");
     },
   },
   computed: {
@@ -71,19 +88,19 @@ export default {
 /* Overlay styles */
 .overlay {
   position: fixed;
-  top: 66px; /* Start just below the TopNav */
-  right: -100%; /* Start hidden off-screen */
+  top: 66px;
+  right: -100%;
   width: 100%;
-  height: calc(100% - 66px); /* Take up all space below the TopNav */
+  height: calc(100% - 66px);
   display: flex;
   justify-content: flex-end;
   z-index: 9000;
   font-family: "Baloo 2", sans-serif;
-  transition: right 0.3s ease; /* Smooth slide-in */
+  transition: right 0.3s ease;
 }
 
 .overlay.active {
-  right: 0; /* Bring into view */
+  right: 0;
 }
 
 /* Side Navigation Styles */
@@ -94,7 +111,7 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space out top and bottom */
+  justify-content: space-between;
   font-size: 1.1rem;
   border-left: 1px solid #ccc;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
@@ -106,6 +123,7 @@ export default {
   justify-content: space-around;
   align-items: center;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .coin-icon {
@@ -142,14 +160,22 @@ export default {
 }
 
 .nav-links a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   text-transform: capitalize;
   color: #333;
 }
 
+.link-icon {
+  margin-right: 10px;
+  color: #4a90e2;
+}
+
 /* Bottom Link (Settings) */
 .bottom-link {
-  padding-top: 10px;
+  border-top: 1px dashed #ccc;
+  padding-top: 20px;
   text-align: left;
 }
 
