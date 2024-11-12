@@ -5,6 +5,7 @@ import SpinnerPage from "../views/SpinnerPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
 import SettingsPage from "@/views/SettingsPage.vue";
 import AchievementsPage from "@/views/AchievementsPage.vue";
+import ScienceOfHabitsPage from "@/views/ScienceOfHabitsPage.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/settings",
     name: "Settings",
     component: SettingsPage,
+  },
+  {
+    path: "/science-of-habits",
+    name: "ScienceOfHabits",
+    component: ScienceOfHabitsPage,
   },
 ];
 
