@@ -8,9 +8,13 @@ const state = () => ({
   lastTrackedWeek: moment().week(),
   lastTrackedMonth: moment().month(),
   lastTrackedYear: moment().year(),
+  level: 1,
+  points: 0,
+  levelRequirements: Array.from({ length: 100 }, (_, i) => (i + 1) * 25), // XP required for each level is 25 points higher than previous level
 });
 
 const getters = {
+  // Habit-related getters
   allHabits: (state) => state.habits,
   totalHabits: (state) => state.habits.length,
   totalCompletedHabits: (state) =>
@@ -27,9 +31,15 @@ const getters = {
     state.habits.reduce((sum, habit) => sum + habit.completedMonth, 0),
   yearlyCompleted: (state) =>
     state.habits.reduce((sum, habit) => sum + habit.completedYear, 0),
+
+  // Level-related getters
+  getLevel: (state) => state.level,
+  getPoints: (state) => state.points,
+  getPointsToNextLevel: (state) => state.levelRequirements[state.level - 1], // Points required for the next level
 };
 
 const mutations = {
+  // Habit-related mutations
   ADD_HABIT(state, habit) {
     state.habits.push({
       name: habit,
@@ -76,6 +86,8 @@ const mutations = {
 
     // Update today's completed habits count
     state.todayCompletedHabits += 1;
+
+    // No points are added here, as it's now handled inside the rollover logic
   },
 
   async UNCOMPLETE_HABIT(state, index) {
@@ -134,16 +146,23 @@ const mutations = {
         );
 
         if (daysSinceLastCompletion >= 1) {
-          if (habit.completed) {
-            state.points += 5;
+          // Check if the habit was completed
+          if (daysSinceLastCompletion >= 1) {
+            if (habit.completed) {
+              mutations.ADD_POINTS(state, 5); // This adds points for completed habits
+            }
+            habit.completed = false;
           }
-          habit.completed = false; // Reset completed status for a new day
+
+          // Reset completed status for a new day
+          habit.completed = false;
         }
+
+        // Reset the streak if more than a day has passed
         if (daysSinceLastCompletion > 1) {
-          habit.streak = 0; // Reset the streak if more than a day has passed
+          habit.streak = 0;
           habit.currentBestStreak = false;
         }
-        console.log(state.points);
       }
     });
 
@@ -164,6 +183,8 @@ const mutations = {
       state.storedHabits -= 1;
     }
   },
+
+  // Level-related mutations
   ADD_POINTS(state, points) {
     state.points += points;
     const pointsToNextLevel = state.levelRequirements[state.level - 1];
@@ -177,6 +198,7 @@ const mutations = {
 };
 
 const actions = {
+  // Habit-related actions
   addHabit({ commit }, habit) {
     commit("ADD_HABIT", habit);
   },
@@ -201,6 +223,11 @@ const actions = {
   },
   decrementStoredHabits({ commit }) {
     commit("DECREMENT_STORED_HABITS");
+  },
+
+  // Level-related actions
+  addPoints({ commit }, points) {
+    commit("ADD_POINTS", points);
   },
 };
 

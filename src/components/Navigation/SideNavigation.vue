@@ -97,9 +97,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("habits", ["storedHabits"]),
+    ...mapGetters("habits", ["storedHabits", "getLevel", "getPoints"]),
     ...mapGetters("currency", ["getCoins"]),
-    ...mapGetters("levels", ["getLevel"]),
 
     // Mock progress values (replace with actual logic for progress calculation)
     coinProgress() {
