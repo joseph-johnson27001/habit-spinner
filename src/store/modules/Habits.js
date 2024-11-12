@@ -134,12 +134,16 @@ const mutations = {
         );
 
         if (daysSinceLastCompletion >= 1) {
+          if (habit.completed) {
+            state.points += 5;
+          }
           habit.completed = false; // Reset completed status for a new day
         }
         if (daysSinceLastCompletion > 1) {
           habit.streak = 0; // Reset the streak if more than a day has passed
           habit.currentBestStreak = false;
         }
+        console.log(state.points);
       }
     });
 
@@ -160,6 +164,16 @@ const mutations = {
       state.storedHabits -= 1;
     }
   },
+  ADD_POINTS(state, points) {
+    state.points += points;
+    const pointsToNextLevel = state.levelRequirements[state.level - 1];
+
+    // Check if user has enough points to level up
+    if (state.points >= pointsToNextLevel) {
+      state.level += 1; // Increase level
+      state.points = 0; // Reset points for the new level
+    }
+  },
 };
 
 const actions = {
@@ -170,6 +184,7 @@ const actions = {
     commit("COMPLETE_HABIT", index);
     dispatch("checkDateForRollover");
   },
+
   uncompleteHabit({ commit, dispatch }, index) {
     commit("UNCOMPLETE_HABIT", index);
     dispatch("checkDateForRollover");

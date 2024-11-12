@@ -12,6 +12,7 @@ export default {
   },
   mutations: {
     ADD_POINTS(state, points) {
+      console.log("ADDING");
       state.points += points;
       const pointsToNextLevel = state.levelRequirements[state.level - 1];
 
@@ -20,11 +21,6 @@ export default {
         state.level += 1; // Increase level
         state.points = 0; // Reset points for the new level
       }
-    },
-  },
-  actions: {
-    addPoints({ commit }, points) {
-      commit("ADD_POINTS", points);
     },
   },
 };
