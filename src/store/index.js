@@ -4,7 +4,6 @@ import { createStore } from "vuex";
 import habits from "./modules/Habits";
 import rewards from "./modules/Rewards";
 import currency from "./modules/Currency";
-import levels from "./modules/Levels";
 import achievements from "./modules/Achievements";
 import settings from "./modules/Settings";
 
@@ -21,14 +20,13 @@ const localStoragePlugin = (store) => {
 
   // Subscribe to mutations to save only specific modules' state to localStorage
   store.subscribe((mutation, state) => {
-    const { habits, rewards, currency, levels, achievements, settings } = state; // Select only necessary modules to persist
+    const { habits, rewards, currency, achievements, settings } = state; // Select only necessary modules to persist
     localStorage.setItem(
       "vuexState",
       JSON.stringify({
         habits,
         rewards,
         currency,
-        levels,
         achievements,
         settings,
       })
@@ -41,7 +39,6 @@ const store = createStore({
     habits,
     rewards,
     currency,
-    levels,
     achievements,
     settings,
   },
