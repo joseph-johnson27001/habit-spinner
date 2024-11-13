@@ -9,6 +9,7 @@ const state = () => ({
   lastTrackedMonth: moment().month(),
   lastTrackedYear: moment().year(),
   level: 1,
+  newLevel: false,
   points: 0,
   levelRequirements: Array.from({ length: 100 }, (_, i) => (i + 1) * 25), // XP required for each level is 25 points higher than previous level
 });
@@ -33,6 +34,7 @@ const getters = {
     state.habits.reduce((sum, habit) => sum + habit.completedYear, 0),
 
   // Level-related getters
+  getNewLevel: (state) => state.newLevel,
   getLevel: (state) => state.level,
   getPoints: (state) => state.points,
   getPointsToNextLevel: (state) => state.levelRequirements[state.level - 1], // Points required for the next level
@@ -193,7 +195,12 @@ const mutations = {
     if (state.points >= pointsToNextLevel) {
       state.level += 1; // Increase level
       state.points = 0; // Reset points for the new level
+      state.newLevel = true; // Set new level value to true
+      console.log("STATE NEW LEVEL VALUE", state.newLevel);
     }
+  },
+  RESET_NEW_LEVEL(state) {
+    state.newLevel = false;
   },
 };
 

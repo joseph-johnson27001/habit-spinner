@@ -3,7 +3,7 @@
     name="fade-slide"
     @after-enter="startTimer"
     @after-leave="clearTimer"
-    @click="navigate()"
+    @click="navigate"
   >
     <div v-if="isVisible" class="toast-bar">
       <div class="accent-bar"></div>
@@ -12,37 +12,42 @@
           <h4 class="toast-heading">{{ title }}</h4>
           <p class="toast-message">{{ message }}</p>
         </div>
-        <img
-          :src="`/images/badges/weekly-warrior-badge.png`"
-          alt="Achievement Badge"
-          class="badge-image"
-        />
+        <img :src="badge" alt="Achievement Badge" class="badge-image" />
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "ToastBar",
-  props: {},
   data() {
     return {
       isVisible: false,
       timer: null,
-      title: "Achievement Complete!",
-      message: "You've Earned The Weekly Warrior Badge!",
+      title: "",
+      message: "",
+      badge: `/images/badges/weekly-warrior-badge.png`,
     };
   },
-  // mounted() {
-  //   setTimeout(() => {
-  //     this.isVisible = true;
-  //   }, 1000);
-  // },
+  computed: {
+    ...mapState("habits", ["newLevel", "level"]),
+  },
+  watch: {
+    newLevel(newVal) {
+      if (newVal) {
+        this.showToast();
+      }
+    },
+  },
   methods: {
+    ...mapMutations("habits", ["RESET_NEW_LEVEL"]),
     startTimer() {
       this.timer = setTimeout(() => {
         this.isVisible = false;
+        this.resetNewLevel();
       }, 3000);
     },
     clearTimer() {
@@ -51,6 +56,14 @@ export default {
     navigate() {
       this.isVisible = false;
       this.$router.push({ path: "/achievements" });
+    },
+    showToast() {
+      this.message = `You've reached Level ${this.level}!`;
+      this.title = "Level Complete!";
+      this.isVisible = true;
+    },
+    resetNewLevel() {
+      this.RESET_NEW_LEVEL();
     },
   },
 };
