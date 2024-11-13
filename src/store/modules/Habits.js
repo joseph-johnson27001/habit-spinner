@@ -151,7 +151,7 @@ const mutations = {
           // Check if the habit was completed
           if (daysSinceLastCompletion >= 1) {
             if (habit.completed) {
-              mutations.ADD_POINTS(state, 25); // This adds points for completed habits
+              mutations.ADD_POINTS(state, 5); // This adds points for completed habits
             }
             habit.completed = false;
           }
@@ -196,7 +196,6 @@ const mutations = {
       state.level += 1; // Increase level
       state.points = 0; // Reset points for the new level
       state.newLevel = true; // Set new level value to true
-      console.log("STATE NEW LEVEL VALUE", state.newLevel);
     }
   },
   RESET_NEW_LEVEL(state) {

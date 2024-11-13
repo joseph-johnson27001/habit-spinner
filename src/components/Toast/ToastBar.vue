@@ -12,18 +12,13 @@
           <h4 class="toast-heading">{{ title }}</h4>
           <p class="toast-message">{{ message }}</p>
         </div>
-        <img
-          v-if="badge"
-          :src="badge"
-          alt="Achievement Badge"
-          class="badge-image"
-        />
-        <div v-else class="level-container">
+
+        <div v-if="levelUp" class="level-container">
           <div class="star-level">
-            <i class="fas fa-star star-icon"></i>
-            <span class="level-text">{{ level }}</span>
+            <img :src="badge" alt="Achievement Badge" class="badge-image" />
           </div>
         </div>
+        <img v-else :src="badge" alt="Achievement Badge" class="badge-image" />
       </div>
     </div>
   </transition>
@@ -41,6 +36,7 @@ export default {
       title: "",
       message: "",
       badge: null,
+      levelUp: false,
       // badge: `/images/badges/weekly-warrior-badge.png`,
       // NEED TO SET BADGE TO BADGE VALUE IF ACHIEVEMENT NOT LEVEL
     };
@@ -51,6 +47,8 @@ export default {
   watch: {
     newLevel(newVal) {
       if (newVal) {
+        this.levelUp = true;
+        this.badge = "/images/badges/level-up-badge.png";
         this.showToast();
       }
     },
@@ -61,6 +59,7 @@ export default {
       this.timer = setTimeout(() => {
         this.isVisible = false;
         this.resetNewLevel();
+        this.levelUp = false;
       }, 3000);
     },
     clearTimer() {
@@ -129,7 +128,7 @@ export default {
 
 .toast-message {
   margin-top: 5px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .badge-image {
@@ -166,9 +165,9 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #29292c;
+  color: white;
 }
 
 /* Fade-in and slide from the left */
