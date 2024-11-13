@@ -59,7 +59,7 @@ export default {
     ...mapMutations("habits", ["RESET_NEW_LEVEL"]),
     startTimer() {
       this.timer = setTimeout(() => {
-        this.isVisible = true;
+        this.isVisible = false;
         this.resetNewLevel();
       }, 3000);
     },
