@@ -97,7 +97,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("habits", ["storedHabits", "getLevel", "getPoints"]),
+    ...mapGetters("habits", [
+      "storedHabits",
+      "getLevel",
+      "getPoints",
+      "getPointsToNextLevel",
+    ]),
     ...mapGetters("currency", ["getCoins"]),
 
     // Mock progress values (replace with actual logic for progress calculation)
@@ -108,7 +113,9 @@ export default {
       return (this.storedHabits / 30) * 100; // Example, adjust based on actual streak goal
     },
     levelProgress() {
-      return (8 / 10) * 100; // Assuming level 8 out of 10, adjust based on actual level max
+      return this.getPointsToNextLevel
+        ? (this.getPoints / this.getPointsToNextLevel) * 100
+        : 0; // Avoid division by zero
     },
   },
   methods: {
