@@ -76,6 +76,15 @@ export default {
   data() {
     return {
       links: [
+        { text: "Profile", to: "/profile", icon: "fas fa-user" },
+        { text: "Habits", to: "/", icon: "fas fa-list-alt" },
+        { text: "Rewards", to: "/rewards", icon: "fas fa-gift" },
+        {
+          text: "Achievements",
+          to: "/achievements",
+          icon: "fas fa-trophy",
+        },
+
         {
           text: "How to use this app",
           to: "/how-to-use",
@@ -85,11 +94,6 @@ export default {
           text: "The Science of making habits",
           to: "/science-of-habits",
           icon: "fas fa-flask",
-        },
-        {
-          text: "Tips & Tricks",
-          to: "/tips-and-tricks",
-          icon: "fas fa-lightbulb",
         },
         { text: "Resources", to: "/resources", icon: "fas fa-book" },
         { text: "FAQ", to: "/faq", icon: "fas fa-info-circle" },
@@ -157,6 +161,7 @@ export default {
   font-size: 1.1rem;
   border-left: 1px solid #ccc;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  overflow-y: scroll;
 }
 
 /* Top Section with Status Items */
