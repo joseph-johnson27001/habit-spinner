@@ -151,7 +151,7 @@ const mutations = {
           // Check if the habit was completed
           if (daysSinceLastCompletion >= 1) {
             if (habit.completed) {
-              mutations.ADD_POINTS(state, 5); // This adds points for completed habits
+              mutations.ADD_POINTS(state, 25); // This adds points for completed habits
             }
             habit.completed = false;
           }

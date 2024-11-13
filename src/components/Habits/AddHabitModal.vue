@@ -107,7 +107,7 @@ h2 {
   font-size: 18px;
   outline: none;
   color: #2f4a92;
-  font-family: "Baloo 2", sans-serif;
+  family: "Baloo 2", sans-serif;
   font-weight: 600;
   margin-bottom: 20px;
 }

@@ -12,7 +12,18 @@
           <h4 class="toast-heading">{{ title }}</h4>
           <p class="toast-message">{{ message }}</p>
         </div>
-        <img :src="badge" alt="Achievement Badge" class="badge-image" />
+        <img
+          v-if="badge"
+          :src="badge"
+          alt="Achievement Badge"
+          class="badge-image"
+        />
+        <div v-else class="level-container">
+          <div class="star-level">
+            <i class="fas fa-star star-icon"></i>
+            <span class="level-text">{{ level }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </transition>
@@ -29,7 +40,9 @@ export default {
       timer: null,
       title: "",
       message: "",
-      badge: `/images/badges/weekly-warrior-badge.png`,
+      badge: null,
+      // badge: `/images/badges/weekly-warrior-badge.png`,
+      // NEED TO SET BADGE TO BADGE VALUE IF ACHIEVEMENT NOT LEVEL
     };
   },
   computed: {
@@ -46,7 +59,7 @@ export default {
     ...mapMutations("habits", ["RESET_NEW_LEVEL"]),
     startTimer() {
       this.timer = setTimeout(() => {
-        this.isVisible = false;
+        this.isVisible = true;
         this.resetNewLevel();
       }, 3000);
     },
@@ -122,10 +135,40 @@ export default {
 .badge-image {
   width: 60px;
   height: 60px;
-  opacity: 0; /* Initially hidden */
-  animation: pop-in 0.6s 0.4s linear both; /* Apply animation with delay and keep final state */
+  opacity: 0;
+  animation: pop-in 0.6s 0.4s linear both;
   display: flex;
   align-self: center;
+}
+
+.level-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+/* Star icon container */
+.star-level {
+  position: relative;
+  display: inline-block;
+  animation: pop-in 0.6s 0.4s linear both;
+}
+
+.star-icon {
+  color: #ffd700;
+  font-size: 30px;
+}
+
+/* Level text on top of the star icon */
+.level-text {
+  position: absolute;
+  font-family: "Baloo 2", sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #29292c;
 }
 
 /* Fade-in and slide from the left */
