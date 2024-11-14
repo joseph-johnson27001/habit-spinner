@@ -4,6 +4,7 @@
       <!-- Top section: Coins, Streaks, and Level -->
       <div class="top-section">
         <div class="status">
+          <!-- Coins -->
           <div class="status-item">
             <div>
               <i class="fas fa-coins coin-icon"></i>
@@ -16,6 +17,8 @@
               ></div>
             </div>
           </div>
+
+          <!-- Fire Progress (previously streakProgress) -->
           <div class="status-item">
             <div>
               <i class="fas fa-fire fire-icon"></i>
@@ -24,10 +27,12 @@
             <div class="progress-bar">
               <div
                 class="progress-fill"
-                :style="{ width: streakProgress + '%' }"
+                :style="{ width: fireProgress + '%', background: fireGradient }"
               ></div>
             </div>
           </div>
+
+          <!-- Level -->
           <div class="status-item">
             <div>
               <i class="fas fa-star star-icon"></i>
@@ -84,7 +89,6 @@ export default {
           to: "/achievements",
           icon: "fas fa-trophy",
         },
-
         {
           text: "How to use this app",
           to: "/how-to-use",
@@ -106,20 +110,23 @@ export default {
       "getLevel",
       "getPoints",
       "getPointsToNextLevel",
+      "flameIntensity",
     ]),
     ...mapGetters("currency", ["getCoins"]),
-
-    // Mock progress values (replace with actual logic for progress calculation)
     coinProgress() {
-      return (this.getCoins / 100) * 100; // Example percentage
+      return (this.getCoins / 100) * 100;
     },
-    streakProgress() {
-      return (this.storedHabits / 30) * 100; // Example, adjust based on actual streak goal
+    fireProgress() {
+      return (this.flameIntensity / 500) * 100;
+    },
+
+    fireGradient() {
+      return "linear-gradient(90deg, #ff7e33, #ff4b1f)";
     },
     levelProgress() {
       return this.getPointsToNextLevel
         ? (this.getPoints / this.getPointsToNextLevel) * 100
-        : 0; // Avoid division by zero
+        : 0;
     },
   },
   methods: {
@@ -208,7 +215,6 @@ export default {
 
 .progress-fill {
   height: 100%;
-  background-color: #9a74d6;
   transition: width 0.3s ease;
 }
 

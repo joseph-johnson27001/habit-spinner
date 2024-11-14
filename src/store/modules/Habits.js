@@ -3,7 +3,7 @@ import moment from "moment";
 const state = () => ({
   habits: [],
   todayCompletedHabits: 0,
-  storedHabits: 0,
+  storedHabits: 70,
   lastTrackedDate: moment().format("DD-MM-YYYY"),
   lastTrackedWeek: moment().week(),
   lastTrackedMonth: moment().month(),

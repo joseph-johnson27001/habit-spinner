@@ -24,7 +24,7 @@ export default {
   computed: {
     ...mapState("habits", ["storedHabits", "flameIntensity"]),
     flameIntensityPercentage() {
-      return (this.flameIntensity / 1000) * 100;
+      return (this.flameIntensity / 500) * 100;
     },
   },
   methods: {
