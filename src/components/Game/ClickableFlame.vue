@@ -91,19 +91,20 @@ export default {
 <style scoped>
 .fire-icon {
   cursor: pointer;
-  padding-top: 0px;
 }
 .mo-fire {
-  width: 200px;
-  height: auto;
+  width: 225px;
+
   left: 50%;
-  margin-left: -60px;
-  top: 100px;
+  margin-left: -65px;
 }
 .mo-fire svg {
   width: 100%;
   height: auto;
   position: relative;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;
 }
 .flame {
   animation-name: flamefly;
@@ -161,7 +162,7 @@ export default {
     opacity: 1;
   }
   100% {
-    transform: translate(0px, -100px) rotate(180deg);
+    transform: translate(0px, -200px) rotate(180deg);
     opacity: 0;
   }
 }
