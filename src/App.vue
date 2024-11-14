@@ -22,8 +22,12 @@ export default {
 </script>
 
 <style>
+html {
+  height: 100vh;
+}
 body {
   padding: 0;
+  height: 100%;
   margin: 0;
 }
 
@@ -47,15 +51,18 @@ body {
   scrollbar-width: none; /* Hides the scrollbar */
   -ms-overflow-style: none; /* IE and Edge */
   background-color: #f5f4f0;
+  min-height: 100%;
 }
 
 .content-container {
   width: 100%;
+  height: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding-top: 70px;
+  margin-bottom: 80px;
 }
 
 @media only screen and (min-width: 1200px) {

@@ -103,11 +103,12 @@ export default {
   outline: none;
 }
 .mo-fire svg {
+  margin-top: 30px;
   width: 100%;
-  height: auto;
+  height: 100%;
   position: relative;
   display: flex;
-  justify-content: center; /* Centers horizontally */
+  justify-content: center;
   align-items: center;
 }
 .flame {
