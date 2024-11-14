@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HabitsPage from "../views/HabitsPage.vue";
 import RewardsPage from "../views/RewardsPage.vue";
-import SpinnerPage from "../views/SpinnerPage.vue";
+import GamePage from "../views/GamePage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
 import SettingsPage from "@/views/SettingsPage.vue";
 import AchievementsPage from "@/views/AchievementsPage.vue";
@@ -19,9 +19,9 @@ const routes = [
     component: RewardsPage,
   },
   {
-    path: "/spinner",
-    name: "Spinner",
-    component: SpinnerPage,
+    path: "/game",
+    name: "Game",
+    component: GamePage,
   },
   {
     path: "/profile",

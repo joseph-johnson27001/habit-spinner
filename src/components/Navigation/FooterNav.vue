@@ -21,12 +21,12 @@
         <span>HABITS</span>
       </router-link>
 
-      <!-- Centerpiece Spinner Button (Circular) -->
+      <!-- Centerpiece Game Button (Circular) -->
       <router-link
-        to="/spinner"
-        class="nav-button spinner-button"
+        to="/game"
+        class="nav-button game-button"
         :class="{
-          active: $route.path === '/spinner',
+          active: $route.path === '/game',
           'ready-to-play': tasksCompleted,
         }"
       >
@@ -142,8 +142,8 @@ export default {
   margin-top: 4px;
 }
 
-/* Centerpiece Spinner Button Styling */
-.spinner-button {
+/* Centerpiece Game Button Styling */
+.game-button {
   position: absolute;
   bottom: 35px; /* Makes it rise above the navbar */
   width: 45px;
@@ -159,20 +159,20 @@ export default {
   z-index: 1001;
 }
 
-/* Icon inside the spinner button */
-.spinner-button i {
+/* Icon inside the game button */
+.game-button i {
   font-size: 28px;
 }
 
 /* Glow effect when the user has completed their tasks */
-.spinner-button.ready-to-play {
+.game-button.ready-to-play {
   background-color: #f76809;
   box-shadow: 0 0 20px rgba(247, 104, 9, 0.8);
   transform: scale(1.1);
   animation: pulse 2s infinite ease-in-out;
 }
 
-.spinner-button.active::before {
+.game-button.active::before {
   background: none;
   outline: none;
 }

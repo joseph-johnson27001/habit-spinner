@@ -56,9 +56,7 @@ export default {
   methods: {
     ...mapMutations("habits", ["RESET_NEW_LEVEL"]),
     startTimer() {
-      // Clear any existing timer first to prevent overlapping timers
       this.clearTimer();
-      // Set the timer to hide the toast after 3 seconds of visibility
       this.timer = setTimeout(() => {
         this.isVisible = false;
         this.resetNewLevel();
@@ -73,14 +71,11 @@ export default {
       this.$router.push({ path: "/achievements" });
     },
     showToast() {
-      // Set the message and title
       this.message = `You've reached Level ${this.level}!`;
       this.title = "Level Complete!";
-
-      // Add a 3-second delay before making the toast visible
       setTimeout(() => {
-        this.isVisible = true; // Triggers the transition to show the toast
-        this.startTimer(); // Start the timer after it appears
+        this.isVisible = true;
+        this.startTimer();
       }, 3000);
     },
     resetNewLevel() {
