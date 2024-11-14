@@ -1,12 +1,7 @@
 <template>
   <div class="game-page">
-    <!-- Flame Intensity Bar -->
     <FlameIntensityBar :intensity="flameIntensityPercentage" />
-
-    <!-- Clickable Flame in the center of the page -->
     <ClickableFlame @flame-click="handleFlameClick" />
-
-    <!-- Display Remaining Plays (Fuel) -->
     <div class="fuel-counter">Fuel: {{ storedHabits }}</div>
   </div>
 </template>
