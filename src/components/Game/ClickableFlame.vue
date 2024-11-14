@@ -94,9 +94,13 @@ export default {
 }
 .mo-fire {
   width: 225px;
-
   left: 50%;
   margin-left: -65px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.mo-fire:focus {
+  outline: none;
 }
 .mo-fire svg {
   width: 100%;
