@@ -1,7 +1,7 @@
 <template>
   <div class="game-page">
     <!-- Flame Intensity Bar -->
-    <FlameIntensityBar :intensity="intensityLevel" />
+    <FlameIntensityBar :intensity="flameIntensityPercentage" />
 
     <!-- Clickable Flame in the center of the page -->
     <ClickableFlame @flame-click="handleFlameClick" />
@@ -22,21 +22,23 @@ export default {
     ClickableFlame,
   },
   computed: {
-    ...mapState("habits", ["storedHabits"]), // Access storedHabits from the Vuex store
-    // intensityLevel() {
-    // EACH TIME THE USER PLAYS IT CAN ADD A LEVEL OF INTENSITY
-    // },
+    ...mapState("habits", ["storedHabits", "flameIntensity"]),
+    flameIntensityPercentage() {
+      return (this.flameIntensity / 1000) * 100;
+    },
   },
   methods: {
-    ...mapActions("habits", ["decrementStoredHabits"]),
+    ...mapActions("habits", [
+      "decrementStoredHabits",
+      "increaseFlameIntensity",
+    ]),
 
     handleFlameClick() {
       if (this.storedHabits > 0) {
-        // Decrease storedHabits in the Vuex store
         this.decrementStoredHabits();
+        this.increaseFlameIntensity();
       } else {
-        // Optional: Notify the user that they’re out of fuel for today
-        alert("You're out of fuel for today! Come back tomorrow.");
+        //  PUT IN SOMETHING HERE TO TELL THE USER THEY'RE OUT OF FUEL
       }
     },
   },
@@ -48,7 +50,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 0px 20px;
   font-family: Arial, sans-serif;
 }
 

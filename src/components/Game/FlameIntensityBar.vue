@@ -10,7 +10,7 @@ export default {
     intensity: {
       type: Number,
       required: true,
-      default: 0, // starting intensity at 0%
+      default: 0,
     },
   },
 };
@@ -21,7 +21,7 @@ export default {
   width: 100%;
   height: 20px;
   border-radius: 10px;
-  background-color: #f5c6a5; /* light background for bar */
+  background-color: #f5c6a5;
   overflow: hidden;
   margin-top: 20px;
 }
@@ -29,11 +29,7 @@ export default {
 .intensity-fill {
   height: 100%;
   border-radius: 10px;
-  background: linear-gradient(
-    90deg,
-    #ff7e33,
-    #ff4b1f
-  ); /* flame-like gradient */
-  transition: width 0.3s ease-in-out; /* smooth transition */
+  background: linear-gradient(90deg, #ff7e33, #ff4b1f);
+  transition: width 0.3s ease-in-out;
 }
 </style>

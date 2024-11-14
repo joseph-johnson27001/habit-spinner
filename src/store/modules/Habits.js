@@ -12,6 +12,7 @@ const state = () => ({
   newLevel: false,
   points: 0,
   levelRequirements: Array.from({ length: 100 }, (_, i) => (i + 1) * 25), // XP required for each level is 25 points higher than previous level
+  flameIntensity: 0,
 });
 
 const getters = {
@@ -38,10 +39,12 @@ const getters = {
   getLevel: (state) => state.level,
   getPoints: (state) => state.points,
   getPointsToNextLevel: (state) => state.levelRequirements[state.level - 1], // Points required for the next level
+
+  // Game-related getters
+  flameIntensity: (state) => state.flameIntensity,
 };
 
 const mutations = {
-  // Habit-related mutations
   ADD_HABIT(state, habit) {
     state.habits.push({
       name: habit,
@@ -201,6 +204,11 @@ const mutations = {
   RESET_NEW_LEVEL(state) {
     state.newLevel = false;
   },
+  INCREASE_FLAME_INTENSITY(state) {
+    if (state.flameIntensity < 10000) {
+      state.flameIntensity += 1; // Increase intensity by 1
+    }
+  },
 };
 
 const actions = {
@@ -234,6 +242,9 @@ const actions = {
   // Level-related actions
   addPoints({ commit }, points) {
     commit("ADD_POINTS", points);
+  },
+  increaseFlameIntensity({ commit }) {
+    commit("INCREASE_FLAME_INTENSITY");
   },
 };
 
