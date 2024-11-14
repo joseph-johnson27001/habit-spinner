@@ -23,7 +23,7 @@ export default {
   border-radius: 10px;
   background-color: #f5c6a5;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .intensity-fill {
