@@ -48,12 +48,29 @@ export default {
   // FOR TESTING
   // this.showToast();
   // },
+
+  // OLD WATCHER IF NEED TO REVERT
+  //   watch: {
+  //   newLevel(newVal) {
+  //     if (newVal) {
+  //       this.levelUp = true;
+  //       this.badge = "/images/badges/level-up-badge.png";
+  //       this.showToast();
+  //     }
+  //   },
+  // },
+
+  // WATCHER WHICH SHOULD WAIT FOR IMAGE LOAD
   watch: {
     newLevel(newVal) {
       if (newVal) {
         this.levelUp = true;
         this.badge = "/images/badges/level-up-badge.png";
-        this.showToast();
+        const image = new Image();
+        image.src = this.badge;
+        image.onload = () => {
+          this.showToast();
+        };
       }
     },
   },
