@@ -44,6 +44,10 @@ export default {
   computed: {
     ...mapState("habits", ["newLevel", "level"]),
   },
+  // mounted() {
+  // FOR TESTING
+  // this.showToast();
+  // },
   watch: {
     newLevel(newVal) {
       if (newVal) {
@@ -76,7 +80,7 @@ export default {
       setTimeout(() => {
         this.isVisible = true;
         this.startTimer();
-      }, 3000);
+      }, 1000);
     },
     resetNewLevel() {
       this.RESET_NEW_LEVEL();
