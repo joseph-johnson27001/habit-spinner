@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style>
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 html {
   height: 100vh;
 }
