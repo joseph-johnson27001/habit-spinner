@@ -64,7 +64,8 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 70px;
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
+  overflow-y: scroll; /* Keeps vertical scroll in content container */
 }
 
 @media only screen and (min-width: 1200px) {

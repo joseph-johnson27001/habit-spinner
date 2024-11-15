@@ -49,10 +49,16 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
+    // Ensure scroll to top behavior on route change
     if (savedPosition) {
       return savedPosition;
     } else {
-      return { top: 0 };
+      // Immediately scroll to top of the `.content-container`
+      const contentContainer = document.querySelector(".content-container");
+      if (contentContainer) {
+        contentContainer.scrollTop = 0;
+      }
+      return { top: 0 }; // Immediate scroll to top
     }
   },
 });
