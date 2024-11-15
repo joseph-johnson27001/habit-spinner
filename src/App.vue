@@ -41,18 +41,17 @@ body {
   font-family: "Nunito", sans-serif;
   height: 100%;
   text-align: center;
-  overflow-y: scroll;
 }
 
 /* Hide scrollbar for WebKit browsers */
 ::-webkit-scrollbar {
-  display: none; /* Hides the scrollbar */
+  display: none;
 }
 
 /* Hide scrollbar for Firefox */
 body {
-  scrollbar-width: none; /* Hides the scrollbar */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   background-color: #f5f4f0;
   min-height: 100%;
 }
