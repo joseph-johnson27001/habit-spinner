@@ -35,12 +35,19 @@ export default {
       "decrementStoredHabits",
       "increaseFlameIntensity",
     ]),
-    handleFlameClick() {
+    ...mapActions("currency", ["increaseCoins"]), // Ensure the action for increasing coins is included
+
+    handleFlameClick(coinValue) {
       if (this.storedHabits > 0) {
+        // Decrease fuel and increase flame intensity as before
         this.decrementStoredHabits();
         this.increaseFlameIntensity();
+
+        // Increase the coin balance with the randomly generated coin value
+        this.increaseCoins(coinValue); // This calls the Vuex action to update coins
       } else {
-        // Add logic to inform the user they're out of fuel if desired
+        // Inform the user they're out of fuel if necessary
+        console.log("Out of fuel!");
       }
     },
   },

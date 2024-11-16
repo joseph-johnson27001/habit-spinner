@@ -108,7 +108,6 @@ export default {
   left: 0;
 }
 
-/* New styles for the coin icon and reward cost */
 .reward-cost {
   display: flex;
   align-items: center;

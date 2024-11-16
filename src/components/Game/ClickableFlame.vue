@@ -79,10 +79,12 @@ export default {
   methods: {
     handleFlameClick() {
       this.isClicked = true;
+      const coinValue = Math.floor(Math.random() * 11);
+      this.$emit("flame-click", coinValue);
+
       setTimeout(() => {
         this.isClicked = false;
       }, 500);
-      this.$emit("flame-click");
     },
   },
 };
