@@ -15,16 +15,19 @@
           />
         </div>
 
+        <!-- Select Reward Type -->
         <div class="form-group">
-          <input
-            type="number"
-            id="rewardCost"
-            v-model="newReward.cost"
-            min="1"
+          <select
+            id="rewardType"
+            v-model="newReward.type"
             required
-            class="reward-input"
-            placeholder="Enter Reward Cost"
-          />
+            class="reward-select"
+          >
+            <option value="" disabled>Select Type Of Reward</option>
+            <option v-for="(value, key) in rewardTypes" :key="key" :value="key">
+              {{ value.name }}
+            </option>
+          </select>
         </div>
 
         <div class="modal-actions">
@@ -52,7 +55,16 @@ export default {
     return {
       newReward: {
         name: "",
+        type: "",
         cost: null,
+      },
+      // Define reward types and their corresponding coin values
+      rewardTypes: {
+        instantGratification: { name: "Instant Gratification", cost: 100 },
+        weeklyWins: { name: "Weekly Wins", cost: 500 },
+        monthlyMilestones: { name: "Monthly Milestones", cost: 1500 },
+        yearlyAchievements: { name: "Yearly Achievements", cost: 5000 },
+        ultimateAim: { name: "Ultimate Aim", cost: 10000 },
       },
     };
   },
@@ -61,7 +73,8 @@ export default {
     async handleAddReward() {
       const reward = {
         name: this.newReward.name,
-        cost: Number(this.newReward.cost),
+        cost: this.newReward.cost,
+        type: this.newReward.type,
         redeemed: false,
       };
       await this.addReward(reward);
@@ -70,7 +83,18 @@ export default {
     closeModal() {
       this.$emit("close");
       this.newReward.name = "";
+      this.newReward.type = "";
       this.newReward.cost = null;
+    },
+  },
+  watch: {
+    // Watch for changes in the reward type and update the cost accordingly
+    "newReward.type": function (newType) {
+      if (newType) {
+        this.newReward.cost = this.rewardTypes[newType].cost;
+      } else {
+        this.newReward.cost = null;
+      }
     },
   },
 };
@@ -116,7 +140,8 @@ h2 {
   margin-bottom: 20px;
 }
 
-.reward-input {
+.reward-input,
+.reward-select {
   width: 90%;
   padding: 10px 15px;
   border: 1px solid #2f4a92;
@@ -127,6 +152,10 @@ h2 {
   font-family: "Baloo 2", sans-serif;
   font-weight: 600;
   background: linear-gradient(to right, #ffffff, #f4f6f8);
+}
+
+.reward-select {
+  width: 100%;
 }
 
 .reward-input::placeholder {
