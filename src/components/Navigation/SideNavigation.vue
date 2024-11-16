@@ -214,6 +214,7 @@ export default {
 }
 
 .progress-fill {
+  background-color: #9a74d6;
   height: 100%;
   transition: width 0.3s ease;
 }
