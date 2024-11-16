@@ -23,7 +23,8 @@
             required
             class="reward-select"
           >
-            <option value="" disabled>Select Type Of Reward</option>
+            <option value="" disabled selected>Select Reward Type</option>
+            <!-- This acts like a placeholder -->
             <option v-for="(value, key) in rewardTypes" :key="key" :value="key">
               {{ value.name }}
             </option>
@@ -60,11 +61,11 @@ export default {
       },
       // Define reward types and their corresponding coin values
       rewardTypes: {
-        instantGratification: { name: "Instant Gratification", cost: 100 },
-        weeklyWins: { name: "Weekly Wins", cost: 500 },
-        monthlyMilestones: { name: "Monthly Milestones", cost: 1500 },
-        yearlyAchievements: { name: "Yearly Achievements", cost: 5000 },
-        ultimateAim: { name: "Ultimate Aim", cost: 10000 },
+        instantGratification: { name: "Daily Reward", cost: 100 },
+        weeklyWins: { name: "Weekly Reward", cost: 500 },
+        monthlyMilestones: { name: "Monthly Reward", cost: 1500 },
+        yearlyAchievements: { name: "Yearly Reward", cost: 5000 },
+        ultimateAim: { name: "Ultimate Reward", cost: 10000 },
       },
     };
   },
