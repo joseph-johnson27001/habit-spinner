@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "RewardCard",
@@ -41,15 +41,32 @@ export default {
       redeemSound: new Audio(require("@/assets/chime.mp3")),
     };
   },
+  computed: {
+    // Access user's coin balance from the currency store
+    ...mapGetters("currency", ["getCoins"]),
+
+    // Check if the user can afford this reward
+    canAfford() {
+      return this.getCoins >= this.cost;
+    },
+  },
   methods: {
     ...mapActions("rewards", ["redeemReward"]),
+
     toggleRedeem() {
+      // If the user can't afford it, do nothing
+      if (!this.canAfford) {
+        return; // Do nothing if they can't afford it
+      }
+
+      // Proceed with redeeming the reward if the user can afford it
       if (!this.isRedeemed) {
         this.isRedeemed = true;
         this.redeemReward(this.rewardId);
         this.playRedeemSound();
       }
     },
+
     playRedeemSound() {
       this.redeemSound.play();
     },
