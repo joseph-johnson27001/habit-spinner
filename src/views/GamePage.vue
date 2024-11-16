@@ -3,6 +3,11 @@
     <FlameIntensityBar :intensity="flameIntensityPercentage" />
     <ClickableFlame @flame-click="handleFlameClick" />
 
+    <!-- Coin Value Notification -->
+    <div v-if="coinNotificationVisible" class="coin-notification">
+      +{{ coinNotificationValue }} Coins
+    </div>
+
     <!-- Footer section containing fuel and coins counters -->
     <div class="game-footer">
       <div class="fuel-counter">
@@ -23,6 +28,12 @@ export default {
     FlameIntensityBar,
     ClickableFlame,
   },
+  data() {
+    return {
+      coinNotificationVisible: false,
+      coinNotificationValue: 0,
+    };
+  },
   computed: {
     ...mapState("habits", ["storedHabits", "flameIntensity"]),
     ...mapState("currency", ["coins"]),
@@ -35,18 +46,26 @@ export default {
       "decrementStoredHabits",
       "increaseFlameIntensity",
     ]),
-    ...mapActions("currency", ["increaseCoins"]), // Ensure the action for increasing coins is included
+    ...mapActions("currency", ["increaseCoins"]),
 
     handleFlameClick(coinValue) {
       if (this.storedHabits > 0) {
-        // Decrease fuel and increase flame intensity as before
+        // Decrease fuel and increase flame intensity
         this.decrementStoredHabits();
         this.increaseFlameIntensity();
 
         // Increase the coin balance with the randomly generated coin value
-        this.increaseCoins(coinValue); // This calls the Vuex action to update coins
+        this.increaseCoins(coinValue);
+
+        // Show coin notification
+        this.coinNotificationValue = coinValue;
+        this.coinNotificationVisible = true;
+
+        // Hide the coin notification after 1 second
+        setTimeout(() => {
+          this.coinNotificationVisible = false;
+        }, 1000);
       } else {
-        // Inform the user they're out of fuel if necessary
         console.log("Out of fuel!");
       }
     },
@@ -77,7 +96,7 @@ export default {
 .coins-counter {
   display: flex;
   align-items: center;
-  gap: 5px; /* Space between icon and text */
+  gap: 5px;
   font-size: 18px;
 }
 
@@ -92,5 +111,34 @@ export default {
 .fuel-counter i,
 .coins-counter i {
   font-size: 20px;
+}
+
+/* Coin notification styling */
+.coin-notification {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 128, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  animation: fadeInOut 1s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 </style>
