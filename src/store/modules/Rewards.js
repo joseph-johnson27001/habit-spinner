@@ -1,12 +1,7 @@
 export default {
   namespaced: true,
   state: () => ({
-    rewards: [
-      { name: "Spa Day", redeemed: false, cost: 50 },
-      { name: "Movie Ticket", redeemed: false, cost: 20 },
-      { name: "Dinner at a Restaurant", redeemed: false, cost: 80 },
-      { name: "New Book", redeemed: false, cost: 30 },
-    ],
+    rewards: [],
   }),
   getters: {
     allRewards: (state) => state.rewards,
