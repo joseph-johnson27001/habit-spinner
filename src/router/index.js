@@ -6,6 +6,9 @@ import ProfilePage from "@/views/ProfilePage.vue";
 import SettingsPage from "@/views/SettingsPage.vue";
 import AchievementsPage from "@/views/AchievementsPage.vue";
 import ScienceOfHabitsPage from "@/views/ScienceOfHabitsPage.vue";
+import HowToUsePage from "@/views/HowToUsePage.vue"; // New Import
+import ResourcesPage from "@/views/ResourcesPage.vue"; // New Import
+import FAQPage from "@/views/FAQPage.vue"; // New Import
 
 const routes = [
   {
@@ -42,6 +45,21 @@ const routes = [
     path: "/science-of-habits",
     name: "ScienceOfHabits",
     component: ScienceOfHabitsPage,
+  },
+  {
+    path: "/how-to-use", // New Route
+    name: "HowToUse",
+    component: HowToUsePage,
+  },
+  {
+    path: "/resources", // New Route
+    name: "Resources",
+    component: ResourcesPage,
+  },
+  {
+    path: "/faq", // New Route
+    name: "FAQ",
+    component: FAQPage,
   },
 ];
 
