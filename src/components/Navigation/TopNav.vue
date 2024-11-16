@@ -37,8 +37,11 @@ export default {
     };
   },
   methods: {
-    toggleSidebar() {
+    toggleSidebar(event) {
       this.slideOpen = !this.slideOpen; // Toggle the sidebar open/close
+      if (event) {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+      }
     },
   },
 };

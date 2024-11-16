@@ -1,6 +1,6 @@
 <template>
   <div :class="['overlay', { active: slideOpen }]">
-    <div class="side-navigation">
+    <div class="side-navigation" ref="sideNav">
       <!-- Top section: Coins, Streaks, and Level -->
       <div class="top-section">
         <div class="status">
@@ -132,6 +132,24 @@ export default {
   methods: {
     close() {
       this.$emit("close");
+    },
+    handleClickOutside(event) {
+      if (
+        this.slideOpen &&
+        this.$refs.sideNav &&
+        !this.$refs.sideNav.contains(event.target)
+      ) {
+        this.close();
+      }
+    },
+  },
+  watch: {
+    slideOpen(newVal) {
+      if (newVal) {
+        document.addEventListener("click", this.handleClickOutside);
+      } else {
+        document.removeEventListener("click", this.handleClickOutside);
+      }
     },
   },
 };
