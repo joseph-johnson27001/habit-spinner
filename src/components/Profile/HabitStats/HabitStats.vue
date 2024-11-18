@@ -44,18 +44,18 @@ export default {
         // {
         //   title: "Best Current Streak",
         //   value: this.habitsCompleted,
-        //   bg: "linear-gradient(135deg, #2ECC71, #27AE60)",
+        //  bg: "#3498DB", // Calm blue for consistency
         // },
 
         {
           title: "Habits Completed This Week",
           value: this.weeklyCompleted,
-          bg: "#9a74d6",
+          bg: "linear-gradient(135deg, #1ABC9C, #16A085)", // Gradient teal for progress
         },
         {
           title: "Habits Completed This Month",
           value: this.monthlyCompleted,
-          bg: "linear-gradient(135deg, #1ABC9C, #16A085)", // Gradient teal for progress
+          bg: "#9a74d6",
         },
         {
           title: "Habits Completed This Year",
@@ -65,7 +65,7 @@ export default {
         {
           title: "Best Streak",
           value: this.bestStreak,
-          bg: "#3498DB", // Calm blue for consistency
+          bg: "linear-gradient(135deg, #2ECC71, #27AE60)",
         },
         {
           title: "Total Completed Habits",
