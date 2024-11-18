@@ -33,7 +33,6 @@ export default {
 
     toggleAlertSounds() {
       this.SET_ALERT_SOUNDS(!this.alertSounds);
-      console.log(this.$store.state.settings.alertSounds);
     },
   },
 };
@@ -84,7 +83,7 @@ export default {
 }
 
 .toggle-switch input:checked + .slider {
-  background-color: #4caf50;
+  background-color: #9a74d6;
 }
 
 .toggle-switch .slider:before {
