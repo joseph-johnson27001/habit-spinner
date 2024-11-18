@@ -6,6 +6,7 @@ import rewards from "./modules/Rewards";
 import currency from "./modules/Currency";
 import achievements from "./modules/Achievements";
 import settings from "./modules/Settings";
+import profile from "./modules/Profile";
 
 // LocalStorage plugin to persist specific state modules
 const localStoragePlugin = (store) => {
@@ -29,6 +30,7 @@ const localStoragePlugin = (store) => {
         currency,
         achievements,
         settings,
+        profile,
       })
     );
   });
@@ -41,6 +43,7 @@ const store = createStore({
     currency,
     achievements,
     settings,
+    profile,
   },
   plugins: [localStoragePlugin],
 });
