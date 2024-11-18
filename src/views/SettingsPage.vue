@@ -1,8 +1,29 @@
 <template>
   <div class="settings-page">
-    <div class="profile-section">
-      <h2>Profile</h2>
+    <!-- Navigation Bar -->
+    <div class="navigation">
+      <button
+        :class="{ active: currentTab === 'profile' }"
+        @click="currentTab = 'profile'"
+      >
+        <i class="fa fa-user"></i> Profile
+      </button>
+      <button
+        :class="{ active: currentTab === 'alerts' }"
+        @click="currentTab = 'alerts'"
+      >
+        <i class="fa fa-bell"></i> Alerts
+      </button>
+      <button
+        :class="{ active: currentTab === 'account' }"
+        @click="currentTab = 'account'"
+      >
+        <i class="fa fa-cogs"></i> Account
+      </button>
+    </div>
 
+    <!-- Profile Section -->
+    <div v-if="currentTab === 'profile'" class="profile-section">
       <!-- Update Name -->
       <div class="setting-item">
         <label for="profile-name">Name:</label>
@@ -37,17 +58,25 @@
       </div>
     </div>
 
-    <!-- Toggle for Alert Sounds -->
-    <div class="setting-item">
-      <label for="alert-sounds-toggle">Enable Chime Sound:</label>
-      <div @click="toggleAlertSounds" class="toggle-switch">
-        <input
-          type="checkbox"
-          id="alert-sounds-toggle"
-          :checked="alertSounds"
-        />
-        <span class="slider"></span>
+    <!-- Alerts Section -->
+    <div v-if="currentTab === 'alerts'" class="alerts-section">
+      <!-- Toggle for Alert Sounds -->
+      <div class="setting-item">
+        <label for="alert-sounds-toggle">Enable Chime Sound:</label>
+        <div @click="toggleAlertSounds" class="toggle-switch">
+          <input
+            type="checkbox"
+            id="alert-sounds-toggle"
+            :checked="alertSounds"
+          />
+          <span class="slider"></span>
+        </div>
       </div>
+    </div>
+
+    <!-- Account Section -->
+    <div v-if="currentTab === 'account'" class="account-section">
+      <p>Account settings will go here.</p>
     </div>
   </div>
 </template>
@@ -59,6 +88,9 @@ export default {
   name: "SettingsPage",
   data() {
     return {
+      // Tab selection for navigation
+      currentTab: "profile", // Default tab is 'profile'
+
       // Profile section data
       profile: {
         name: "",
@@ -90,14 +122,52 @@ export default {
   padding: 20px;
 }
 
+/* Navigation Bar Styles */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: calc(100%); /* Full width minus 20px padding on both sides */
+  max-width: 500px; /* Max width for the nav */
+  margin: 0 auto; /* Center it horizontally */
+  padding-bottom: 20px;
+}
+
+.navigation button {
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: color 0.3s ease;
+  border-bottom: 2px solid #ccc; /* Default border bottom */
+  flex: 1; /* Buttons will take up equal space */
+  text-align: center;
+}
+
+.navigation button .fa {
+  margin-right: 8px;
+}
+
+.navigation button.active {
+  border-bottom: 2px solid #9a74d6; /* Active button purple border */
+}
+
+/* Remove space between the buttons */
+.navigation button:not(:last-child) {
+  margin-right: 0;
+}
+
+/* Profile Section */
 .profile-section {
   margin-bottom: 30px;
 }
 
-.profile-section h2 {
-  margin-bottom: 15px;
-}
-
+/* Setting Items */
 .setting-item {
   display: flex;
   align-items: center;
@@ -113,16 +183,6 @@ export default {
 .setting-item select {
   flex: 1;
   padding: 5px;
-}
-
-.setting-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.setting-item label {
-  margin-right: 10px;
 }
 
 /* Toggle Switch Styling */
