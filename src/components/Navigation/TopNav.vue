@@ -4,7 +4,13 @@
       <div class="top-nav-content">
         <!-- Center: Heading -->
         <div class="center-section heading">
-          <h2>Ember</h2>
+          <router-link
+            to="/"
+            class="nav-button"
+            :class="{ active: $route.path === '/' }"
+          >
+            <h2>Ember</h2>
+          </router-link>
         </div>
 
         <!-- Right side: Hamburger Icon -->
@@ -71,6 +77,11 @@ export default {
   display: flex;
   align-items: center;
   padding: 5px 20px;
+  color: white;
+}
+
+.nav-button {
+  text-decoration: none;
   color: white;
 }
 

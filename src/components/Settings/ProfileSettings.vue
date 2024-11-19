@@ -127,7 +127,6 @@ select option {
   display: flex;
   align-items: center;
   font-size: 16px;
-  font-weight: 100;
   text-transform: capitalize;
   color: #fff;
   cursor: pointer;
