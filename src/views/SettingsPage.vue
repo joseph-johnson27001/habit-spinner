@@ -2,11 +2,12 @@
   <div class="settings-page">
     <div class="navigation">
       <button
-        :class="{ active: currentTab === 'profile' }"
-        @click="currentTab = 'profile'"
+        :class="{ active: currentTab === 'account' }"
+        @click="currentTab = 'account'"
       >
-        <i class="fa fa-user"></i> Profile
+        <i class="fa fa-cogs"></i> Account
       </button>
+
       <button
         :class="{ active: currentTab === 'alerts' }"
         @click="currentTab = 'alerts'"
@@ -14,21 +15,21 @@
         <i class="fa fa-bell"></i> Alerts
       </button>
       <button
-        :class="{ active: currentTab === 'account' }"
-        @click="currentTab = 'account'"
+        :class="{ active: currentTab === 'profile' }"
+        @click="currentTab = 'profile'"
       >
-        <i class="fa fa-cogs"></i> Account
+        <i class="fa fa-user"></i> Profile
       </button>
-    </div>
-
-    <ProfileSettings v-if="currentTab === 'profile'" />
-
-    <div v-if="currentTab === 'alerts'" class="alerts-section">
-      <AlertSettings />
     </div>
 
     <div v-if="currentTab === 'account'" class="account-section">
       <AccountSettings />
+    </div>
+    <div v-if="currentTab === 'alerts'" class="alerts-section">
+      <AlertSettings />
+    </div>
+    <div v-if="currentTab === 'profile'">
+      <ProfileSettings />
     </div>
   </div>
 </template>
@@ -47,7 +48,7 @@ export default {
   },
   data() {
     return {
-      currentTab: "profile",
+      currentTab: "account",
     };
   },
 };

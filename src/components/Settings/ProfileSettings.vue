@@ -53,5 +53,8 @@ export default {
 </script>
 
 <style scoped>
-/* Profile-specific styles */
+.profile-section {
+  text-align: left;
+  width: 100%;
+}
 </style>
