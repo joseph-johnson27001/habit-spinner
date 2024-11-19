@@ -70,7 +70,7 @@ body {
 }
 
 .setting-item {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Label Styling */
@@ -84,7 +84,7 @@ label {
 input[type="text"],
 select {
   width: 100%;
-  padding: 12px 15px;
+  padding: 15px 10px;
   border-radius: 6px;
   border: 1px solid #2f4a92;
   font-size: 16px;
@@ -92,6 +92,10 @@ select {
   color: #2f4a92;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding-left: 15px;
 }
 
 /* Placeholder Text Style */
@@ -114,30 +118,21 @@ select option {
 
 /* Save Button Styling */
 .save-button {
-  font-size: 18px;
-  padding: 10px 20px;
-  background-color: #4a90e2;
+  font-size: 16px;
+  padding: 15px 20px;
+  background-color: #9a74d6;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 100;
   transition: background-color 0.3s ease;
-}
-
-.save-button:hover {
-  background-color: #2f4a92;
 }
 
 /* Responsive Styles */
 @media (max-width: 600px) {
   .profile-section {
     padding: 15px;
-  }
-
-  input[type="text"],
-  select {
-    padding: 10px 12px;
   }
 
   .save-button {

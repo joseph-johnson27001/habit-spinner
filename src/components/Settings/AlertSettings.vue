@@ -38,6 +38,7 @@ export default {
 .setting-item label {
   margin-right: 10px;
   flex-shrink: 0;
+  color: #2f4a92;
 }
 
 .setting-item input,
