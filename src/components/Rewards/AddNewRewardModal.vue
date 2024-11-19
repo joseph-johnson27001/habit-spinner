@@ -122,8 +122,9 @@ export default {
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 20px 30px 30px 30px;
   border-radius: 12px;
-  width: 80%;
+  width: 100%;
   max-width: 300px;
+  min-width: 80%;
   max-height: 300px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -143,7 +144,6 @@ h2 {
 
 .reward-input,
 .reward-select {
-  width: 90%;
   padding: 10px 15px;
   border: 1px solid #2f4a92;
   border-radius: 6px;
@@ -153,9 +153,6 @@ h2 {
   font-family: "Baloo 2", sans-serif;
   font-weight: 600;
   background: linear-gradient(to right, #ffffff, #f4f6f8);
-}
-
-.reward-select {
   width: 100%;
 }
 
@@ -181,7 +178,8 @@ h2 {
   font-weight: 100;
   border: 2px solid #fff;
   border-radius: 50%;
-  padding: 6px 10px;
+  padding: 10px;
+  display: flex;
 }
 
 .close-button {
