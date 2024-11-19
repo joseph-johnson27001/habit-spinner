@@ -89,6 +89,7 @@ export default {
 
 .navigation button .fa {
   margin-right: 8px;
+  color: #4a90e2;
 }
 
 .navigation button.active {
