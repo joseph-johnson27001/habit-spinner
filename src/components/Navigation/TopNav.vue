@@ -76,7 +76,7 @@ export default {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 5px 20px;
+  padding: 5px 15px;
   color: white;
 }
 

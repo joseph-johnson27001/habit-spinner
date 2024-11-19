@@ -19,7 +19,7 @@ export default {
     return {
       user: {
         name: "Joe Johnson",
-        bio: "Habit Person",
+        bio: "Firestarter",
         profilePicture: "path/to/image.jpg",
       },
       userStats: {
