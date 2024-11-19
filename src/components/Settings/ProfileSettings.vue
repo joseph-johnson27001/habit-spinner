@@ -66,7 +66,6 @@ body {
 .profile-section {
   text-align: left;
   width: 100%;
-  padding: 20px;
 }
 
 .setting-item {
@@ -118,25 +117,22 @@ select option {
 
 /* Save Button Styling */
 .save-button {
-  font-size: 16px;
-  padding: 15px 20px;
-  background-color: #9a74d6;
-  color: white;
+  position: relative;
+  background: linear-gradient(to right, #ff5e87, #fca066);
+  padding: 40px 15px;
+  margin: 10px 0;
+  border-radius: 10px;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
   font-weight: 100;
-  transition: background-color 0.3s ease;
-}
-
-/* Responsive Styles */
-@media (max-width: 600px) {
-  .profile-section {
-    padding: 15px;
-  }
-
-  .save-button {
-    width: 100%;
-  }
+  text-transform: capitalize;
+  color: #fff;
+  cursor: pointer;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  width: 100%;
 }
 </style>
