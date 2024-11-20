@@ -103,8 +103,7 @@ export default {
     },
 
     handleDeleteReward() {
-      // Delete the reward using the correct id
-      this.deleteReward(this.editedReward.id); // Make sure the correct 'id' is passed
+      this.deleteReward(this.editedReward.id);
       this.closeModal();
     },
 
@@ -117,11 +116,9 @@ export default {
     reward: {
       handler(newReward) {
         const editedReward = { ...newReward };
-
-        // Reset the reward type based on the new reward's cost
         for (const [key, value] of Object.entries(this.rewardTypes)) {
           if (editedReward.cost === value.cost) {
-            editedReward.type = key; // Reset the correct type
+            editedReward.type = key;
             break;
           }
         }
@@ -135,7 +132,6 @@ export default {
 </script>
 
 <style scoped>
-/* Reuse styles from AddNewRewardModal.vue */
 .modal-overlay {
   position: fixed;
   top: 0;
