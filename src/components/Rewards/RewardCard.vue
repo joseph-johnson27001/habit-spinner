@@ -3,7 +3,7 @@
     <span class="reward-name">{{ rewardName }}</span>
 
     <!-- Edit button -->
-    <div class="edit-section">
+    <div class="edit-section" @click.stop="openEditModal">
       <i class="fa-solid fa-pencil"></i>
     </div>
 
@@ -48,10 +48,7 @@ export default {
     };
   },
   computed: {
-    // Access user's coin balance from the currency store
     ...mapGetters("currency", ["getCoins"]),
-
-    // Check if the user can afford this reward
     canAfford() {
       return this.getCoins >= this.cost;
     },
@@ -59,13 +56,19 @@ export default {
   methods: {
     ...mapActions("rewards", ["redeemReward"]),
 
-    toggleRedeem() {
-      // If the user can't afford it, do nothing
-      if (!this.canAfford) {
-        return; // Do nothing if they can't afford it
-      }
+    openEditModal() {
+      this.$emit("edit-reward", {
+        id: this.rewardId,
+        name: this.rewardName,
+        redeemed: this.redeemed,
+        cost: this.cost,
+      });
+    },
 
-      // Proceed with redeeming the reward if the user can afford it
+    toggleRedeem() {
+      if (!this.canAfford) {
+        return;
+      }
       if (!this.isRedeemed) {
         this.isRedeemed = true;
         this.redeemReward(this.rewardId);

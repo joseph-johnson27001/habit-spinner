@@ -2,13 +2,13 @@
   <div class="modal-overlay" v-if="isVisible">
     <div class="modal-content">
       <button class="close-button" @click="closeModal">×</button>
-      <h2>Add New Reward</h2>
-      <form @submit.prevent="handleAddReward">
+      <h2>Edit Reward</h2>
+      <form @submit.prevent="handleEditReward">
         <div class="form-group">
           <input
             type="text"
             id="rewardName"
-            v-model="newReward.name"
+            v-model="editedReward.name"
             required
             class="reward-input"
             placeholder="Enter Reward Name"
@@ -19,12 +19,11 @@
         <div class="form-group">
           <select
             id="rewardType"
-            v-model="newReward.type"
+            v-model="editedReward.type"
             required
             class="reward-select"
           >
-            <option value="" disabled selected>Select Reward Type</option>
-            <!-- This acts like a placeholder -->
+            <option value="" disabled>Select Reward Type</option>
             <option v-for="(value, key) in rewardTypes" :key="key" :value="key">
               {{ value.name }}
             </option>
@@ -32,8 +31,18 @@
         </div>
 
         <div class="modal-actions">
+          <!-- Save Button -->
           <button type="submit" class="modal-button add-button">
             <i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+
+          <!-- Delete Button -->
+          <button
+            type="button"
+            class="delete-button"
+            @click="handleDeleteReward"
+          >
+            <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
         </div>
       </form>
@@ -45,21 +54,20 @@
 import { mapActions } from "vuex";
 
 export default {
-  name: "AddNewRewardModal",
+  name: "EditRewardModal",
   props: {
     isVisible: {
       type: Boolean,
       required: true,
     },
+    reward: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
-      newReward: {
-        name: "",
-        type: "",
-        cost: null,
-      },
-      // Define reward types and their corresponding coin values
+      editedReward: { ...this.reward },
       rewardTypes: {
         instantGratification: { name: "Daily Reward", cost: 100 },
         weeklyWins: { name: "Weekly Reward", cost: 500 },
@@ -70,38 +78,35 @@ export default {
     };
   },
   methods: {
-    ...mapActions("rewards", ["addReward"]),
-    async handleAddReward() {
-      const reward = {
-        name: this.newReward.name,
-        cost: this.newReward.cost,
-        type: this.newReward.type,
-        redeemed: false,
-      };
-      await this.addReward(reward);
+    ...mapActions("rewards", ["updateReward", "deleteReward"]),
+    handleEditReward() {
+      // Update reward with new data
+      this.updateReward({ id: this.editedReward.id, ...this.editedReward });
+      this.closeModal();
+    },
+    handleDeleteReward() {
+      // Delete the reward
+      this.deleteReward(this.editedReward.id);
       this.closeModal();
     },
     closeModal() {
       this.$emit("close");
-      this.newReward.name = "";
-      this.newReward.type = "";
-      this.newReward.cost = null;
     },
   },
   watch: {
-    // Watch for changes in the reward type and update the cost accordingly
-    "newReward.type": function (newType) {
-      if (newType) {
-        this.newReward.cost = this.rewardTypes[newType].cost;
-      } else {
-        this.newReward.cost = null;
-      }
+    // Watch for changes in the reward prop and update local data accordingly
+    reward: {
+      handler(newReward) {
+        this.editedReward = { ...newReward };
+      },
+      deep: true,
     },
   },
 };
 </script>
 
 <style scoped>
+/* Reuse styles from AddNewRewardModal.vue */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -164,12 +169,11 @@ h2 {
 
 .modal-actions {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .add-button {
   font-size: 24px;
-  margin: -5px -5px -10px 0px;
   cursor: pointer;
   background: transparent;
   color: #fff;
@@ -189,6 +193,18 @@ h2 {
   border: none;
   color: white;
   font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete-button {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
   cursor: pointer;
   font-weight: bold;
 }

@@ -2,24 +2,31 @@
   <div class="rewards-page">
     <!-- Rewards List -->
     <div class="rewards-list">
-      <RewardCard
-        v-for="(reward, index) in rewards"
-        :key="reward.rewardId"
-        :rewardId="index"
+      <reward-card
+        v-for="reward in rewards"
+        :key="reward.id"
         :rewardName="reward.name"
         :redeemed="reward.redeemed"
         :cost="reward.cost"
-        @redeem="redeemReward(index)"
+        :rewardId="reward.id"
+        @edit-reward="showEditModal"
       />
     </div>
 
     <!-- New Reward Card -->
     <NewRewardCard @add="showAddRewardDialog" />
 
+    <!-- Edit Reward Modal -->
+    <EditRewardModal
+      :isVisible="isEditModalVisible"
+      :rewardData="rewardToEdit"
+      @close="closeEditModal"
+    />
+
     <!-- Add New Reward Modal -->
     <AddNewRewardModal
       :isVisible="isModalVisible"
-      @close="isModalVisible = false"
+      @close="closeAddRewardModal"
     />
   </div>
 </template>
@@ -28,7 +35,8 @@
 import RewardCard from "@/components/Rewards/RewardCard.vue";
 import NewRewardCard from "@/components/Rewards/NewRewardCard.vue";
 import AddNewRewardModal from "@/components/Rewards/AddNewRewardModal.vue";
-import { mapGetters } from "vuex";
+import EditRewardModal from "@/components/Rewards/EditRewardModal.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "RewardsPage",
@@ -36,10 +44,13 @@ export default {
     RewardCard,
     NewRewardCard,
     AddNewRewardModal,
+    EditRewardModal,
   },
   data() {
     return {
-      isModalVisible: false,
+      isModalVisible: false, // For Add New Reward Modal
+      isEditModalVisible: false, // For Edit Reward Modal
+      rewardToEdit: null, // Reward data for editing
     };
   },
   computed: {
@@ -49,11 +60,28 @@ export default {
     },
   },
   methods: {
-    redeemReward(index) {
-      this.REDEEM_REWARD(index);
-    },
+    ...mapActions("rewards", ["updateReward", "deleteReward"]),
+
+    // Show Add New Reward Modal
     showAddRewardDialog() {
       this.isModalVisible = true;
+    },
+
+    // Show Edit Reward Modal with selected reward data
+    showEditModal(rewardData) {
+      this.rewardToEdit = rewardData;
+      this.isEditModalVisible = true;
+    },
+
+    // Close the Edit Reward Modal
+    closeEditModal() {
+      this.isEditModalVisible = false;
+      this.rewardToEdit = null;
+    },
+
+    // Close Add New Reward Modal
+    closeAddRewardModal() {
+      this.isModalVisible = false;
     },
   },
 };
@@ -61,6 +89,6 @@ export default {
 
 <style scoped>
 .rewards-page {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
 }
 </style>
