@@ -122,8 +122,9 @@ export default {
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 20px 30px 30px 30px;
   border-radius: 12px;
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 300px;
+  min-width: 80%;
   max-height: 300px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);

@@ -1,15 +1,21 @@
 <template>
-  <label
-    :class="['reward-card', { redeemed: isRedeemed }]"
-    @click="toggleRedeem"
-  >
+  <div :class="['reward-card', { redeemed: isRedeemed }]" @click="toggleRedeem">
     <span class="reward-name">{{ rewardName }}</span>
-    <span v-if="!isRedeemed" class="reward-cost">
-      <i class="fas fa-coins coin-icon"></i>
-      <span class="coin-value"> {{ cost }}</span>
-    </span>
-    <span v-if="isRedeemed" class="checkmark">✓ Redeemed</span>
-  </label>
+
+    <!-- Edit button -->
+    <div class="edit-section">
+      <i class="fa-solid fa-pencil"></i>
+    </div>
+
+    <!-- Price area / Reedeemed area -->
+    <div class="reward-cost">
+      <span v-if="!isRedeemed">
+        <i class="fas fa-coins coin-icon"></i>
+        <span class="coin-value"> {{ cost }}</span>
+      </span>
+      <span v-if="isRedeemed" class="checkmark">✓ Redeemed</span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -114,6 +120,23 @@ export default {
 .reward-card span {
   position: relative;
   z-index: 1;
+}
+
+.reward-cost {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.edit-section {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.edit-section i {
+  font-size: 12px;
 }
 
 .checkmark {
