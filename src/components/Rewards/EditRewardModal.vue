@@ -23,7 +23,7 @@
             required
             class="reward-select"
           >
-            <option value="" disabled>Select Reward Type</option>
+            <option value="" disabled selected>Select Reward Type</option>
             <option v-for="(value, key) in rewardTypes" :key="key" :value="key">
               {{ value.name }}
             </option>
@@ -122,12 +122,12 @@ export default {
 }
 
 .modal-content {
-  margin-bottom: 50vh;
+  margin-bottom: 50%;
   position: relative;
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 20px 30px 30px 30px;
   border-radius: 12px;
-  width: 80%;
+  width: 95%;
   max-width: 500px;
   max-height: 300px;
   text-align: center;
@@ -148,7 +148,7 @@ h2 {
 
 .reward-input,
 .reward-select {
-  padding: 10px 15px;
+  padding: 12px 15px;
   border: 1px solid #2f4a92;
   border-radius: 6px;
   font-size: 18px;
