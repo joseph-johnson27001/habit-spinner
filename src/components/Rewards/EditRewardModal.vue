@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      editedReward: { ...this.reward },
+      editedReward: { ...this.reward }, // Initializes with the passed reward
       rewardTypes: {
         instantGratification: { name: "Daily Reward", cost: 100 },
         weeklyWins: { name: "Weekly Reward", cost: 500 },
@@ -77,11 +77,12 @@ export default {
       },
     };
   },
+
   methods: {
     ...mapActions("rewards", ["updateReward", "deleteReward"]),
     handleEditReward() {
-      // Update reward with new data
-      this.updateReward({ id: this.editedReward.id, ...this.editedReward });
+      // Ensure the edited reward is updated in the store
+      this.updateReward(this.editedReward);
       this.closeModal();
     },
     handleDeleteReward() {
@@ -94,10 +95,9 @@ export default {
     },
   },
   watch: {
-    // Watch for changes in the reward prop and update local data accordingly
     reward: {
       handler(newReward) {
-        this.editedReward = { ...newReward };
+        this.editedReward = { ...newReward }; // Properly reset editedReward when the reward prop changes
       },
       deep: true,
     },

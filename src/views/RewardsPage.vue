@@ -19,7 +19,7 @@
     <!-- Edit Reward Modal -->
     <EditRewardModal
       :isVisible="isEditModalVisible"
-      :rewardData="rewardToEdit"
+      :reward="rewardToEdit"
       @close="closeEditModal"
     />
 
@@ -72,7 +72,6 @@ export default {
       this.rewardToEdit = rewardData;
       this.isEditModalVisible = true;
     },
-
     // Close the Edit Reward Modal
     closeEditModal() {
       this.isEditModalVisible = false;
