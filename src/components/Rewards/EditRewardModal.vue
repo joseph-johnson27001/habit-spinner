@@ -49,7 +49,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { mapActions } from "vuex";
 
@@ -66,38 +65,64 @@ export default {
     },
   },
   data() {
+    // Initialize editedReward with the passed reward
+    const editedReward = { ...this.reward };
+
+    // Define reward types
+    const rewardTypes = {
+      instantGratification: { name: "Daily Reward", cost: 100 },
+      weeklyWins: { name: "Weekly Reward", cost: 500 },
+      monthlyMilestones: { name: "Monthly Reward", cost: 1500 },
+      yearlyAchievements: { name: "Yearly Reward", cost: 5000 },
+      ultimateAim: { name: "Ultimate Reward", cost: 10000 },
+    };
+
+    // Set the reward type based on the cost
+    for (const [key, value] of Object.entries(rewardTypes)) {
+      if (editedReward.cost === value.cost) {
+        editedReward.type = key; // Assign the correct type based on cost
+        break;
+      }
+    }
+
     return {
-      editedReward: { ...this.reward }, // Initializes with the passed reward
-      rewardTypes: {
-        instantGratification: { name: "Daily Reward", cost: 100 },
-        weeklyWins: { name: "Weekly Reward", cost: 500 },
-        monthlyMilestones: { name: "Monthly Reward", cost: 1500 },
-        yearlyAchievements: { name: "Yearly Reward", cost: 5000 },
-        ultimateAim: { name: "Ultimate Reward", cost: 10000 },
-      },
+      editedReward, // This will have the correct type set based on the cost
+      rewardTypes,
     };
   },
 
   methods: {
     ...mapActions("rewards", ["updateReward", "deleteReward"]),
+
     handleEditReward() {
-      // Ensure the edited reward is updated in the store
       this.updateReward(this.editedReward);
       this.closeModal();
     },
+
     handleDeleteReward() {
-      // Delete the reward
       this.deleteReward(this.editedReward.id);
       this.closeModal();
     },
+
     closeModal() {
       this.$emit("close");
     },
   },
+
   watch: {
     reward: {
       handler(newReward) {
-        this.editedReward = { ...newReward }; // Properly reset editedReward when the reward prop changes
+        const editedReward = { ...newReward };
+
+        // Reset the reward type based on the new reward's cost
+        for (const [key, value] of Object.entries(this.rewardTypes)) {
+          if (editedReward.cost === value.cost) {
+            editedReward.type = key; // Reset the correct type
+            break;
+          }
+        }
+
+        this.editedReward = editedReward;
       },
       deep: true,
     },
