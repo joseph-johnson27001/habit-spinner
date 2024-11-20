@@ -8,7 +8,8 @@ export default {
   },
   mutations: {
     ADD_REWARD(state, reward) {
-      state.rewards.push(reward);
+      const newReward = { ...reward, id: Date.now() };
+      state.rewards.push(newReward);
     },
     REDEEM_REWARD(state, { index, rootState }) {
       if (
@@ -22,11 +23,11 @@ export default {
     UPDATE_REWARD(state, updatedReward) {
       const index = state.rewards.findIndex((r) => r.id === updatedReward.id);
       if (index !== -1) {
-        state.rewards.splice(index, 1, updatedReward); // Update the reward at the specific index
+        state.rewards.splice(index, 1, updatedReward);
       }
     },
     DELETE_REWARD(state, rewardId) {
-      state.rewards = state.rewards.filter((reward) => reward.id !== rewardId); // Remove the reward by ID
+      state.rewards = state.rewards.filter((reward) => reward.id !== rewardId);
     },
   },
   actions: {

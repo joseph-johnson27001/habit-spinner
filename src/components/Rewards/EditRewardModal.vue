@@ -49,6 +49,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { mapActions } from "vuex";
 
@@ -65,10 +66,7 @@ export default {
     },
   },
   data() {
-    // Initialize editedReward with the passed reward
     const editedReward = { ...this.reward };
-
-    // Define reward types
     const rewardTypes = {
       instantGratification: { name: "Daily Reward", cost: 100 },
       weeklyWins: { name: "Weekly Reward", cost: 500 },
@@ -86,7 +84,7 @@ export default {
     }
 
     return {
-      editedReward, // This will have the correct type set based on the cost
+      editedReward,
       rewardTypes,
     };
   },
@@ -95,12 +93,18 @@ export default {
     ...mapActions("rewards", ["updateReward", "deleteReward"]),
 
     handleEditReward() {
+      const selectedType = this.editedReward.type;
+      if (this.rewardTypes[selectedType]) {
+        this.editedReward.cost = this.rewardTypes[selectedType].cost;
+      }
+
       this.updateReward(this.editedReward);
       this.closeModal();
     },
 
     handleDeleteReward() {
-      this.deleteReward(this.editedReward.id);
+      // Delete the reward using the correct id
+      this.deleteReward(this.editedReward.id); // Make sure the correct 'id' is passed
       this.closeModal();
     },
 
