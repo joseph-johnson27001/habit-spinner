@@ -85,8 +85,8 @@ export default {
   background: linear-gradient(to right, #4a90e2, #9a74d6);
   padding: 20px 30px 30px 30px;
   border-radius: 12px;
-  max-width: 300px;
-  min-width: 80%;
+  width: 80%;
+  max-width: 500px;
   max-height: 300px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);

@@ -74,6 +74,7 @@ export default {
   font-family: "Baloo 2", sans-serif;
   padding: 10px 0;
   font-size: 16px;
+  font-weight: 400;
   cursor: pointer;
   background-color: transparent;
   border: none;
