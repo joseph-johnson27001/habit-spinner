@@ -66,7 +66,7 @@ export default {
           this.coinNotificationVisible = false;
         }, 1000);
       } else {
-        console.log("Out of fuel!");
+        // NEED TO ADD IN CONDITIONALS HERE
       }
     },
   },
