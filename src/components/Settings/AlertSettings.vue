@@ -1,10 +1,28 @@
 <template>
   <!-- Toggle for Alert Sounds -->
-  <div class="setting-item">
-    <label for="alert-sounds-toggle">Enable Chime Sound:</label>
-    <div @click="toggleAlertSounds" class="toggle-switch">
-      <input type="checkbox" id="alert-sounds-toggle" :checked="alertSounds" />
-      <span class="slider"></span>
+  <div class="settings-container">
+    <div class="setting-item">
+      <label for="alert-sounds-toggle">Enable Chime Sound:</label>
+      <div @click="toggleAlertSounds" class="toggle-switch">
+        <input
+          type="checkbox"
+          id="alert-sounds-toggle"
+          :checked="alertSounds"
+        />
+        <span class="slider"></span>
+      </div>
+    </div>
+
+    <div class="setting-item">
+      <label for="alert-sounds-toggle">Show Streaks / Totals:</label>
+      <div @click="toggleStreaksTotals" class="toggle-switch">
+        <input
+          type="checkbox"
+          id="alert-sounds-toggle"
+          :checked="alertSounds"
+        />
+        <span class="slider"></span>
+      </div>
     </div>
   </div>
 </template>
@@ -23,16 +41,28 @@ export default {
     toggleAlertSounds() {
       this.SET_ALERT_SOUNDS(!this.alertSounds);
     },
+    toggleStreaksTotals() {
+      // ADD LOGIC HERE
+    },
   },
 };
 </script>
 
 <style scoped>
 /* Setting Items */
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
 .setting-item {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  justify-content: space-between;
 }
 
 .setting-item label {
