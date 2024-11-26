@@ -48,7 +48,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchAchievements(); // Fetch achievements on page load
+    this.fetchAchievements();
   },
 };
 </script>
