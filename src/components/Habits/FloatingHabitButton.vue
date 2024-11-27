@@ -18,8 +18,8 @@ export default {
   position: fixed;
   bottom: 75px;
   right: 15px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: linear-gradient(145deg, #4a90e2, #9a74d6);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
