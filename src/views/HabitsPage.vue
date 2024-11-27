@@ -20,7 +20,11 @@
       />
     </div>
 
-    <NewHabitCard @add="showAddHabitModal" />
+    <!-- <NewHabitCard @add="showAddHabitModal" /> -->
+    <!-- Keep this or remove it if unnecessary -->
+
+    <!-- Floating Habit Button -->
+    <FloatingHabitButton @click="showAddHabitModal" />
 
     <!-- AddHabitModal component -->
     <AddHabitModal
@@ -35,15 +39,17 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import HabitCard from "@/components/Habits/HabitCard.vue";
-import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
+// import NewHabitCard from "@/components/Habits/NewHabitCard.vue";
 import AddHabitModal from "@/components/Habits/AddHabitModal.vue";
+import FloatingHabitButton from "@/components/Habits/FloatingHabitButton.vue";
 
 export default {
   name: "HabitsPage",
   components: {
     HabitCard,
-    NewHabitCard,
+    // NewHabitCard,
     AddHabitModal,
+    FloatingHabitButton,
   },
   data() {
     return {
@@ -76,5 +82,6 @@ export default {
 <style scoped>
 .habits-page {
   padding: 0px 10px 60px 10px;
+  position: relative; /* Ensures children are positioned relative to this container */
 }
 </style>

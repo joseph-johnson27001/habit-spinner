@@ -1,0 +1,46 @@
+<template>
+  <button class="floating-button" @click="onClick">+</button>
+</template>
+
+<script>
+export default {
+  name: "FloatingHabitButton",
+  methods: {
+    onClick() {
+      this.$emit("click");
+    },
+  },
+};
+</script>
+
+<style scoped>
+.floating-button {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid, #4a90e2;
+}
+
+.floating-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.floating-button:active {
+  transform: scale(0.95);
+}
+</style>

@@ -56,6 +56,7 @@ export default {
       },
 
       // Frequency-Based Badges
+
       // {
       //   title: "Daily Devotee",
       //   description: "Complete a habit daily for a week",
