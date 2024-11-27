@@ -16,31 +16,26 @@ export default {
 <style scoped>
 .floating-button {
   position: fixed;
-  bottom: 80px;
-  right: 20px;
+  bottom: 75px;
+  right: 15px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(145deg, #4a90e2, #9a74d6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  color: #333;
+  font-size: 30px;
+  color: #fff;
   border: none;
   cursor: pointer;
   z-index: 1000;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: 1px solid, #4a90e2;
+  border: 2px solid #eee;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover/active states */
 }
 
-.floating-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.floating-button:active {
-  transform: scale(0.95);
+.floating-button:focus {
+  outline: none;
 }
 </style>
