@@ -28,8 +28,8 @@ export default {
 <style scoped>
 .floating-button {
   position: fixed;
-  bottom: 75px;
-  right: 15px;
+  bottom: 70px;
+  right: 10px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
