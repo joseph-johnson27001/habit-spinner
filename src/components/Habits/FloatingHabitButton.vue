@@ -17,16 +17,10 @@ export default {
   },
   methods: {
     handleClick() {
-      // Trigger the click animation class
       this.isClicked = true;
-
-      // Emit the click event to the parent component
-
-      // Reset the `isClicked` state after the animation duration (100ms)
       setTimeout(() => {
-        this.isClicked = false;
-        this.$emit("click");
-      }, 200); // Match the duration of the CSS transition
+        this.isClicked = false; // Reset the animation state // Emit the event to open the modal
+      }, 100); // Match this to the animation duration (200ms)
     },
   },
 };
@@ -57,7 +51,7 @@ export default {
   outline: none;
 }
 
-/* Haptic-like feedback animation class */
+/* Animation feedback for button click */
 .floating-button.clicked {
   transform: scale(0.9); /* Slightly shrink */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Reduce shadow to create depth */

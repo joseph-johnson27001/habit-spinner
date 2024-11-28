@@ -63,7 +63,9 @@ export default {
   methods: {
     ...mapActions("habits", ["resetCompletedState"]),
     showAddHabitModal() {
-      this.showModal = true;
+      setTimeout(() => {
+        this.showModal = true;
+      }, 200);
     },
     addNewHabit(habitName) {
       this.$store.dispatch("habits/addHabit", habitName);
