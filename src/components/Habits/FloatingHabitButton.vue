@@ -32,10 +32,16 @@ export default {
   cursor: pointer;
   z-index: 1000;
   border: 2px solid #eee;
-  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover/active states */
+  transition: transform 0.1s linear, box-shadow 0.1s ease-in-out; /* Quick transition for feedback */
 }
 
 .floating-button:focus {
   outline: none;
+}
+
+/* Haptic-like feedback on click */
+.floating-button:active {
+  transform: scale(0.9); /* Slightly shrink */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Reduce shadow to create depth */
 }
 </style>
