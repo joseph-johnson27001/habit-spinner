@@ -21,12 +21,12 @@ export default {
       this.isClicked = true;
 
       // Emit the click event to the parent component
-      this.$emit("click");
 
       // Reset the `isClicked` state after the animation duration (100ms)
       setTimeout(() => {
         this.isClicked = false;
-      }, 100); // Match the duration of the CSS transition
+        this.$emit("click");
+      }, 200); // Match the duration of the CSS transition
     },
   },
 };
