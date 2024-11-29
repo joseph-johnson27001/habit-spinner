@@ -33,8 +33,8 @@ export default {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #4a90e2, #9a74d6);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, #ff5f6d, #df982f);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
