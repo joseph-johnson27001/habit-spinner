@@ -68,7 +68,9 @@ export default {
 
     // Show Add New Reward Modal
     showAddRewardDialog() {
-      this.isModalVisible = true;
+      setTimeout(() => {
+        this.isModalVisible = true;
+      }, 200);
     },
 
     // Show Edit Reward Modal with selected reward data
