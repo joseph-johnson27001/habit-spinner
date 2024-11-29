@@ -13,8 +13,10 @@
       />
     </div>
 
+    <!-- Floating Button -->
+    <FloatingRewardButton @click="showAddRewardDialog" />
     <!-- New Reward Card -->
-    <NewRewardCard @add="showAddRewardDialog" />
+    <!-- <NewRewardCard @add="showAddRewardDialog" /> -->
 
     <!-- Edit Reward Modal -->
     <EditRewardModal
@@ -33,18 +35,20 @@
 
 <script>
 import RewardCard from "@/components/Rewards/RewardCard.vue";
-import NewRewardCard from "@/components/Rewards/NewRewardCard.vue";
+// import NewRewardCard from "@/components/Rewards/NewRewardCard.vue";
 import AddNewRewardModal from "@/components/Rewards/AddNewRewardModal.vue";
 import EditRewardModal from "@/components/Rewards/EditRewardModal.vue";
 import { mapGetters, mapActions } from "vuex";
+import FloatingRewardButton from "@/components/Rewards/FloatingRewardButton.vue";
 
 export default {
   name: "RewardsPage",
   components: {
     RewardCard,
-    NewRewardCard,
+    // NewRewardCard,
     AddNewRewardModal,
     EditRewardModal,
+    FloatingRewardButton,
   },
   data() {
     return {
@@ -88,6 +92,6 @@ export default {
 
 <style scoped>
 .rewards-page {
-  padding: 0px 10px;
+  padding: 0px 10px 120px 10px;
 }
 </style>
