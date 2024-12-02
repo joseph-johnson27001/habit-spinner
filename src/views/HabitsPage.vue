@@ -83,7 +83,7 @@ export default {
 
 <style scoped>
 .habits-page {
-  padding: 0px 10px 120px 10px;
+  padding: 0px 10px 115px 10px;
   position: relative;
 }
 </style>
