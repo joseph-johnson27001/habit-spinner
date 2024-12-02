@@ -15,6 +15,7 @@
 
     <!-- Floating Button -->
     <FloatingRewardButton @click="showAddRewardDialog" />
+
     <!-- New Reward Card -->
     <!-- <NewRewardCard @add="showAddRewardDialog" /> -->
 
@@ -52,9 +53,9 @@ export default {
   },
   data() {
     return {
-      isModalVisible: false, // For Add New Reward Modal
-      isEditModalVisible: false, // For Edit Reward Modal
-      rewardToEdit: null, // Reward data for editing
+      isModalVisible: false,
+      isEditModalVisible: false,
+      rewardToEdit: null,
     };
   },
   computed: {
@@ -66,25 +67,22 @@ export default {
   methods: {
     ...mapActions("rewards", ["updateReward", "deleteReward"]),
 
-    // Show Add New Reward Modal
     showAddRewardDialog() {
       setTimeout(() => {
         this.isModalVisible = true;
       }, 200);
     },
 
-    // Show Edit Reward Modal with selected reward data
     showEditModal(rewardData) {
       this.rewardToEdit = rewardData;
       this.isEditModalVisible = true;
     },
-    // Close the Edit Reward Modal
+
     closeEditModal() {
       this.isEditModalVisible = false;
       this.rewardToEdit = null;
     },
 
-    // Close Add New Reward Modal
     closeAddRewardModal() {
       this.isModalVisible = false;
     },
