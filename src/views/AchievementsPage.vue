@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import AchievementCard from "@/components/Achievements/AchievementCard.vue";
 import AchievementModal from "@/components/Achievements/AchievementModal.vue";
 
@@ -42,13 +42,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions("achievements", ["fetchAchievements"]),
     showAchievementModal(achievement) {
       this.selectedAchievement = achievement;
     },
-  },
-  mounted() {
-    this.fetchAchievements();
   },
 };
 </script>
