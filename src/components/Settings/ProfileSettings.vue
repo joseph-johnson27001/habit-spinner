@@ -27,20 +27,22 @@
       <label for="profile-badge">Badge:</label>
       <select id="profile-badge" v-model="profile.badge">
         <option disabled value="">Choose your badge</option>
-        <option v-for="badge in badges" :key="badge" :value="badge">
-          {{ badge }}
+        <option v-for="badge in badges" :key="badge.title" :value="badge.title">
+          {{ badge.title }}
         </option>
       </select>
     </div>
 
     <!-- Example Save Button -->
     <div class="setting-item">
-      <button class="save-button">Save Changes</button>
+      <button class="save-button" @click="saveChanges">Save Changes</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "ProfileSettings",
   data() {
@@ -51,8 +53,22 @@ export default {
         badge: "",
       },
       titles: ["Firestarter", "Trailblazer", "Achiever", "Pathfinder"],
-      badges: ["Bronze", "Silver", "Gold", "Platinum"],
     };
+  },
+  computed: {
+    ...mapGetters({
+      achievements: "achievements/achievementsList",
+    }),
+    badges() {
+      // Filter completed achievements for available badges
+      return this.achievements.filter((achievement) => achievement.completed);
+    },
+  },
+  methods: {
+    saveChanges() {
+      console.log("Profile changes saved:", this.profile);
+      // Implement save logic here
+    },
   },
 };
 </script>
@@ -119,7 +135,7 @@ select option {
 .save-button {
   position: relative;
   background: linear-gradient(to right, #ff5e87, #fca066);
-  padding: 40px 15px;
+  padding: 10px 15px;
   margin: 10px 0;
   border-radius: 10px;
   border: none;
