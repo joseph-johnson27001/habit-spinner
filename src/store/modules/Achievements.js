@@ -15,7 +15,7 @@ export default {
         title: "Starter Streak",
         description: "Maintain a 3-day streak on a habit",
         completed: true,
-        reward: "three-day-habit-badge.png",
+        reward: "starter-streak-badge.png",
         completedDate: "01-12-2024",
       },
       {
