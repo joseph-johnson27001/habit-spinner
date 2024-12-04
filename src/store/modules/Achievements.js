@@ -4,7 +4,6 @@ export default {
   namespaced: true,
   state: () => ({
     achievements: [
-      // Habit Completion Badges
       {
         title: "Firestarter",
         description: "Complete your first habit",
@@ -44,7 +43,7 @@ export default {
         title: "Centurion",
         description: "Reach a 100-day streak on a habit",
         completed: false,
-        reward: "100-day-hero-badge.png",
+        reward: "centurion-badge.png",
         completedDate: null,
       },
       {
