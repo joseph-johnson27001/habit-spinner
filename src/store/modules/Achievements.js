@@ -12,7 +12,7 @@ export default {
         completedDate: "01-11-2024",
       },
       {
-        title: "Starter Streak",
+        title: "Warming Up",
         description: "Maintain a 3-day streak on a habit",
         completed: true,
         reward: "starter-streak-badge.png",
