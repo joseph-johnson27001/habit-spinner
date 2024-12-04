@@ -14,23 +14,46 @@
     <!-- Select Title -->
     <div class="setting-item">
       <label for="profile-title">Title:</label>
-      <select id="profile-title" v-model="profile.title">
-        <option disabled value="">Select your title</option>
-        <option v-for="title in titles" :key="title" :value="title">
-          {{ title }}
-        </option>
-      </select>
+      <div class="custom-dropdown">
+        <div class="dropdown-header" @click="toggleTitleDropdown">
+          <span>{{ profile.title || "Select your title" }}</span>
+          <span class="arrow" :class="{ rotate: isTitleOpen }"></span>
+        </div>
+        <div v-if="isTitleOpen" class="dropdown-list">
+          <div
+            v-for="title in titles"
+            :key="title"
+            class="dropdown-item"
+            @click="selectTitle(title)"
+          >
+            <span>{{ title }}</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Select Badge -->
     <div class="setting-item">
       <label for="profile-badge">Badge:</label>
-      <select id="profile-badge" v-model="profile.badge">
-        <option disabled value="">Choose your badge</option>
-        <option v-for="badge in badges" :key="badge.title" :value="badge.title">
-          {{ badge.title }}
-        </option>
-      </select>
+      <div class="custom-dropdown">
+        <div class="dropdown-header" @click="toggleBadgeDropdown">
+          <span>{{ profile.badge || "Choose your badge" }}</span>
+          <span class="arrow" :class="{ rotate: isBadgeOpen }"></span>
+        </div>
+        <div v-if="isBadgeOpen" class="dropdown-list">
+          <div
+            v-for="badge in badges"
+            :key="badge.title"
+            class="dropdown-item"
+            @click="selectBadge(badge)"
+          >
+            <div class="dropdown-item-content">
+              <img :src="`/images/badges/${badge.reward}`" alt="badge" />
+              <span>{{ badge.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Example Save Button -->
@@ -53,6 +76,8 @@ export default {
         badge: "",
       },
       titles: ["Firestarter", "Trailblazer", "Achiever", "Pathfinder"],
+      isTitleOpen: false,
+      isBadgeOpen: false,
     };
   },
   computed: {
@@ -60,11 +85,26 @@ export default {
       achievements: "achievements/achievementsList",
     }),
     badges() {
-      // Filter completed achievements for available badges
       return this.achievements.filter((achievement) => achievement.completed);
     },
   },
   methods: {
+    toggleTitleDropdown() {
+      this.isTitleOpen = !this.isTitleOpen;
+      this.isBadgeOpen = false; // Close badge dropdown if it's open
+    },
+    toggleBadgeDropdown() {
+      this.isBadgeOpen = !this.isBadgeOpen;
+      this.isTitleOpen = false; // Close title dropdown if it's open
+    },
+    selectTitle(title) {
+      this.profile.title = title;
+      this.isTitleOpen = false;
+    },
+    selectBadge(badge) {
+      this.profile.badge = badge.title;
+      this.isBadgeOpen = false;
+    },
     saveChanges() {
       console.log("Profile changes saved:", this.profile);
       // Implement save logic here
@@ -96,8 +136,7 @@ label {
 }
 
 /* Input and Select Styling */
-input[type="text"],
-select {
+input[type="text"] {
   width: 100%;
   padding: 15px 10px;
   border-radius: 6px;
@@ -121,14 +160,74 @@ input::placeholder {
   font-size: 16px;
 }
 
-/* Select Styling */
-select {
+/* Custom Dropdown Styling */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #2f4a92;
+  border-radius: 6px;
   background-color: #fff;
   cursor: pointer;
 }
 
-select option {
-  font-size: 14px;
+.arrow {
+  border: solid #2f4a92;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.arrow.rotate {
+  transform: rotate(-135deg);
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item-content {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.dropdown-item span {
+  font-size: 16px;
+  color: #2f4a92;
 }
 
 /* Save Button Styling */
