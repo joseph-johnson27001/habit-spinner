@@ -16,14 +16,14 @@ export default {
         description: "Maintain a 3-day streak on a habit",
         completed: true,
         reward: "starter-streak-badge.png",
-        completedDate: "01-12-2024",
+        completedDate: "04-12-2024",
       },
       {
         title: "Weekly Warrior",
         description: "Complete a habit for 7 days in a row",
         completed: true,
         reward: "weekly-warrior-badge.png",
-        completedDate: null,
+        completedDate: "09-12-2024",
       },
       {
         title: "Two-Week Titan",
