@@ -16,7 +16,6 @@ const state = () => ({
 });
 
 const getters = {
-  // Habit-related getters
   allHabits: (state) => state.habits,
   totalHabits: (state) => state.habits.length,
   totalCompletedHabits: (state) =>
